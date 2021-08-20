@@ -1,0 +1,8 @@
+C:\Keith's Files\my_projects\F#projects\FsharpHat\FSharp.hat\FSharp.hat\bin\Debug\App.config
+C:\Keith's Files\my_projects\F#projects\FsharpHat\FSharp.hat\FSharp.hat\bin\Debug\FSharp.hat.exe.config
+C:\Keith's Files\my_projects\F#projects\FsharpHat\FSharp.hat\FSharp.hat\bin\Debug\FSharp.hat.XML
+C:\Keith's Files\my_projects\F#projects\FsharpHat\FSharp.hat\FSharp.hat\bin\Debug\FSharp.hat.exe
+C:\Keith's Files\my_projects\F#projects\FsharpHat\FSharp.hat\FSharp.hat\bin\Debug\FSharp.hat.pdb
+C:\Keith's Files\my_projects\F#projects\FsharpHat\FSharp.hat\FSharp.hat\obj\x86\Debug\FSharp.hat.fsprojResolveAssemblyReference.cache
+C:\Keith's Files\my_projects\F#projects\FsharpHat\FSharp.hat\FSharp.hat\obj\x86\Debug\FSharp.hat.exe
+C:\Keith's Files\my_projects\F#projects\FsharpHat\FSharp.hat\FSharp.hat\obj\x86\Debug\FSharp.hat.pdb
