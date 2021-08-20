@@ -1,0 +1,19 @@
+<project version="Crimson Editor 3.60">
+	<localfile path="D:\aux_dev\ruby_src\hat.rb" />
+	<localfile path="D:\aux_dev\ruby_src\hat.rbw" />
+	<localfile path="D:\aux_dev\ruby_src\hellowWorld.rb" />
+	<localfile path="D:\aux_dev\ruby_src\shell.rb" />
+	<localfile path="D:\aux_dev\ruby_src\win32ole.rb" />
+</project>
+
+<workspace version="Crimson Editor 3.60">
+	<localfile path="D:\aux_dev\ruby_src\hellowWorld.rb" linenum="35" />
+	<localfile path="D:\aux_dev\ruby_src\shell.rb" linenum="6" />
+	<localfile path="D:\auxdev\ruby\samples\opengl\hello.rbw" linenum="46" />
+	<localfile path="D:\aux_dev\ruby_src\hat.rbw" linenum="91" />
+	<localfile path="C:\src_krb\WSRC32\SHELL32\Hat.cpp" linenum="63" />
+	<localfile path="D:\auxdev\ruby\samples\opengl\checker.rbw" linenum="1" />
+	<localfile path="D:\aux_dev\ruby_src\hat.rb" linenum="129" />
+	<localfile path="D:\aux_dev\ruby_src\win32ole.rb" linenum="1" />
+</workspace>
+
