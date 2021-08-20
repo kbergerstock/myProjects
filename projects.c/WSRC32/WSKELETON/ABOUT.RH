@@ -1,0 +1,5 @@
+#define ABOUT_BM                300
+#define IDD_ABOUT_OK            301
+#define IDD_DISPLAY             303
+#define IDD_CANCEL              302
+

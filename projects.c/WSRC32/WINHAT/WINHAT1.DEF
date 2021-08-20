@@ -1,0 +1,13 @@
+;------------------------------------
+; CONNECT.DEF module definition file
+;------------------------------------
+
+NAME           WINHAT1
+
+DESCRIPTION    'Windows 3D CURVE DEMO @ K. R. Bergerstock 1996'
+EXETYPE        WINDOWS
+STUB           'C:\DEV\BC\LIB\WINSTUB.EXE'
+CODE           PRELOAD MOVEABLE DISCARDABLE
+DATA           PRELOAD MOVEABLE MULTIPLE
+HEAPSIZE       1024
+STACKSIZE      8192

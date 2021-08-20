@@ -1,0 +1,121 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "itimedlg.rh"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "itimedlg.rh\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+MAIN_DIALOG DIALOGEX 0, 0, 194, 72
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_CLIENTEDGE
+CAPTION "Number of Days to the Year 2033"
+FONT 20, "Tahoma"
+BEGIN
+    CTEXT           "UTC",IDC_NULL,7,34,36,10,0,WS_EX_CLIENTEDGE | 
+                    WS_EX_STATICEDGE
+    CTEXT           "DAYS",IDC_NULL,42,7,36,10
+    CTEXT           "TEXT 2",IDC_EDIT2,79,23,36,10,0,WS_EX_CLIENTEDGE | 
+                    WS_EX_STATICEDGE
+    CTEXT           "TEXT 1",IDC_EDIT1,43,23,36,10,0,WS_EX_CLIENTEDGE | 
+                    WS_EX_STATICEDGE
+    CTEXT           "TEXT 3",IDC_EDIT3,115,23,36,10,0,WS_EX_CLIENTEDGE | 
+                    WS_EX_STATICEDGE
+    CTEXT           "TEXT 4",IDC_EDIT4,151,23,36,10,0,WS_EX_CLIENTEDGE | 
+                    WS_EX_STATICEDGE
+    CTEXT           "TEXT 5",IDC_EDIT5,43,34,36,10,0,WS_EX_CLIENTEDGE | 
+                    WS_EX_STATICEDGE
+    CTEXT           "TEXT 6",IDC_EDIT6,79,34,36,10,0,WS_EX_CLIENTEDGE | 
+                    WS_EX_STATICEDGE
+    CTEXT           "TEXT 7",IDC_EDIT7,115,34,36,10,0,WS_EX_CLIENTEDGE | 
+                    WS_EX_STATICEDGE
+    CTEXT           "TEXT 8",IDC_EDIT8,151,34,36,10,0,WS_EX_CLIENTEDGE | 
+                    WS_EX_STATICEDGE
+    CTEXT           "LOCAL",IDC_NULL,7,23,36,10,0,WS_EX_CLIENTEDGE | 
+                    WS_EX_STATICEDGE
+    CTEXT           "HOURS",IDC_NULL,78,7,36,10
+    CTEXT           "MINS",IDC_NULL,114,7,36,10
+    CTEXT           "SECS",IDC_NULL,151,7,36,10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    MAIN_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 187
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 65
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

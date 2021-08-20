@@ -1,0 +1,12 @@
+
+#include "rptbox.rh"
+
+DIALOG_MENU MENU
+{
+ POPUP "&File"
+ {
+  MENUITEM "&Close", IDD_CLOSE
+  MENUITEM "&Exit", IDD_EXIT
+ }
+
+}

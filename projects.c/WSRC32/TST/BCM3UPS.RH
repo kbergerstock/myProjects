@@ -1,0 +1,24 @@
+// bcm3ups.rh
+
+#define IDD_DIALOG1	1
+#define IDC_RADIOBUTTON1	101
+#define IDC_RADIOBUTTON2	102
+#define IDC_RADIOBUTTON3	103
+#define IDC_RADIOBUTTON4	104
+#define IDC_RADIOBUTTON5	105
+#define IDC_RADIOBUTTON6	106
+#define IDC_RADIOBUTTON7	107
+#define main_frm        1000
+#define IDC_STATUSBAR   1001
+#define IDC_BUTTON1	101
+#define IDC_ABORT	101
+#define IDC_STATICTEXT1	101
+#define IDC_EDIT2	102
+#define IDC_STATICTEXT2	103
+#define IDC_EDIT3	104
+#define IDC_EDIT1	101
+#define IDC_STATICBITMAP1	101
+#define IDC_DUT1        1010
+#define IDC_DUT2        1030
+#define IDC_DUT3        1050
+

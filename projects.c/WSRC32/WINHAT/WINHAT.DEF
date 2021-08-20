@@ -1,0 +1,11 @@
+;------------------------------------
+; CONNECT.DEF module definition file
+;------------------------------------
+
+NAME		   WINHAT
+
+DESCRIPTION    'Windows Hat @ K. R. Bergerstock 1996'
+EXETYPE 	   WINDOWS
+STUB		   'C:\DEV\BC5\bin\WINSTUB.EXE'
+CODE		   PRELOAD MOVEABLE DISCARDABLE
+DATA		   PRELOAD MOVEABLE MULTIPLE

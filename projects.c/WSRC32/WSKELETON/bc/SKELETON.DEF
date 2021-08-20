@@ -1,0 +1,13 @@
+;------------------------------------
+; CONNECT.DEF module definition file
+;------------------------------------
+
+NAME		   skeleton
+
+DESCRIPTION    'skeleton @ K.R. Bergerstock 09/1998'
+EXETYPE 	   WINDOWS
+STUB		   'WINSTUB.EXE'
+CODE		   PRELOAD MOVEABLE DISCARDABLE
+DATA		   PRELOAD MOVEABLE MULTIPLE
+HEAPSIZE	   16384
+STACKSIZE	   16384

@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "tbitarray.h": "c",
+        "profileapi.h": "c",
+        "time.h": "c",
+        "corecrt.h": "c",
+        "timeapi.h": "c"
+    }
+}

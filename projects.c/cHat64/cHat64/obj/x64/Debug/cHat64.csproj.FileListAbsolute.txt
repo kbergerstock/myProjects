@@ -1,0 +1,2 @@
+C:\Keith's Files\my_projects\cHat64\cHat64\bin\x64\Debug\cHat64.exe.config
+C:\projects.krb\cHat64\cHat64\bin\x64\Debug\cHat64.exe.config

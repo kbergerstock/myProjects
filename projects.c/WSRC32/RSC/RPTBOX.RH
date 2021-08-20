@@ -1,0 +1,3 @@
+
+#define IDD_EXIT		200
+#define IDD_CLOSE		201

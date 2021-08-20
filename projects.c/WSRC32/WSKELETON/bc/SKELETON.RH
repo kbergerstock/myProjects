@@ -1,0 +1,6 @@
+// skeleton.rh
+
+#define CM_SKELETONITEM1	18873
+#include "stdmenu.rh"
+
+#define IDM_DATAWIN  700
