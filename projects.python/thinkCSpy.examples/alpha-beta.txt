@@ -1,0 +1,126 @@
+
+Alpha-Beta Search
+ 
+ 
+ 
+    
+The problem with min-max
+
+Alpha-beta is very similar to min-max, and in fact, there is really only one extra statement.  Min-max works by examining the entire game tree, and picking the best path that can be forced.  This is very easy conceptualize, but it is not efficient.  Each time an extra ply of depth is searched, the size of the tree searched grows exponentially. 
+
+Chess tends to have about 35 legal moves in any given position.  So if min-max is used to search to one ply of depth, about 35 positions are examined.  If the function is used to search two plies, about 35^2 positions are searched.  That's about a thousand.  This doesn't seem that bad so far, but the number gets enormous very quickly.  A six-ply search is almost two billion positions, for example, and a ten-ply search is over two quadrillion.
+
+It is important to search as deeply as possible, if the goal is to create a strong chess player by examining the first few plies of the game tree and applying a heuristic evaluation at the leaf nodes.  Min-max doesn't allow for a very deep search, because the effective branching factor is extremely high.
+
+The bag example
+
+Fortunately, there is a way to reduce the branching factor.  Furthermore, it's perfectly safe, and in fact there is absolutely no down-side -- it's a pure win.  It relies on the idea that if you already have a choice you know is not bad, when  you are looking at other choices, and you find one that you know is no better, you don't have to go to the trouble of figuring out exactly how bad it is.  Anything that is no better than the best choice found is bad enough, so you toss it out without completely understanding it.  You can throw it away the instant you prove that it is no better than the best choice.
+
+That was as clear as mud, probably.  I'll try an example.  Let's say that your worst enemy has a bunch of bags sitting in front of him.  The bags are there because he lost a bet, and now he has to give you something, but the rules about what he has to give you are very obtuse.
+
+Each bag contains a few things.  You are going to get one of the things.  You get to pick which bag the thing will come out of, but he gets to pick what you get out of that bag.  You want to get your thing quickly and leave, because you have better things to do than sit there digging through bags while your worst enemy glares at you.
+
+You are going to look through one bag at a time, and you are going to look through the items in each bag one item at a time.
+
+Obviously, what is going to happen is that your enemy is going to give you the worst thing in the bag you choose, so your goal is to pick the bag that has the nicest worst thing.
+
+It's easy to see how you'd apply min-max to this problem.  You are the maximizing player, and you are going to take the best bag.  Your enemy is the minimizing player.  He's going to try to make sure that the best bag is as bad as possible, by giving you the worst thing out of it.  All you have to do to use min-max is take the bag that has the best worst thing in it, if that makes any sense.
+
+Min-max gets you a provably correct result, assuming that you are able to evaluate the items in the bags accurately.  Accuracy of evaluation isn't important here, and it doesn't have anything to do with how either min-max or alpha-beta works.   Let's stipulate that you can evaluate them correctly.
+
+The problem with min-max, as has been described previously, is that it is inefficient.  You have to look at everything in every bag, which takes a lot of time.
+
+But how can we do this more efficiently than min-max?
+
+Let's start with the first bag, and look at everything, and score the bag.  Let's say that this bag contained a peanut butter sandwich and the keys to a new car.  You figure that the sandwich is worth less, so if you take this bag you will get a sandwich.  The fact that there are also car keys in the bag doesn't matter, as long as we assume that your opponent can also evaluate items correctly, which we will.
+
+Now you start in on the next bag.  The process you use is a little different than min-max this time.  You look at items one at a time, and compare them against the best thing you know you can get (the sandwich).  As long as items are better than the sandwich, you handle this as you do in min-max -- you just keep track of the worst one -- since maybe the worst one is better than the sandwich, which would mean that you'll take this bag over the one with the sandwich.
+
+But if you find another sandwich in this bag, or something you think is worse than the sandwich, you discard this bag without looking at any more items.  The reason is that you know that if you take this bag, the absolute best you can do is no better than the sandwich (and might be worse).
+
+Let's say that the first item in the bag is a twenty-dollar bill, which is better than the sandwich.  If everything else in the bag is no worse than this, that's the item that your opponent will be forced to give you if you take this bag, and this becomes your bag of choice.
+
+The next thing in the bag is a six-pack of pop.  You think this is better than the sandwich, but it's worse than the twenty, so this bag is still your bag of choice.  The next thing is a rotten fish.  This is worse than the sandwich.  You say "no thanks," hand the bag back, and forget about this bag.
+
+It doesn't matter what else is in the bag.  There could be the keys to another car, which doesn't matter, since you are going to get the fish.  There could be something much worse than the fish (I leave this to your imagination).  This doesn't matter either, since the fish is already bad enough, and you know you can do better by taking the bag with the sandwich.
+
+The algorithm
+
+Alpha-beta works just like this, only recursively applied, and I got it a bit backwards since I've been explaining the minimizing player's strategy, which I hope is something that won't be too confusing.
+
+The idea is that two scores are passed around in the search.  The first one is alpha, which is the best score that can be forced by some means.  Anything worth less than this is of no use, because there is a strategy that is known to result in a score of alpha.  Anything less than or equal to alpha is no improvement.
+
+The second score is beta.  Beta is the worst-case scenario for the opponent.  It's the worst thing that the opponent has to endure, because it's known that there is a way for the opponent to force a situation no worse than beta, from the opponent's point of view.  If the search finds something that returns a score of beta or better, it's too good, so the side to move is not going to get a chance to use this strategy.
+
+When searching moves, each move searched returns a score that has some relation to alpha and beta, and the relation is very important and might mean that the search can stop and return a value.
+
+If a move results in a score that was less than or equal to alpha, it was just a bad move and it can be forgotten about, since, as I stated a few paragraphs ago, there is known to be a strategy that gets the moving side a position valued at alpha.
+
+If a move results in a score that is greater than or equal to beta, this whole node is trash, since the opponent is not going to let the side to move achieve this position, because there is some choice the opponent can make that will avoid it.  So if we find something with a score of beta or better, it has been proven that this whole node is not going to happen, so the rest of the legal moves do not have to be searched.
+
+If a move results in a score that is greater than alpha, but less than beta, this is the move that the side to move is going to plan to play, unless something changes later on.  So alpha is increased to reflect this new value.
+
+It's possible, and in fact quite common, that none of the legal moves result in a score that exceeds alpha, in which case this position was junk from our point of view, and we will avoid it by making a different choice somewhere above here in the game tree.
+
+Finding the rotten fish in the second bag was like exceeding beta.  If there had been no fish in the bag, determining that the six-pack of pop bag was better than the sandwich bag would have been like exceeding alpha (one ply back).
+
+Here is the algorithm, with changes from min-max highlighted:
+
+int AlphaBeta(int depth, int alpha, int beta)
+
+{
+
+    if (depth == 0)
+
+        return Evaluate();
+
+    GenerateLegalMoves();
+
+    while (MovesLeft()) {
+
+        MakeNextMove();
+
+        val = -AlphaBeta(depth - 1, -beta, -alpha);
+
+        UnmakeMove();
+
+        if (val >= beta)
+
+            return beta;
+
+        if (val > alpha)
+
+            alpha = val;
+
+    }
+
+    return alpha;
+
+}
+
+If the highlighted characters are removed, what is left is a min-max function.  As can be seen, there aren't many changes.
+
+The function is passed the depth it should search, and -INFINITY as alpha, and +INFINITY as beta:
+
+val = AlphaBeta(5, -INFINITY, INFINITY);
+
+This does a five-ply search.
+
+When I wrote min-max, I used a trick that let me avoid writing a "Min" function in addition to a "Max" function.  In the case of that algorithm, I was able to do it by simply negating the return value from recursive calls.  This caused the function to change its perspective with each recursion, to reflect the fact that the two players are in contention, and have opposite goals.
+
+The same thing is done with this alpha-beta function.  The only added complication is that alpha and beta are also "flipped around."  When the function recurses, alpha and beta negate and switch places.  This causes a situation that is more complicated than the bag example, but just as provably better than min-max.
+
+What ends up happening is that in many places in the tree, beta is easy to exceed, and so a tremendous amount of work is avoided.
+
+A possible weakness
+
+The algorithm is heavily dependent upon the order in which moves are searched.  If you consistently search the worst move first, a beta cutoff is never achieved, and so the algorithm works just like min-max, meaning very inefficiently.  The algorithm ends up looking at the entire game tree, just like min-max.
+
+If the program always manages to pick the best move to search first, the math is such that the effective branching factor is equal to approximately the square root of the expected branching factor.  This is the best possible case for the alpha-beta algorithm.
+
+Since chess has a branching factor of 35, this means that the alpha-beta algorithm performed efficiently upon a chess tree will produce a branching factor of approximately six.
+
+This is a massive improvement, and it allows you to search twice as deeply in the same number of nodes.
+
+This is why move ordering is extremely important when alpha-beta search is used
+ 
