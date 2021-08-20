@@ -1,0 +1,58 @@
+// tst1.idl : IDL source for tst1.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (tst1.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+#include "olectl.h"
+	
+
+	[
+		object,
+		uuid(D0C3ED2F-AB2B-47DE-A659-014792B5FEA1),
+		dual,
+		helpstring("IpolyCtl Interface"),
+		pointer_default(unique)
+	]
+	interface IpolyCtl : IDispatch
+	{
+		[propput, id(DISPID_FILLCOLOR)]
+		HRESULT FillColor([in]OLE_COLOR clr);
+		[propget, id(DISPID_FILLCOLOR)]
+		HRESULT FillColor([out, retval]OLE_COLOR* pclr);
+		[propget, id(1), helpstring("property sides")] HRESULT sides([out, retval] short *pVal);
+		[propput, id(1), helpstring("property sides")] HRESULT sides([in] short newVal);
+	};
+
+[
+	uuid(ABB5231C-24AE-4EAB-BC88-9325DBEDB3F8),
+	version(1.0),
+	helpstring("tst1 1.0 Type Library")
+]
+library TST1Lib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(F7AF9A33-41D9-48E1-B219-B2C28DBD14B7),
+		helpstring("_IpolyCtlEvents Interface")
+	]
+	dispinterface _IpolyCtlEvents
+	{
+		properties:
+		methods:
+	};
+
+	[
+		uuid(5CC0B949-39E7-4A37-AC8C-EE08DB5B2172),
+		helpstring("polyCtl Class")
+	]
+	coclass polyCtl
+	{
+		[default] interface IpolyCtl;
+		[default, source] dispinterface _IpolyCtlEvents;
+	};
+};

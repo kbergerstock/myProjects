@@ -1,0 +1,12 @@
+D:\myProjects\projects.cpp\sieve\bin\X64\imm\sieve2.vcxproj.CopyComplete
+D:\myProjects\projects.cpp\sieve\bin\X64\concrt140.dll
+D:\myProjects\projects.cpp\sieve\bin\X64\msvcp140.dll
+D:\myProjects\projects.cpp\sieve\bin\X64\msvcp140_1.dll
+D:\myProjects\projects.cpp\sieve\bin\X64\msvcp140_2.dll
+D:\myProjects\projects.cpp\sieve\bin\X64\msvcp140_atomic_wait.dll
+D:\myProjects\projects.cpp\sieve\bin\X64\msvcp140_codecvt_ids.dll
+D:\myProjects\projects.cpp\sieve\bin\X64\vccorlib140.dll
+D:\myProjects\projects.cpp\sieve\bin\X64\vcruntime140.dll
+D:\myProjects\projects.cpp\sieve\bin\X64\vcruntime140_1.dll
+D:\myProjects\projects.cpp\sieve\bin\X64\vcamp140.dll
+D:\myProjects\projects.cpp\sieve\bin\X64\vcomp140.dll

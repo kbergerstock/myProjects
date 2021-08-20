@@ -1,0 +1,27 @@
+[Participants]
+Engine1=Ruffian_101
+Engine2=Dragon_443
+[Settings]
+TournamentName=Arena tournament
+Type=0
+Rounds=5
+CurrentPair=1
+CurrentRound=1
+RepeatTournament=0
+Level=2 2\0/6
+[Options]
+QuitAfterTournament=0
+ShutDownAfterTournament=0
+RestartEngines=0
+Startposition=-1
+Resign=1
+ResignValue=-600
+MaxGameLength=90
+Testmode=0
+[Save]
+SaveGamesPGN=1
+PGNFile=D:\COMM\G\arena\Arena.pgn
+Protocolfile=D:\COMM\G\arena\Protocol.log
+SaveGamesFCH=0
+FCHdir=D:\COMM\G\arena\Protocol
+FCHnames=Proto

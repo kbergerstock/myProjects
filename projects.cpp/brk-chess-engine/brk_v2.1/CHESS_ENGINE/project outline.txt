@@ -1,0 +1,4 @@
+// k. r. bergerstock
+// 11/16/2005
+// project steps in order to get to a worinkg chess engine
+

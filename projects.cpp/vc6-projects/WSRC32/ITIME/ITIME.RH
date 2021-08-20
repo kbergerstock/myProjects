@@ -1,0 +1,11 @@
+// itime.rh
+
+#define IDC_EDIT1	101
+#define IDC_EDIT2	102
+#define IDC_EDIT3	103
+#define IDC_EDIT4	104
+#define IDC_EDIT5	105
+#define IDC_EDIT6	106
+#define IDC_EDIT7	107
+#define IDC_EDIT8	108
+

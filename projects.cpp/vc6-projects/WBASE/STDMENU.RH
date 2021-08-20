@@ -1,0 +1,29 @@
+// STANDARD MENU AND ABOUT BOX ID'S
+// about box id's
+
+// about box id's
+#define ICON_1	1
+#define ABOUT_BM		300
+#define IDD_ABOUT_OK	301
+#define IDD_DISPLAY 	303
+#define IDD_CANCEL		302
+
+// menu id's
+// common menu items
+#define  IDM_NEW		101
+#define  IDM_OPEN		102
+#define  IDM_SAVE		103
+#define  IDM_SAVE_AS	104
+#define  IDM_PRINT		105
+#define  IDM_PAGE_SETUP 106
+#define  IDM_PRNT_SETUP 107
+#define  IDM_EXIT		108
+
+#define  IDM_INDEX		901
+#define  IDM_KEYBOARD	902
+#define  IDM_COMMANDS	903
+#define  IDM_PROCEDURES 904
+#define  IDM_USING_HELP 905
+
+#define  IDM_ABOUT		999
+#define  IDM_CUSTOM    1000

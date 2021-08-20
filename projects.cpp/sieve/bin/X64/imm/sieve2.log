@@ -1,0 +1,7 @@
+﻿  primeSieve.cpp
+  sieve.cpp
+  tbitarray.cpp
+  primeSieve.obj : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
+  Generating code
+  Finished generating code
+  sieve2.vcxproj -> D:\myProjects\projects.cpp\sieve\bin\X64\primeSieve.exe

@@ -1,0 +1,75 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: WBASE32 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\BERGER~1\LOCALS~1\Temp\RSP81.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"F:\WSRC32\WBASE32\ABOUT.CPP"
+"F:\WSRC32\WBASE32\cAPPBASE.CPP"
+"F:\WSRC32\WBASE32\cDIALOG.CPP"
+"F:\WSRC32\WBASE32\cDLGWIN.cpp"
+"F:\WSRC32\WBASE32\cMODELESS.CPP"
+"F:\WSRC32\WBASE32\CWFRAME.CPP"
+"F:\WSRC32\WBASE32\Windbase.cpp"
+"F:\WSRC32\WBASE32\bitBlit.cpp"
+"F:\WSRC32\WBASE32\cBITMAP.CPP"
+"F:\WSRC32\WBASE32\cSPRITE.CPP"
+"F:\WSRC32\WBASE32\cDIAMOND.CPP"
+"F:\WSRC32\WBASE32\CLED.CPP"
+"F:\WSRC32\WBASE32\LED.CPP"
+"F:\WSRC32\WBASE32\STATBAR.CPP"
+"F:\WSRC32\WBASE32\Wstdio.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\BERGER~1\LOCALS~1\Temp\RSP81.tmp" 
+Creating temporary file "C:\DOCUME~1\BERGER~1\LOCALS~1\Temp\RSP82.tmp" with contents
+[
+/nologo /out:"Debug\WBASE32.lib" 
+.\Debug\ABOUT.OBJ
+.\Debug\cAPPBASE.obj
+.\Debug\cDIALOG.obj
+.\Debug\cDLGWIN.obj
+.\Debug\cMODELESS.obj
+.\Debug\CWFRAME.OBJ
+.\Debug\Windbase.obj
+.\Debug\bitBlit.obj
+.\Debug\cBITMAP.obj
+.\Debug\cSPRITE.obj
+.\Debug\cDIAMOND.obj
+.\Debug\CLED.OBJ
+.\Debug\LED.OBJ
+.\Debug\STATBAR.OBJ
+.\Debug\Wstdio.obj
+]
+Creating command line "link.exe -lib @C:\DOCUME~1\BERGER~1\LOCALS~1\Temp\RSP82.tmp"
+<h3>Output Window</h3>
+Compiling...
+ABOUT.CPP
+cAPPBASE.CPP
+cDIALOG.CPP
+cDLGWIN.cpp
+cMODELESS.CPP
+CWFRAME.CPP
+Windbase.cpp
+bitBlit.cpp
+cBITMAP.CPP
+cSPRITE.CPP
+cDIAMOND.CPP
+CLED.CPP
+LED.CPP
+STATBAR.CPP
+Wstdio.cpp
+Generating Code...
+Creating library...
+
+
+
+<h3>Results</h3>
+WBASE32.lib - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

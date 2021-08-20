@@ -1,0 +1,226 @@
+Pen Testing with Raw Sockets
+
+Penetration tests intentionally overwhelm your system to reveal
+possible
+system or application vulnerabilities. Here’s a simple Win32 console
+app
+that uses SOCK_RAW to direct packets at a specific IP and port
+
+**Editor's Note: The Security Newsletter is moving from Windevnet to
+Dr. Dobb's
+Journal. Beginning in June, the newsletter archives will be available
+on
+ddj.com. Your subscription to the newsletter will not be affected.
+
+It should be impossible for network traffic to cause more harm than its
+associated authentication credentials allow on the systems to which
+that
+traffic is transmitted. In practice, our systems are potentially
+vulnerable
+to bugs such as the buffer overflow or the unintended consequence.
+Penetration
+(pen) testing puts a system through the motions of a simulated attack.t
+
+Targeted attacks that attempt to overflow buffers known to exist in
+advance
+are the most likely to yield penetration results because all of the
+heavy
+lifting of protocol structures and request formatting can be coded
+right
+into the pen test tool. However, it is also useful to scan in general
+for
+weaknesses we had not even imagined.
+
+Raw sockets are useful for just this sort of pen testing because they
+give
+us complete control over network protocol structures that our code puts
+on
+the wire. This makes it possible to spoof the source address of each IP
+packet,
+among other things. By forging nonexistent or arbitrary source
+addresses,
+DoS attacks such as the SYN flood become possible. Such techniques help
+attackers
+mount faraway attacks through multiple routers, while the typical pen
+tester has
+direct access to the box or the network segment being tested.
+
+Remember when Steve Gibson warned us that raw sockets in Windows XP
+would create
+legions of clueless end users whose personal computers would run
+distributed
+denial of service zombies capable of source address spoofing that would
+collectively
+destroy the Internet (http://grc.com/dos/winxp.htm)?
+
+Ingress and egress filtering to detect forged source addresses was
+viewed as a
+solution to this potential problem. In practice, such filtering is
+hard, particularly
+in those routers that handle the most traffic, closest to the network
+backbone where
+filtering could do the most good. Increased network capacity and
+broadband ISP
+security response teams have been very helpful in preventing
+distributed zombie farms
+from causing the kind of routine damage that was feared on an Internet
+scale.
+
+Privilege Elevation/Escalation
+
+Under a Windows Server OS, malicious code that tries to use raw sockets
+must typically
+execute with administrative privileges. Numerous vulnerabilities have
+been discovered
+that enable code to elevate its privileges arbitrarily, known also as
+privilege
+escalation. Historical privilege escalation under Windows meant gaining
+access to
+ring 0 for unrestricted access to any device or memory location. Today,
+any increase
+in privileges that results from an attack is considered privilege
+elevation. Raw sockets
+should therefore not be considered to be outside the reach of
+unprivileged malicious code.
+
+A Registry setting exists to allow unprivileged users to create and use
+raw sockets.
+A REG_DWORD value of 1 in the following Registry location will enable
+this setting.
+
+HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\AllowUserRawAccess
+
+Windows XP Home Edition allows nonadministrator access to raw sockets
+by default, though
+there appears to be a rate limit imposed when IP_HDRINCL is set that
+may help to prevent
+XP Home from becoming a full-bandwidth DoS zombie.
+
+Listing 1 shows a simple Win32 console application that opens a raw
+socket (SOCK_RAW)
+and spews packets of a fixed size with a random payload at the IP
+address and port number
+specified on the command line. You can see how easy it is to use
+SOCK_RAW to direct packets
+at a specific IP and port when the packet headers are supplied for you
+by the TCP/IP stack.
+
+Listing 1: A Simple Raw Sockets Load/Pen Testing Utility
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <winsock2.h>
+#include <time.h>
+
+#define BUFSIZE 50
+
+int main(int argc, char * argv[])
+{
+// argv[1] = dotted quad destination IP
+// argv[2] = port number
+
+sockaddr_in sain;
+if(argc > 2) {
+ sain.sin_family = AF_INET;
+ sain.sin_addr.s_addr = inet_addr(argv[1]);
+ sain.sin_port = atoi(argv[2]);
+}
+else {
+ printf("Usage: randpentest.exe [IP] [PORT]");
+}
+
+WSADATA wsa;
+SOCKET s;
+
+if(WSAStartup(MAKEWORD(2,2), &wsa) != 0)
+{ return -1; }
+
+s = socket(AF_INET, SOCK_RAW, IPPROTO_RAW);
+
+if(s == SOCKET_ERROR)
+{ return -1; }
+
+short buf[BUFSIZE];
+int a = 0, ret = 0;
+
+// seed rand()
+srand((unsigned)time(NULL));
+
+while(true) {
+for(a = 0; a < BUFSIZE;a++) {
+// rand() returns 0 to 0x7FFF
+buf[a] = (short)rand();
+if(rand() % 2 == 0) {
+ // randomize most significant bit
+ buf[a] = buf[a] * -1; }
+printf("%d\t", buf[a]); }
+
+ret = sendto(s, (const char *)&buf, BUFSIZE*2, 0, (sockaddr *)&sain,
+sizeof(sockaddr_in));
+if(ret == SOCKET_ERROR) {
+printf("send failed: %d\n", WSAGetLastError());
+return -1; }}
+closesocket(s);
+WSACleanup();
+return 0; }
+
+
+The sample as shown isn't really much different from using the sendto()
+function to generate random data payload datagram sockets. The code
+provides
+a simple starting point for more sophisticated raw sockets programming
+or
+it could be used to send random data as part of a more complex
+structured
+network application protocol pen test.
+
+To generate randomly formatted invalid packet headers or to spoof the
+packets' source address requires a call to setsockopt with the
+IP_HDRINCL
+option to indicate that the packet header is included with the data
+supplied
+in the sendto call. See WS2tcpip.h for setsockopt definitions.
+
+One of the first questions we must ask when conducting a security audit
+or
+penetration testing our code is what happens, in practice, when this
+type of
+misbehaving raw socket application executes? If any network service or
+network
+device malfunctions in the presence of such a flood of random network
+data
+then a new vulnerability has been found.
+
+It is better that we force the unexpected to occur on purpose so that
+the
+consequences do not remain unknown. Penetration testing of production
+systems
+is sticky business, particularly if viral code is employed or where
+there
+is some other intentionally open ended aspect to the test. Mistakes, or
+random chance, can cause cascade failures of impressive scale. Given
+enough
+resources, and access to all source code, every potential path of
+attack can
+be pen tested in a lab using targeted attacks. The fact is, however,
+that nobody
+has enough resources to attack every branch of logic in a complex
+application and
+very few of us have all the source code we would need in order to find
+every
+branch. Exhaustive pen testing in the lab is impractical, which brings
+us back to
+the necessity of banging the heck out of our systems once in a while
+just to see
+what happens.
+
+
+----------------------------------------------------------------------
+Jason Coombs is Director of Forensic Services for PivX Solutions Inc
+(NASDAQ OTCBB: PIVX), a provider of security solutions, computer
+forensics and expert witness services. Reach him at jasonc@science.org
+(www.pivx.com).
+Read previous newsletters online at
+http://click.wd-mag.email-publisher.com/maacfWcaa6Vrdb5V5sAb/
+
+

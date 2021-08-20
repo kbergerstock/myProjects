@@ -1,0 +1,64 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: WBASE32 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\BergerK\LOCALS~1\Temp\RSP108.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\src_krb\WSRC32\WBASE32\cAPPBASE.CPP"
+]
+Creating command line "cl.exe @C:\DOCUME~1\BergerK\LOCALS~1\Temp\RSP108.tmp" 
+Creating temporary file "C:\DOCUME~1\BergerK\LOCALS~1\Temp\RSP109.tmp" with contents
+[
+/nologo /out:"Debug\WBASE32.lib" 
+.\Debug\ABOUT.OBJ
+.\Debug\cAPPBASE.obj
+.\Debug\cBITMAP.obj
+.\Debug\cDIALOG.obj
+.\Debug\cDLGWIN.obj
+.\Debug\cMODELESS.obj
+.\Debug\cSPRITE.obj
+.\Debug\CWFRAME.OBJ
+.\Debug\Windbase.obj
+.\Debug\bitBlit.obj
+.\Debug\CLED.OBJ
+.\Debug\LED.OBJ
+.\Debug\STATBAR.OBJ
+.\Debug\Wstdio.obj
+.\Debug\cDIAMOND.obj
+]
+Creating command line "link.exe -lib @C:\DOCUME~1\BergerK\LOCALS~1\Temp\RSP109.tmp"
+<h3>Output Window</h3>
+Compiling...
+cAPPBASE.CPP
+Creating library...
+<h3>
+--------------------Configuration: 3d - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\BergerK\LOCALS~1\Temp\RSP10A.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/3d.pdb" /debug /machine:I386 /out:"Debug/3d.exe" /pdbtype:sept 
+.\Debug\3DCURVES.OBJ
+.\Debug\PGA6_3.OBJ
+.\Debug\SURFACEA.OBJ
+.\Debug\SURFACEB.OBJ
+.\Debug\THREE_D1.OBJ
+.\Debug\3Dcurves.res
+\src_krb\WSRC32\WBASE32\Debug\WBASE32.lib
+]
+Creating command line "link.exe @C:\DOCUME~1\BergerK\LOCALS~1\Temp\RSP10A.tmp"
+<h3>Output Window</h3>
+Linking...
+
+
+
+<h3>Results</h3>
+3d.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

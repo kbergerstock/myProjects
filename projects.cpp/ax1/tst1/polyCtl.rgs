@@ -1,0 +1,34 @@
+HKCR
+{
+	Tst1.polyCtl.1 = s 'polyCtl Class'
+	{
+		CLSID = s '{5CC0B949-39E7-4A37-AC8C-EE08DB5B2172}'
+	}
+	Tst1.polyCtl = s 'polyCtl Class'
+	{
+		CLSID = s '{5CC0B949-39E7-4A37-AC8C-EE08DB5B2172}'
+		CurVer = s 'Tst1.polyCtl.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {5CC0B949-39E7-4A37-AC8C-EE08DB5B2172} = s 'polyCtl Class'
+		{
+			ProgID = s 'Tst1.polyCtl.1'
+			VersionIndependentProgID = s 'Tst1.polyCtl'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove 'Control'
+			ForceRemove 'Insertable'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 101'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '131473'
+			}
+			'TypeLib' = s '{ABB5231C-24AE-4EAB-BC88-9325DBEDB3F8}'
+			'Version' = s '1.0'
+		}
+	}
+}

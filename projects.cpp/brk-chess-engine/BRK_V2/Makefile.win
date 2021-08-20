@@ -1,0 +1,44 @@
+# Project: Console App
+# Makefile created by Dev-C++ 4.9.8.0
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = CHESS_ENGINE/cAPP.o CHESS_ENGINE/chess_engine_main.o BASE_INTERFACE/cCMD_PROCESSOR.o BASE_INTERFACE/cCMD_LIST.o BASE_ENGINE/cSquares.o BASE_ENGINE/cGAME_MOVE.o $(RES)
+LINKOBJ  = CHESS_ENGINE/cAPP.o CHESS_ENGINE/chess_engine_main.o BASE_INTERFACE/cCMD_PROCESSOR.o BASE_INTERFACE/cCMD_LIST.o BASE_ENGINE/cSquares.o BASE_ENGINE/cGAME_MOVE.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib" 
+INCS =  -I"C:/Dev-Cpp/include"  -I"C:/src_krb/BRK_V2/BASE_INTERFACE"  -I"C:/src_krb/BRK_V2/BASE_MODS"  -I"C:/src_krb/BRK_V2/BASE_ENGINE" 
+CXXINCS =  -I"C:/Dev-Cpp/include/c++"  -I"C:/Dev-Cpp/include/c++/mingw32"  -I"C:/Dev-Cpp/include/c++/backward"  -I"C:/Dev-Cpp/include"  -I"C:/src_krb/BRK_V2/BASE_INTERFACE"  -I"C:/src_krb/BRK_V2/BASE_MODS"  -I"C:/src_krb/BRK_V2/BASE_ENGINE" 
+BIN  = chess-engine-v2.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS = $(INCS) 
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before chess-engine-v2.exe all-after
+
+
+clean: clean-custom
+	rm -f $(OBJ) $(BIN)
+
+$(BIN): $(LINKOBJ)
+	$(CPP) $(LINKOBJ) -o "chess-engine-v2.exe" $(LIBS)
+
+CHESS_ENGINE/cAPP.o: CHESS_ENGINE/cAPP.cpp
+	$(CPP) -c CHESS_ENGINE/cAPP.cpp -o CHESS_ENGINE/cAPP.o $(CXXFLAGS)
+
+CHESS_ENGINE/chess_engine_main.o: CHESS_ENGINE/chess_engine_main.cpp
+	$(CPP) -c CHESS_ENGINE/chess_engine_main.cpp -o CHESS_ENGINE/chess_engine_main.o $(CXXFLAGS)
+
+BASE_INTERFACE/cCMD_PROCESSOR.o: BASE_INTERFACE/cCMD_PROCESSOR.cpp
+	$(CPP) -c BASE_INTERFACE/cCMD_PROCESSOR.cpp -o BASE_INTERFACE/cCMD_PROCESSOR.o $(CXXFLAGS)
+
+BASE_INTERFACE/cCMD_LIST.o: BASE_INTERFACE/cCMD_LIST.cpp
+	$(CPP) -c BASE_INTERFACE/cCMD_LIST.cpp -o BASE_INTERFACE/cCMD_LIST.o $(CXXFLAGS)
+
+BASE_ENGINE/cSquares.o: BASE_ENGINE/cSquares.cpp
+	$(CPP) -c BASE_ENGINE/cSquares.cpp -o BASE_ENGINE/cSquares.o $(CXXFLAGS)
+
+BASE_ENGINE/cGAME_MOVE.o: BASE_ENGINE/cGAME_MOVE.cpp
+	$(CPP) -c BASE_ENGINE/cGAME_MOVE.cpp -o BASE_ENGINE/cGAME_MOVE.o $(CXXFLAGS)

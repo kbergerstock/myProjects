@@ -1,0 +1,72 @@
+# Project: brk_v1
+# Makefile created by Dev-C++ 4.9.4.1
+
+CC   = g++.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = brk_chess_engine_v1/main.o brk_chess_engine_v1/cBitArray.o brk_chess_engine_v1/cBoard.o brk_chess_engine_v1/cConvert.o brk_chess_engine_v1/cMove.o brk_chess_engine_v1/cPosition.o brk_chess_engine_v1/cTree.o brk_chess_engine_v1/board_data.o threads/cThread.o threads/threadObject.o brk_chess_engine_v1/cInterface.o brk_chess_engine_v1/cEngine.o brk_chess_engine_v1/cAPP.o brk_chess_engine_v1/cPARSE.o threads/TEVENT.o brk_chess_engine_v1/cGAME.o brk_chess_engine_v1/cSquares.o $(RES)
+LIBS =  -L"C:\Dev-C++\lib" 
+INCS =  -I"C:\Dev-C++\include"  -I"C:\Dev-C++\include\g++-3"  -I"C:\Dev-C++\include"  -I"C:\src_krb\BRK_V1\threads"  -I"C:\src_krb\BRK_V1\brk_chess_engine_v1" 
+BIN  = BRK_V1.exe
+CFLAGS = $(INCS)  -s -O1
+
+.PHONY: clean
+
+all: BRK_V1.exe
+
+clean:
+	rm -f $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(OBJ) -o "BRK_V1.exe" $(LIBS) $(CFLAGS)
+
+brk_chess_engine_v1/main.o: brk_chess_engine_v1/main.cpp
+	$(CC) -c brk_chess_engine_v1/main.cpp -o brk_chess_engine_v1/main.o $(CFLAGS)
+
+brk_chess_engine_v1/cBitArray.o: brk_chess_engine_v1/cBitArray.cpp
+	$(CC) -c brk_chess_engine_v1/cBitArray.cpp -o brk_chess_engine_v1/cBitArray.o $(CFLAGS)
+
+brk_chess_engine_v1/cBoard.o: brk_chess_engine_v1/cBoard.cpp
+	$(CC) -c brk_chess_engine_v1/cBoard.cpp -o brk_chess_engine_v1/cBoard.o $(CFLAGS)
+
+brk_chess_engine_v1/cConvert.o: brk_chess_engine_v1/cConvert.cpp
+	$(CC) -c brk_chess_engine_v1/cConvert.cpp -o brk_chess_engine_v1/cConvert.o $(CFLAGS)
+
+brk_chess_engine_v1/cMove.o: brk_chess_engine_v1/cMove.cpp
+	$(CC) -c brk_chess_engine_v1/cMove.cpp -o brk_chess_engine_v1/cMove.o $(CFLAGS)
+
+brk_chess_engine_v1/cPosition.o: brk_chess_engine_v1/cPosition.cpp
+	$(CC) -c brk_chess_engine_v1/cPosition.cpp -o brk_chess_engine_v1/cPosition.o $(CFLAGS)
+
+brk_chess_engine_v1/cTree.o: brk_chess_engine_v1/cTree.cpp
+	$(CC) -c brk_chess_engine_v1/cTree.cpp -o brk_chess_engine_v1/cTree.o $(CFLAGS)
+
+brk_chess_engine_v1/board_data.o: brk_chess_engine_v1/board_data.cpp
+	$(CC) -c brk_chess_engine_v1/board_data.cpp -o brk_chess_engine_v1/board_data.o $(CFLAGS)
+
+threads/cThread.o: threads/cThread.cpp
+	$(CC) -c threads/cThread.cpp -o threads/cThread.o $(CFLAGS)
+
+threads/threadObject.o: threads/threadObject.cpp
+	$(CC) -c threads/threadObject.cpp -o threads/threadObject.o $(CFLAGS)
+
+brk_chess_engine_v1/cInterface.o: brk_chess_engine_v1/cInterface.cpp
+	$(CC) -c brk_chess_engine_v1/cInterface.cpp -o brk_chess_engine_v1/cInterface.o $(CFLAGS)
+
+brk_chess_engine_v1/cEngine.o: brk_chess_engine_v1/cEngine.cpp
+	$(CC) -c brk_chess_engine_v1/cEngine.cpp -o brk_chess_engine_v1/cEngine.o $(CFLAGS)
+
+brk_chess_engine_v1/cAPP.o: brk_chess_engine_v1/cAPP.cpp
+	$(CC) -c brk_chess_engine_v1/cAPP.cpp -o brk_chess_engine_v1/cAPP.o $(CFLAGS)
+
+brk_chess_engine_v1/cPARSE.o: brk_chess_engine_v1/cPARSE.cpp
+	$(CC) -c brk_chess_engine_v1/cPARSE.cpp -o brk_chess_engine_v1/cPARSE.o $(CFLAGS)
+
+threads/TEVENT.o: threads/TEVENT.CPP
+	$(CC) -c threads/TEVENT.CPP -o threads/TEVENT.o $(CFLAGS)
+
+brk_chess_engine_v1/cGAME.o: brk_chess_engine_v1/cGAME.cpp
+	$(CC) -c brk_chess_engine_v1/cGAME.cpp -o brk_chess_engine_v1/cGAME.o $(CFLAGS)
+
+brk_chess_engine_v1/cSquares.o: brk_chess_engine_v1/cSquares.cpp
+	$(CC) -c brk_chess_engine_v1/cSquares.cpp -o brk_chess_engine_v1/cSquares.o $(CFLAGS)

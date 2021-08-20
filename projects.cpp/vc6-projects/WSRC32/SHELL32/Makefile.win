@@ -1,0 +1,36 @@
+# Project: Windows App
+# Makefile created by Dev-C++ 4.9.4.1
+
+CC   = g++.exe
+WINDRES = windres.exe
+RES  = mg-shell32.res
+OBJ  = Shell32.o Hat.o ../WBASE/APPBASE.o ../WBASE/Windbase.o $(RES)
+LIBS =  -L"C:\Dev-C++\lib" D:\auxdev\Dev-C++\lib\libwinmm.a
+INCS =  -I"C:\Dev-C++\include"  -I"C:\Dev-C++\include\g++-3"  -I"C:\Dev-C++\include" 
+BIN  = mg-shell32.exe
+CFLAGS = $(INCS)  -s -O1 -mwindows
+
+.PHONY: clean
+
+all: mg-shell32.exe
+
+clean:
+	rm -f $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(OBJ) -o "mg-shell32.exe" $(LIBS) $(CFLAGS)
+
+Shell32.o: Shell32.cpp
+	$(CC) -c Shell32.cpp -o Shell32.o $(CFLAGS)
+
+Hat.o: Hat.cpp
+	$(CC) -c Hat.cpp -o Hat.o $(CFLAGS)
+
+../WBASE/APPBASE.o: ../WBASE/APPBASE.CPP
+	$(CC) -c ../WBASE/APPBASE.CPP -o ../WBASE/APPBASE.o $(CFLAGS)
+
+../WBASE/Windbase.o: ../WBASE/Windbase.cpp
+	$(CC) -c ../WBASE/Windbase.cpp -o ../WBASE/Windbase.o $(CFLAGS)
+
+mg-shell32.res: 
+	$(WINDRES) -i MG-SHE~1.RC -I rc -o mg-shell32.res -O coff 

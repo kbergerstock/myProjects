@@ -1,0 +1,40 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: mt_xml_parser - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\BergerK\LOCALS~1\Temp\RSPDA.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\src\com_libs\XML_PARSER\cXML.cpp"
+"C:\src\com_libs\XML_PARSER\xml_file_map.cpp"
+"C:\src\com_libs\XML_PARSER\XML_subkey.cpp"
+"C:\src\com_libs\XML_PARSER\xmlparse.c"
+"C:\src\com_libs\XML_PARSER\xmlrole.c"
+"C:\src\com_libs\XML_PARSER\xmltok.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\BergerK\LOCALS~1\Temp\RSPDA.tmp" 
+Creating command line "link.exe -lib /nologo /out:"c:\src\com_libs\mt_xml_parser.lib"  .\Debug\cXML.obj .\Debug\xml_file_map.obj .\Debug\XML_subkey.obj .\Debug\xmlparse.obj .\Debug\xmlrole.obj .\Debug\xmltok.obj "
+<h3>Output Window</h3>
+Compiling...
+cXML.cpp
+xml_file_map.cpp
+XML_subkey.cpp
+Generating Code...
+Compiling...
+xmlparse.c
+xmlrole.c
+xmltok.c
+Generating Code...
+Creating library...
+
+
+
+<h3>Results</h3>
+mt_xml_parser.lib - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

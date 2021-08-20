@@ -1,0 +1,36 @@
+//cmdmsgs.rh
+
+// defined command messages
+#define RESET_COUNTERS   7000				// reset the counter
+#define INC_COUNTER_1  	 7001				//increment the counter by lparam
+#define INC_COUNTER_2  	 7002				//increment the counter by lparam
+#define INC_COUNTER_3  	 7003				//increment the counter by lparam
+
+#define RESET_COLOR	     7004				// reset all the colors back to default
+#define SET_COLOR_RED    7005				// set a control to red lparam = control id
+#define SET_COLOR_GREEN  7006				// set a control to green lparam = control id
+#define	SET_COLOR_ACTIVE 7007				// set a control to active lparam = control id
+
+#define SET_CUST_NUMBER  7008
+#define SET_TRW_NUMBER   7009
+
+#define SET_DUT1_MSG	 7010				// place a message in the edit box
+#define SET_DUT2_MSG	 7011				// at the bottom of each DUT column
+#define SET_DUT3_MSG	 7012
+
+#define SET_TEST_LBL_1	 7013				// place label in the test button
+#define SET_TEST_LBL_2	 7014				// in each column of the dut
+#define SET_TEST_LBL_3	 7015				// sequance
+#define SET_TEST_LBL_4	 7016
+#define SET_TEST_LBL_5	 7017
+#define SET_TEST_LBL_6	 7018
+#define SET_TEST_LBL_7	 7019
+#define SET_TEST_LBL_8	 7020
+#define SET_TEST_LBL_9	 7021
+#define SET_TEST_LBL_10	 7022
+
+#define SET_PART_DESC    7023				// lparam == fixture id	
+
+#define DUT_MSG_POS		   11				// the position at which the dut msg box oxxurs
+#define DUT_PASS_POS	   12				// the position of the pass counter
+#define DUT_FAIL_POS	   13				// the positin of the fail counter

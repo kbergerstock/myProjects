@@ -1,0 +1,7 @@
+uci
+position fen 8/8/4k3/8/4K3/4P3/8/6 w - - 0 56
+display
+position startpos
+display
+position startpos moves e2e4 e7e5
+display
