@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2037
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cphat", "cphat\cphat.csproj", "{3D90202F-0E0B-4317-90A7-4A1A3F1D238E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hat.Csharp", "cphat\hat.Csharp.csproj", "{3D90202F-0E0B-4317-90A7-4A1A3F1D238E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gDraw", "gDraw\gDraw.csproj", "{E25009B0-B634-415B-B0EC-082E364341B6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gDraw.Csharp", "gDraw\gDraw.Csharp.csproj", "{E25009B0-B634-415B-B0EC-082E364341B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

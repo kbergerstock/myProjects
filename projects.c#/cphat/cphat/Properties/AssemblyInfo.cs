@@ -1,17 +1,16 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("cphat")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("hat.cSharp")]
+[assembly: AssemblyDescription("timed hat in cSharp")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Marquardt Switches, Inc.")]
-[assembly: AssemblyProduct("cphat")]
-[assembly: AssemblyCopyright("Copyright © Marquardt Switches, Inc. 2009")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("timed_hat")]
+[assembly: AssemblyCopyright("Copyright © Keith R Bergerstock 2021")]
+[assembly: AssemblyTrademark("brk")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -29,5 +28,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("2.0.0.0")]
+[assembly: AssemblyFileVersion("1.2.0.1")]
