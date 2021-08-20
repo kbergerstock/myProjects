@@ -1,0 +1,28 @@
+C:\keith\cphat\cphat\obj\Release\cphat.exe
+C:\keith\cphat\cphat\obj\Release\cphat.pdb
+C:\keith\cphat\cphat\bin\Release\cphat.exe
+C:\keith\cphat\cphat\bin\Release\cphat.pdb
+C:\keith\cphat\cphat\obj\Release\ResolveAssemblyReference.cache
+C:\keith\cphat\cphat\obj\Release\cphat.cp_hat.resources
+C:\keith\cphat\cphat\obj\Release\cphat.Properties.Resources.resources
+C:\keith\cphat\cphat\obj\Release\GenerateResource-ResGen.read.1.tlog
+C:\keith\cphat\cphat\obj\Release\GenerateResource-ResGen.write.1.tlog
+C:\projects\cphat\cphat\obj\Release\cphat.exe
+C:\projects\cphat\cphat\obj\Release\cphat.pdb
+C:\projects\cphat\cphat\bin\Release\cphat.exe
+C:\projects\cphat\cphat\bin\Release\cphat.pdb
+C:\projects\cphat\cphat\obj\Release\ResolveAssemblyReference.cache
+C:\projects\cphat\cphat\obj\Release\cphat.cp_hat.resources
+C:\projects\cphat\cphat\obj\Release\cphat.Properties.Resources.resources
+C:\projects\cphat\cphat\obj\Release\GenerateResource-ResGen.read.1.tlog
+C:\projects\cphat\cphat\obj\Release\ResGen.read.1.tlog
+C:\projects\cphat\cphat\obj\Release\GenerateResource-ResGen.write.1.tlog
+C:\projects\cphat\cphat\obj\Release\ResGen.write.1.tlog
+C:\Keith's Files\my_projects\c#-projects\cphat\cphat\obj\Release\cphat.exe
+C:\Keith's Files\my_projects\c#-projects\cphat\cphat\obj\Release\cphat.pdb
+C:\Keith's Files\my_projects\c#-projects\cphat\cphat\bin\Release\cphat.exe
+C:\Keith's Files\my_projects\c#-projects\cphat\cphat\bin\Release\cphat.pdb
+C:\Keith's Files\my_projects\c#-projects\cphat\cphat\obj\Release\cphat.csprojResolveAssemblyReference.cache
+C:\Keith's Files\my_projects\c#-projects\cphat\cphat\obj\Release\cphat.cp_hat.resources
+C:\Keith's Files\my_projects\c#-projects\cphat\cphat\obj\Release\cphat.Properties.Resources.resources
+C:\Keith's Files\my_projects\c#-projects\cphat\cphat\obj\Release\cphat.csproj.GenerateResource.Cache

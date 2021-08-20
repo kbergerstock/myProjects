@@ -1,0 +1,8 @@
+C:\projects\c-research\cphat\gDraw\bin\Debug\gDraw.exe
+C:\projects\c-research\cphat\gDraw\bin\Debug\gDraw.pdb
+C:\projects\c-research\cphat\gDraw\obj\Debug\ResolveAssemblyReference.cache
+C:\projects\c-research\cphat\gDraw\obj\Debug\gDraw.gDraw.resources
+C:\projects\c-research\cphat\gDraw\obj\Debug\gDraw.Properties.Resources.resources
+C:\projects\c-research\cphat\gDraw\obj\Debug\gDraw.csproj.GenerateResource.Cache
+C:\projects\c-research\cphat\gDraw\obj\Debug\gDraw.exe
+C:\projects\c-research\cphat\gDraw\obj\Debug\gDraw.pdb

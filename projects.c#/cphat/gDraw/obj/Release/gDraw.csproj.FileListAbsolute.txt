@@ -1,0 +1,28 @@
+C:\keith\cphat\gDraw\bin\Release\gDraw.exe
+C:\keith\cphat\gDraw\bin\Release\gDraw.pdb
+C:\keith\cphat\gDraw\obj\Release\ResolveAssemblyReference.cache
+C:\keith\cphat\gDraw\obj\Release\gDraw.gDraw.resources
+C:\keith\cphat\gDraw\obj\Release\gDraw.Properties.Resources.resources
+C:\keith\cphat\gDraw\obj\Release\GenerateResource-ResGen.read.1.tlog
+C:\keith\cphat\gDraw\obj\Release\GenerateResource-ResGen.write.1.tlog
+C:\keith\cphat\gDraw\obj\Release\gDraw.exe
+C:\keith\cphat\gDraw\obj\Release\gDraw.pdb
+C:\projects\cphat\gDraw\bin\Release\gDraw.exe
+C:\projects\cphat\gDraw\bin\Release\gDraw.pdb
+C:\projects\cphat\gDraw\obj\Release\ResolveAssemblyReference.cache
+C:\projects\cphat\gDraw\obj\Release\gDraw.gDraw.resources
+C:\projects\cphat\gDraw\obj\Release\gDraw.Properties.Resources.resources
+C:\projects\cphat\gDraw\obj\Release\GenerateResource-ResGen.read.1.tlog
+C:\projects\cphat\gDraw\obj\Release\ResGen.read.1.tlog
+C:\projects\cphat\gDraw\obj\Release\GenerateResource-ResGen.write.1.tlog
+C:\projects\cphat\gDraw\obj\Release\ResGen.write.1.tlog
+C:\projects\cphat\gDraw\obj\Release\gDraw.exe
+C:\projects\cphat\gDraw\obj\Release\gDraw.pdb
+C:\Keith's Files\my_projects\c#-projects\cphat\gDraw\bin\Release\gDraw.exe
+C:\Keith's Files\my_projects\c#-projects\cphat\gDraw\bin\Release\gDraw.pdb
+C:\Keith's Files\my_projects\c#-projects\cphat\gDraw\obj\Release\gDraw.csprojResolveAssemblyReference.cache
+C:\Keith's Files\my_projects\c#-projects\cphat\gDraw\obj\Release\gDraw.gDraw.resources
+C:\Keith's Files\my_projects\c#-projects\cphat\gDraw\obj\Release\gDraw.Properties.Resources.resources
+C:\Keith's Files\my_projects\c#-projects\cphat\gDraw\obj\Release\gDraw.csproj.GenerateResource.Cache
+C:\Keith's Files\my_projects\c#-projects\cphat\gDraw\obj\Release\gDraw.exe
+C:\Keith's Files\my_projects\c#-projects\cphat\gDraw\obj\Release\gDraw.pdb

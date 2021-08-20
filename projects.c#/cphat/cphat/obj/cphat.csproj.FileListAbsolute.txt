@@ -1,0 +1,16 @@
+C:\projects\c-research\cphat\cphat\bin\Release\cphat.exe
+C:\projects\c-research\cphat\cphat\bin\Release\cphat.pdb
+C:\projects\c-research\cphat\cphat\obj\Release\ResolveAssemblyReference.cache
+C:\projects\c-research\cphat\cphat\obj\Release\cphat.cp_hat.resources
+C:\projects\c-research\cphat\cphat\obj\Release\cphat.Properties.Resources.resources
+C:\projects\c-research\cphat\cphat\obj\Release\cphat.csproj.GenerateResource.Cache
+C:\projects\c-research\cphat\cphat\obj\Release\cphat.exe
+C:\projects\c-research\cphat\cphat\obj\Release\cphat.pdb
+C:\projects\c-research\cphat\cphat\bin\Debug\cphat.exe
+C:\projects\c-research\cphat\cphat\bin\Debug\cphat.pdb
+C:\projects\c-research\cphat\cphat\obj\Debug\ResolveAssemblyReference.cache
+C:\projects\c-research\cphat\cphat\obj\Debug\cphat.cp_hat.resources
+C:\projects\c-research\cphat\cphat\obj\Debug\cphat.Properties.Resources.resources
+C:\projects\c-research\cphat\cphat\obj\Debug\cphat.csproj.GenerateResource.Cache
+C:\projects\c-research\cphat\cphat\obj\Debug\cphat.exe
+C:\projects\c-research\cphat\cphat\obj\Debug\cphat.pdb
