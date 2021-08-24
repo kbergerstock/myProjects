@@ -75,9 +75,11 @@ class Primes:
 
 # main 
 def time_sieve(prime_limit, time_limit, output):
-    cnt = 0                         # pass counter
+    cnt = 0                         # pass counterf
     primes = Primes(prime_limit)    # the sieve 
     duration = 0
+    print("--n{}".format(prime_limit))
+    print('--t{}'.format(time_limit))
     while duration < time_limit:
         primes = Primes(prime_limit)
         # i only want to time the sieve performance
