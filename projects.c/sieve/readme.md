@@ -6,15 +6,19 @@ Ubuntu  gcc 9.3		gcc		 7650  in 5000.5020     make
 Ubuntu  clang 10.0	clang		 7269  in 5000.3320     make
 
 notes
-1) all timing runs were made in LINUX (WLA)
-2) all run times are typical of what is be expectedd( at least on my hardware
-3) the GCC and clang 10 outpus are ELF files  and will nor execute in power shell
+1) all timing runs were made in LINUX (WLA) (ubuntu 20.04)
+2) all run times are typical of what is be expectedd( at least on my hardware)
+3) the GCC and clang 10 outputs are ELF files  and will not execute in power shell
 
 compiler used micosoft (cl) VS2019
-keith@BRK-NJMVRB1:/mnt/d/myProjects/projects.c/sieve$ ./x64/release/primesieve.exe
+sieve$ ./x64/release/primesieve.exe
 --n1000000
 --t5000
-passes  11186 elapsed time  5000.3278 mS  avg/pass   0.4470 mS limit 1000000 counted 78498 validated 1
+passes  10969 elapsed time  5000.2757 mS  avg/pass   0.4559 mS limit 1000000 counted 78498 validated 1
+sieve$ ./x64/release/primesieve.exe
+--n1000000
+--t5000
+passes  11075 elapsed time  5000.4519 mS  avg/pass   0.4515 mS limit 1000000 counted 78498 validated 1
 
 
 ##### use POWER SHELL AND NMAKE TO COMPILE #####
@@ -32,25 +36,36 @@ clang version 11.0.0
 Target: x86_64-pc-windows-msvc
 Thread model: posix
 InstalledDir: C:\myPrograms\vs2019\VC\Tools\Llvm\x64\bin
-keith@BRK-NJMVRB1:/mnt/d/myProjects/projects.c/sieve$ ./clang/primeSieve.exe
+sieve$ ./clang/primesieve.exe
 --n1000000
 --t5000
-passes   6351 elapsed time  5000.4000 mS  avg/pass   0.7873 mS limit 1000000 counted 78498 validated 1
+passes   6214 elapsed time  5000.7590 mS  avg/pass   0.8048 mS limit 1000000 counted 78498 validated 1
+sieve$ ./clang/primesieve.exe
+--n1000000
+--t5000
+passes   6253 elapsed time  5000.5378 mS  avg/pass   0.7997 mS limit 1000000 counted 78498 validated 1
 
 
-#### USE LINUX BASH (WLA) ANC MAKE TO COMPILE #####
+#### USE LINUX BASH (WLA) AND MAKE TO COMPILE #####
+gcc --version
 gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0
-keith@BRK-NJMVRB1:/mnt/d/myProjects/projects.c/sieve$ ./gcc/primeSieve
+Copyright (C) 2019 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+gcc -O2  -flto -I../headers ../src/primeSieve.c  ../src/sieve.c  ../src/tbitarray.c -oGCCprimeSieve
+sieve/gcc$ ./GCCprimesieve
 --n1000000
 --t5000
-passes   7650 elapsed time  5000.5920 mS  avg/pass   0.6537 mS limit 1000000 counted 78498 validated 1
+passes   7453 elapsed time  5000.4255 mS  avg/pass   0.6709 mS limit 1000000 counted 78498 validated 1
 
+
+clang --version
 clang version 10.0.0-4ubuntu1
 Target: x86_64-pc-linux-gnu
 Thread model: posix
 InstalledDir: /usr/bin
 clang -O2   -flto -I../headers ../src/primeSieve.c  ../src/sieve.c  ../src/tbitarray.c -oCLANGprimeSieve
-keith@BRK-NJMVRB1:/mnt/d/myProjects/projects.c/sieve/gcc$ ./CLANGprimeSieve
+sieve/gcc$ ./CLANGprimesieve
 --n1000000
 --t5000
-passes   7269 elapsed time  5000.3320 mS  avg/pass   0.6879 mS limit 1000000 counted 78498 validated 1
+passes   7162 elapsed time  5000.4411 mS  avg/pass   0.6982 mS limit 1000000 counted 78498 validated 1

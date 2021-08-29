@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>D:\myprojects\projects.c\sieve\x64\Release\primeSieve.exe</FullPath>
+      <FullPath>D:\myProjects\projects.c\sieve\x64\Release\primeSieve.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

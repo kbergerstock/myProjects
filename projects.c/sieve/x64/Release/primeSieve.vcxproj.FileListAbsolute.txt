@@ -1,1 +1,1 @@
-D:\MYPROJECTS\PROJECTS.C\SIEVE\x64\Release\primeSieve.exe
+D:\myProjects\projects.c\sieve\x64\Release\primeSieve.exe

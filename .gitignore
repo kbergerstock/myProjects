@@ -20,10 +20,15 @@ tools
 unity
 wdf
 zenva
+debug
 
 *.bak
+*.ipch
+*/log
 *.obj
-*.pwd
+*.idb
+*.pdb
 *.pdf
+*.tlog
 *.zip
 

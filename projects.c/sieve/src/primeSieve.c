@@ -18,7 +18,7 @@
 
 #include <sieve.h>
 
-void time_sieve(UI32 prime_limit, UI32 time_limit, bool show_primes){
+void time_sieve(UNUMBER prime_limit, UNUMBER time_limit, bool show_primes){
 	#ifdef PERFORMANCE_CLOCK
 		LARGE_INTEGER freq;
 		LARGE_INTEGER t0, t1;
@@ -28,18 +28,20 @@ void time_sieve(UI32 prime_limit, UI32 time_limit, bool show_primes){
 		clockid_t clk_id = CLOCK_REALTIME;
 	#endif
 	double lt = 0;
-	UI32 passes = 0;
+	UNUMBER passes = 0;
 
 	do {
-		sieve_empty();
-		sieve_init(prime_limit);
 		#ifdef PERFORMANCE_CLOCK
 			QueryPerformanceCounter(&t0);
+			sieve_empty();
+			sieve_init(prime_limit);
 			sieve2();
 			QueryPerformanceCounter(&t1);
 			lt += (t1.QuadPart - t0.QuadPart)* 1000.0 /freq.QuadPart;
 		#else
 			clock_gettime(clk_id, &t0);
+			sieve_empty();
+			sieve_init(prime_limit);
 			sieve2();
 			clock_gettime(clk_id, &t1);
 			lt += ((double)(t1.tv_sec - t0.tv_sec)* 1000.0) + ((double)(t1.tv_nsec - t0.tv_nsec) / 1000000.0);
@@ -48,7 +50,7 @@ void time_sieve(UI32 prime_limit, UI32 time_limit, bool show_primes){
 	 } while (sieve_validate() && (lt < time_limit) );
 
 	 // output the results
-	fprintf(stdout,"passes %6d elapsed time %10.4f mS  avg/pass %8.4f mS limit %d counted %d validated %d\n"
+	fprintf(stdout,"passes %6lu elapsed time %10.4f mS  avg/pass %8.4f mS limit %lu counted %lu validated %d\n"
 		,passes,lt,lt/passes,prime_limit,sieve_counted(),sieve_validate() );
 
 
@@ -59,8 +61,8 @@ void time_sieve(UI32 prime_limit, UI32 time_limit, bool show_primes){
 
 int main(int argc, char* argv []) {
 
-	UI32 prime_limit = 1000000;
-	UI32 time_limit = 5000;
+	UNUMBER prime_limit = 1000000;
+	UNUMBER time_limit = 5000;
 	bool show_flag = false;
 
 	for (int  i = 1; i < argc; i++) {
@@ -77,8 +79,8 @@ int main(int argc, char* argv []) {
 			}
 		}
 	}
-	printf("--n%d\n",prime_limit);
-	printf("--t%d\n",time_limit);
+	printf("--n%lu\n",prime_limit);
+	printf("--t%lu\n",time_limit);
 	time_sieve(prime_limit,time_limit,show_flag);
 	return 0;
 }

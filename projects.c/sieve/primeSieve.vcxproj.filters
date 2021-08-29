@@ -25,9 +25,6 @@
     <ClInclude Include="headers\sieve.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="headers\Tarray.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="headers\tBitArray.h">
       <Filter>Header Files</Filter>
     </ClInclude>

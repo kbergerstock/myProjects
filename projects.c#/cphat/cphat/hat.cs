@@ -26,7 +26,7 @@ namespace cphat
         // fix add plot routines here
         private void DrawPoint(Graphics g, Pen pen, float x, float y)
         {
-            g.DrawRectangle(pen, x, y, (float)0.1, (float)0.1);
+            g.DrawRectangle(pen, x, y, (float)0.01, (float)0.01);
         }
         private int CalcCY(int hgt)
         {
@@ -34,13 +34,13 @@ namespace cphat
         }
         private int CalcCX(int width)
         {
-            return (int)(width / 2.0);
+            return width / 2;
         }
 
         public void DrawHat(Graphics g)
         {
             // Create a new pen.
-            Pen pen = new Pen(Brushes.Blue);
+            Pen pen = new Pen(Brushes.Red);
 
             // function variables
             int zi, xi, xl, yy;
@@ -78,7 +78,7 @@ namespace cphat
             pt.Start();
             DrawHat(e.Graphics);
             pt.Stop();
-            String v = "time:" + pt.ElapsedMilliseconds;
+            String v = "time:" + pt.ElapsedMilliseconds  + " milliseconds";
             time2draw.Text = v;
         }
 

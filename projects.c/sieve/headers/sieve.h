@@ -8,19 +8,19 @@
 
 #include <tBitArray.h>
 
-typedef struct{UI32 key;UI32 val;} Expected;
+typedef struct{UNUMBER key;UNUMBER val;} Expected;
 
 typedef struct {
-		UI32 prime_limit;
+		UNUMBER prime_limit;
 		bits_ptr bits;
-		UI32 validation_key;
-		UI32 nl;
+		UNUMBER validation_key;
+		UNUMBER nl;
 } SIEVE;
 
-		void sieve_init(UI32);
+		void sieve_init(UNUMBER);
 		void sieve_empty();
 		void sieve2();
-		UI32 sieve_counted();
+		UNUMBER sieve_counted();
 		bool sieve_validate();
 		void sieve_output();
 

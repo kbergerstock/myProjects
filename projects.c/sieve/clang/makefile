@@ -1,4 +1,4 @@
-CFLAGS = -O2  -D PERFORMANCE_CLOCK
+CFLAGS = -O2  -m64 -D PERFORMANCE_CLOCK
 INC = ..\headers
 SRC = ..\src
 CC = clang.exe

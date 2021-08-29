@@ -1,0 +1,13 @@
+PrimeSieve.tlog
+Debug
+
+*.bak
+*.ipch
+*.log
+*.obj
+*.idb
+*.pdb
+*.pdf
+*.tlog
+*.zip
+
