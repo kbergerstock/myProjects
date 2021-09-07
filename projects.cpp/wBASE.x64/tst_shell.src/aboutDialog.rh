@@ -1,0 +1,3 @@
+#define ABOUT_BM                30010
+#define IDD_ABOUT_OK            30100
+#define IDD_ABOUT_DISPLAY       30200

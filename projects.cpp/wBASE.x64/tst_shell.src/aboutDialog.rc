@@ -1,0 +1,17 @@
+#ifdef APSTUDIO_INVOKED
+    #error this file is not editable by Visual C++
+#endif //APSTUDIO_INVOKED
+
+#include <windows.h>
+#include "aboutDialog.rh"
+
+AboutBox DIALOG 87, 44, 139, 124
+STYLE WS_POPUP | WS_DLGFRAME
+CAPTION "About"
+{
+ CONTROL "Ok", IDD_ABOUT_OK, "BUTTON", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 112, 104, 24, 14
+ CONTROL "Generic About Box", -1, "STATIC", SS_CENTER | WS_CHILD | WS_VISIBLE | WS_GROUP, 26, 4, 84, 16
+ CONTROL "(c) K. R. Bergerstock, @1998", -1, "STATIC", SS_CENTER | WS_CHILD | WS_VISIBLE | WS_GROUP, 18, 23, 99, 9
+ CONTROL "", IDD_ABOUT_DISPLAY, "static", SS_ETCHEDFRAME | WS_CHILD | WS_VISIBLE, 53, 46, 35, 34
+}
+
