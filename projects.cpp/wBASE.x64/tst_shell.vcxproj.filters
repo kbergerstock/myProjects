@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="shell.src">
+      <UniqueIdentifier>{eb7d36a8-db66-4f13-aaf3-8fac9d563945}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="lib.src\ABOUT.CPP">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lib.src\bitBlit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lib.src\cAPPBASE.CPP">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lib.src\CWFRAME.CPP">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lib.src\Windbase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lib.src\Wstdio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lib.src\cDIALOG.CPP">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tst_shell.src\Winshell.cpp">
+      <Filter>shell.src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="lib.src\ABOUT.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib.src\cAPPBASE.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib.src\cMUTEX.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib.src\CWFRAME.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib.src\WINDBASE.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib.src\WMACROS.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib.src\WM_MSGS.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib.src\WSTDIO.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib.src\cDIALOG.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tst_shell.src\Winshell.h">
+      <Filter>shell.src</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="tst_shell.rc" />
+    <ResourceCompile Include="tst_shell.src\aboutDialog.rc">
+      <Filter>shell.src</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="tst_shell.src\aboutDialog.rh">
+      <Filter>shell.src</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="tst_shell.src\resources\IDI_ICON1.ico">
+      <Filter>shell.src</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
