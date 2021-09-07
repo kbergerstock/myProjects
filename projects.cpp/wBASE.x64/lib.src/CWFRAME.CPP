@@ -57,13 +57,13 @@ HWND cWinFrame::Create(HWND hwnd, int control_id)
                             _w,
                             _h,
                             hParent, 				// parents window handle
-                            HMENU(control_id),
+                            reinterpret_cast<HMENU>(control_id),
                             hInstance,
                             NULL) ;
 
       if(hWnd)										// if creation process was successful
        {
-        SetPointer(hWnd,this);						// set a pointer to the class into the CbWndExtra
+        SetPointer(hWnd,LONG_PTR(this));			// set a pointer to the class into the CbWndExtra
         SendMessage(hWnd,WM_WIN_CREATED,0,0L);		// send a window created message to the call back function
        }
 	 }
@@ -104,12 +104,10 @@ void cWinFrame::OnUpdate(HWND hwnd)
 {
   RECT rect;
   GetClientRect(hwnd,&rect);
-  InvalidateRect(hwnd,&rect,TRUE);
+  InvalidateRect(hwnd,&rect,true);
 }
 
-#if defined(__BORLANDC__)
-#pragma argsused
-#endif
+
 void cWinFrame::OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 {
     MessageBox(hwnd,"Function Not Impemented","NOT IMPLEMENTED",MB_ICONINFORMATION | MB_OK);
@@ -129,9 +127,7 @@ void cWinFrame::OnCreated(HWND hwnd)
   getTextMetrics(hwnd);
 }
 
-#if defined(__BORLANDC__)
-#pragma argsused
-#endif
+
 void cWinFrame::OnDestroy(HWND hwnd)
 {
 	hWnd = NULL;

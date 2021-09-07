@@ -46,7 +46,7 @@ WSTDIO::WSTDIO(HINSTANCE hInst)
 void WSTDIO::Init(void)
 {
 	hWnd = NULL;						// Handle to standard I/O window
-	bInited = FALSE;
+	bInited = false;
 
 	// initialize screen buffer to nulls
 	int i,j;
@@ -149,9 +149,7 @@ char *WSTDIO::GetStdioLine(int ndx)
 
 //========================================================================
 
-#if defined(__BORLANDC__)
-#pragma argsused
-#endif
+
 void WSTDIO::StdioUpdate(HWND hWnd, HDC hDC, int iLinesOut)
 {
 	RECT rcRect;
@@ -232,7 +230,7 @@ void WSTDIO::putStdio(HWND hWnd, HDC hDC, WPARAM wParam, LPARAM lParam)
 
 		// invalidate the area so that it gets redrawn
 		if(hWnd)
-			InvalidateRect(hWnd,&rcInvalid, TRUE);
+			InvalidateRect(hWnd,&rcInvalid, true);
 
 		}
 		break;
@@ -266,7 +264,7 @@ void WSTDIO::putStdio(HWND hWnd, HDC hDC, WPARAM wParam, LPARAM lParam)
 				LPtoDP(hDC,(POINT *) &rcInvalid, 2);
 				// invalidate the area so that it gets redrawn
 				if(hWnd)
-					InvalidateRect(hWnd,&rcInvalid, FALSE);
+					InvalidateRect(hWnd,&rcInvalid, false);
 				}
 		}
 		break;
@@ -326,9 +324,7 @@ void WSTDIO::OnPaint(HWND hWnd )
 	EndPaint( hWnd, (LPPAINTSTRUCT)&ps );
 }
 
-#if defined(__BORLANDC__)
-#pragma argsused
-#endif
+
 void WSTDIO::OnColorChange(HWND hWnd )
 {
 	// if the colors have been changed in the control panel,
@@ -367,23 +363,16 @@ void WSTDIO::OnDestroy(HWND hwnd)
 
 
 // pass the characters recieved back to the parent window
-#if defined(__BORLANDC__)
-#pragma argsused
-#endif
 void WSTDIO::OnChar(HWND hwnd ,UINT uChar, int iRepeat)
 {
    FORWARD_WM_CHAR(hParent,uChar,iRepeat,PostMessage);
 }
 
-#if defined(__BORLANDC__)
-#pragma argsused
-#endif
+
 void WSTDIO::OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify) {}
 
-#if defined(__BORLANDC__)
-#pragma argsused
-#endif
-void WSTDIO::OnKey(HWND hwnd, UINT uVK, BOOL bDown, int iRepeat, UINT uFlags)
+
+void WSTDIO::OnKey(HWND hwnd, UINT uVK, bool bDown, int iRepeat, UINT uFlags)
 {
   switch (uVK)
    {
@@ -425,7 +414,7 @@ void WSTDIO::InitStdio(HWND hWnd)
 	StdiobkRGB = GetSysColor(COLOR_WINDOW); // background color
 	StdiotextRGB = GetSysColor(COLOR_WINDOWTEXT); // text color
 
-	bInited = TRUE;
+	bInited = true;
 }
 
 
@@ -472,9 +461,9 @@ bool WSTDIO::Register()
 
 //========================================================================
 
-// FUNCTION: wopen(HWND, BOOL)
+// FUNCTION: wopen(HWND, bool)
 
-// PURPOSE:  Create a default style stdio window. If bQuit is TRUE,
+// PURPOSE:  Create a default style stdio window. If bQuit is true,
 //			 PostQuitMessage will be called when the window is closed.
 //			 Therefore, the stdio window can be used for the main
 //			 application window.
@@ -483,9 +472,7 @@ bool WSTDIO::Register()
 
 //========================================================================
 
-#if defined(__BORLANDC__)
-#pragma argsused
-#endif
+
 HWND WSTDIO::Create (HWND hWndParent, int id )		// create the window
 {
   hParent = hWndParent; 							// save the handle to the parent window
@@ -512,7 +499,7 @@ HWND WSTDIO::Create (HWND hWndParent, int id )		// create the window
 
   if(hWnd)										// if creation process was successful
    {
-	SetPointer(hWnd,this);						// set a pointer to the class into the CbWndExtra
+	SetPointer(hWnd,LONG_PTR(this));			// set a pointer to the class into the CbWndExtra
 	SendMessage(hWnd,WM_WIN_CREATED,0,0L);		// send a window created message to the call back function
    }
 
@@ -540,7 +527,7 @@ HWND WSTDIO::wopen(HWND hWndParent, bool bQuit)
 //========================================================================
 
 // FUNCTION: CreateStdioWindow(LPSTR, DWORD, int, int, int, int, HWND,
-//							  HANDLE, BOOL)
+//							  HANDLE, bool)
 
 // PURPOSE:  Create an I/O window with definable name, style, size, etc.
 
@@ -570,7 +557,7 @@ HWND WSTDIO::CreateStdioWindow(LPSTR lpWindowName, DWORD dwStyle,
 
 	if(hWnd)									// if creation process was successful
 	 {
-	  SetPointer(hWnd,this);					// set a pointer to the class into the CbWndExtra
+	  SetPointer(hWnd,LONG_PTR(this));			// set a pointer to the class into the CbWndExtra
 	  SendMessage(hWnd,WM_WIN_CREATED,0,0L);	// send a window created message to the call back function
 	  bStdioQuit = bQuit;
 	 }
@@ -586,7 +573,7 @@ HWND WSTDIO::CreateStdioWindow(LPSTR lpWindowName, DWORD dwStyle,
 //			 not recognized as in '\r\n', as with normal puts(). Must
 //			 send '\r\n' explicitly.
 
-// RETURNS:  Status of wopen(), if called, otherwise TRUE.
+// RETURNS:  Status of wopen(), if called, otherwise true.
 
 //========================================================================
 
@@ -605,7 +592,7 @@ bool WSTDIO::wputc(char c)
 //			 not recognized as in '\r\n', as with normal puts(). Must
 //			 send '\r\n' explicitly.
 
-// RETURNS:  Status of wopen(), if called, otherwise TRUE.
+// RETURNS:  Status of wopen(), if called, otherwise true.
 
 //========================================================================
 

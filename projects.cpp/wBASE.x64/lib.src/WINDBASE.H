@@ -109,9 +109,17 @@ class cWINBASE
 	LONG cxChar,cyChar,cxCaps;
 
   public:
-    cWINBASE() : LastFocus(0) {};
-    cWINBASE(HINSTANCE _hInstance, int _nCmdShow = true)
-        : LastFocus(0) {hInstance = _hInstance; nCmdShow = _nCmdShow; };
+      cWINBASE() :nCmdShow(0), hWnd(0), LastFocus(0), szWinName(""), szWinDesc(""), Size({ 0,0 }),cxChar(0),cyChar(0),cxCaps(0)
+      {
+          hInstance = 0;
+      };
+
+      cWINBASE(HINSTANCE _hInstance, int _nCmdShow = true)
+          : nCmdShow(_nCmdShow), hWnd(0), LastFocus(0), szWinName(""), szWinDesc(""), Size({ 0,0 }), cxChar(0), cyChar(0), cxCaps(0)
+      {
+          hInstance = _hInstance;
+      };
+    
     ~cWINBASE() {};
 
 	void getTextMetrics(HWND);
@@ -172,24 +180,24 @@ class ChildWindow : public cWINBASE
 
 // functions to set and retrive data from window structures
 
-inline void* GetPointer(HWND hWnd)
+inline LONG_PTR GetPointer(HWND hWnd)
 {
-	return (void*)GetWindowLong(hWnd, 0);
+	return GetWindowLongPtr(hWnd, 0);
 }
 
-inline void *GetUserData(HWND hWnd)
+inline LONG_PTR GetUserData(HWND hWnd)
 {
-	return (void*)GetWindowLong(hWnd,GWL_USERDATA);
+	return GetWindowLongPtr(hWnd,GWLP_USERDATA);
 }
 
-inline void SetPointer(HWND hWnd, void *ptr)
+inline void SetPointer(HWND hWnd, LONG_PTR ptr)
 {
-	SetWindowLong(hWnd, 0, ptr);
+	SetWindowLongPtrA(hWnd, 0, ptr);
 }
 
-inline void SetUserData(HWND hWnd, void *ptr)
+inline void SetUserData(HWND hWnd, LONG_PTR ptr)
 {
-	SetWindowLong(hWnd, GWL_USERDATA, ptr);
+	SetWindowLongPtrA(hWnd, GWLP_USERDATA, ptr);
 }
 
 #endif

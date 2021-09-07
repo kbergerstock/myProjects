@@ -17,11 +17,11 @@ class tMUTEX
         HANDLE hMutex;
         DWORD  error;
          
-        tMUTEX(const tMUTEX&) {}
+        tMUTEX(const tMUTEX& m):hMutex(m.hMutex),error(m.error) {}
 
     public:
 
-    tMUTEX()            { hMutex = 0; error = 0;}
+    tMUTEX():hMutex(0),error(0){}
 
     tMUTEX(bool bi)
      {

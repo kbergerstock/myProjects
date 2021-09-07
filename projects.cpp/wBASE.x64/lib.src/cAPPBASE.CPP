@@ -16,7 +16,7 @@
 //*******************************************************************
 
 // Includes
-
+#include <strsafe.h>
 #include "cAppBase.h"
 
 
@@ -64,8 +64,8 @@ cAppWinFrame::~cAppWinFrame()
 
 void cAppWinFrame::SetName(LPCSTR Name, LPCSTR Desc)
 { 
-    lstrcpyn(AppName,Name,39); 
-    lstrcpyn(AppDesc,Desc,39); 
+    StringCchCopy(AppName,APP_NAME_SIZE - 1,Name); 
+    StringCchCopy(AppDesc,APP_DESC_SIZE - 1,Desc); 
 }
 
 
@@ -95,7 +95,7 @@ bool cAppWinFrame::Register()
         WNDCLASSEX  wndclass ;
 
         wndclass.style		 = CS_HREDRAW | CS_VREDRAW ;
-        wndclass.lpfnWndProc	 = ::MainWndProc;
+        wndclass.lpfnWndProc = ::MainWndProc;
         wndclass.cbClsExtra	 = 0;
         wndclass.cbWndExtra	 = sizeof(Window*);
         wndclass.hInstance	 = hInstance ;
@@ -135,7 +135,7 @@ bool cAppWinFrame::Register()
 
         wndclass.cbSize		 = sizeof(WNDCLASSEX);
 
-        isOk =  (RegisterClassEx (&wndclass) ? true: false);
+        isOk =  (RegisterClassEx(&wndclass) ? true: false);
    }
   else
    {
@@ -150,7 +150,7 @@ bool cAppWinFrame::Create()					        // create the windows
 {
 	if(Register() )
      {
-      hWnd = CreateWindowEx ( _ex_style,
+      hWnd = CreateWindowEx( _ex_style,
                             szWinName,
                             szWinDesc,
                             _style,
@@ -165,7 +165,7 @@ bool cAppWinFrame::Create()					        // create the windows
 
       if(hWnd)										// if creation process was successful
        {
-        SetPointer(hWnd,this);						// set a pointer to the class into the CbWndExtra
+        SetPointer(hWnd,LONG_PTR(this));			// set a pointer to the class into the CbWndExtra
         SendMessage(hWnd,WM_WIN_CREATED,0,0L);		// send a window created message to the call back function
         Show(nCmdShow);
        }
@@ -173,7 +173,7 @@ bool cAppWinFrame::Create()					        // create the windows
      else
      	hWnd = 0;  
 
-  return ( hWnd ? true: false);				// return TRUE if creation process worked
+  return ( hWnd ? true: false);				// return true if creation process worked
 };
 
 
@@ -205,7 +205,7 @@ void cAppWinFrame::OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
   MessageBox(hwnd,"Function Not Impemented","NOT IMPLEMENTED",MB_ICONINFORMATION | MB_OK);
 }
 
-void cAppWinFrame::OnKey(HWND hwnd, UINT uVK, BOOL bDown, int iRepeat, UINT uFlags)
+void cAppWinFrame::OnKey(HWND hwnd, UINT uVK, bool bDown, int iRepeat, UINT uFlags)
 {
 	FORWARD_WM_KEYUP(hwnd, uVK, iRepeat, uFlags,DefWindowProc);
 }

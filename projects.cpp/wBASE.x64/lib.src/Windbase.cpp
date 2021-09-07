@@ -56,7 +56,7 @@ LRESULT CALLBACK MainWndProc (HWND hwnd , UINT msg , WPARAM wParam , LPARAM lPar
 //              
 //*******************************************************************
 
-cMSGLOOP::cMSGLOOP()
+cMSGLOOP::cMSGLOOP():bQuit(false)
 {
    	GetCurrentDirectory(MAX_PATH ,szCurrentDir);
    	lstrcat(szCurrentDir,"\\");
@@ -83,13 +83,13 @@ void cMSGLOOP::SetDlgModeless(HWND hdlg)
 int cMSGLOOP::Run(HWND hwnd)
 {
  MSG msg;
- bQuit = FALSE;
+ bQuit = false;
  while(!bQuit)
   {
 	if(PeekMessage( &msg,NULL,0,0,PM_REMOVE) )
 	  {
 		if(msg.message == WM_QUIT)
-			bQuit = TRUE;
+			bQuit = true;
         else if(hDlgModeless == 0 || !IsDialogMessage(hDlgModeless, &msg) )
 			{
 			  TranslateMessage (&msg) ;
@@ -119,7 +119,7 @@ int cMSGLOOP::MessageLoop()
 {
     MSG msg;
 
-    while( (bQuit = GetMessage( &msg, NULL, 0, 0 )) != 0)
+    while( (bQuit = GetMessageA( &msg, NULL, 0, 0 )) != 0)
      { 
         if (bQuit == -1)
           {
@@ -128,8 +128,8 @@ int cMSGLOOP::MessageLoop()
           }
         else if(hDlgModeless == 0 || !IsDialogMessage(hDlgModeless, &msg) )
 		  {
-			  TranslateMessage (&msg) ;
-			  DispatchMessage (&msg) ;
+			  TranslateMessage(&msg) ;
+			  DispatchMessage(&msg) ;
 		  }
      }
 
@@ -163,7 +163,7 @@ void cWINBASE::Show(void)
   GetClientRect(hWnd,&rect);
   Size.cx = rect.right;
   Size.cy = rect.bottom;
-  InvalidateRect(hWnd,&rect,FALSE);
+  InvalidateRect(hWnd,&rect,false);
   Update();
 }
 
@@ -178,7 +178,7 @@ void cWINBASE::Clear(void)
   GetClientRect(hWnd,&rect);
   Size.cx = rect.right;
   Size.cy = rect.bottom;
-  InvalidateRect(hWnd,&rect,TRUE);
+  InvalidateRect(hWnd,&rect,true);
   Update();
 }
 

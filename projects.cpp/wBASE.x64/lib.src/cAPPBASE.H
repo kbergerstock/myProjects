@@ -26,6 +26,9 @@
 #ifndef __cAPPBASE_H
 #define __cAPPBASE_H
 
+#define APP_NAME_SIZE 64
+#define APP_DESC_SIZE 128
+
 //*******************************************************************
 //              
 //  CLASS:      cMSGLOOP
@@ -56,9 +59,9 @@ class cAppFrame : public	cMSGLOOP
 class cAppWinFrame : public Window
 {
   protected:
-	HBRUSH bkGnd;			// application background
-	char AppName[40];		// application name
-	char AppDesc[40];		// application description
+	HBRUSH bkGnd;					// application background
+	char AppName[APP_NAME_SIZE];	// application name
+	char AppDesc[APP_DESC_SIZE];	// application description
 
     int  MenuResourceId;	// id of a menu resource	
     int  appLargeIcon;      // id of a large icon resource
@@ -78,13 +81,12 @@ class cAppWinFrame : public Window
 	virtual void OnCommand(HWND , int , HWND , UINT );
 	virtual void OnCreated(HWND);
 	virtual void OnUpdate(HWND);
-	virtual void OnKey(HWND , UINT , BOOL , int , UINT );
+	virtual void OnKey(HWND , UINT , bool , int , UINT );
 	virtual void OnChar(HWND,UINT,int) {};
 	virtual void OnTimer(HWND,UINT){};
     virtual void OnMove(HWND,int,int){};
 
     virtual void Paint(HDC hdc) {};
-//    virtual void Paint(Canvas& canvas) {};
 
     //class window procedure
 	virtual LRESULT WndProc( HWND, UINT, WPARAM , LPARAM );

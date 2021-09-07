@@ -42,8 +42,7 @@ class AboutBox : public cDIALOGBOX
 
 	 void Paint(HWND);
 
-	 BOOL DlgProc(HWND hDlg, UINT msg, WPARAM wparam, LPARAM lparam);
-
+	 INT_PTR DlgProc(HWND hDlg, UINT msg, WPARAM wparam, LPARAM lparam);
 };
 
 #endif

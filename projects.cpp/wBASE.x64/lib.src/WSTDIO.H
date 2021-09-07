@@ -63,7 +63,7 @@ class WSTDIO : public ChildWindow
 	void OnGetMinMax(HWND , MINMAXINFO far*);
 	void OnChar(HWND ,UINT , int );
 	void OnDestroy(HWND);
-	void OnKey(HWND , UINT , BOOL , int , UINT );
+	void OnKey(HWND , UINT , bool , int , UINT );
 
 	HWND wopen(HWND,bool);
 	HWND CreateStdioWindow(LPSTR,DWORD,int,int,int,int,HWND,HINSTANCE,bool);

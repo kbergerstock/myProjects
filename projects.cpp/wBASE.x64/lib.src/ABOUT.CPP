@@ -18,18 +18,18 @@
 // Includes
 
 #include "about.h"
-#include "stdmenu.rh"
+#include "aboutDialog.rh"
 
 void DrawBitMap(HDC hdc, HBITMAP hBitmap, short xStart, short yStart);
 
 AboutBox::AboutBox(HINSTANCE hinst) :
-   cDIALOGBOX(hinst)
+   cDIALOGBOX(hinst), hControl(0)
 {
   hBitmap = 0;
 }
 
 AboutBox::AboutBox(HINSTANCE hinst, int id_bitmap) :
-   cDIALOGBOX(hinst)
+   cDIALOGBOX(hinst), hControl(0)
 {
   hBitmap = LoadBitmap(hinst,MAKEINTRESOURCE(id_bitmap) );
 }
@@ -42,7 +42,7 @@ AboutBox::~AboutBox()
 
 void AboutBox::Paint(HWND hwnd)
 {
-   InvalidateRect(hwnd,NULL,TRUE);
+   InvalidateRect(hwnd,NULL,true);
    UpdateWindow(hwnd);
 
    if(hBitmap)
@@ -53,28 +53,28 @@ void AboutBox::Paint(HWND hwnd)
     }   
 }
 
-BOOL AboutBox::DlgProc(HWND hDlg, UINT msg, WPARAM wparam, LPARAM lparam)
+INT_PTR AboutBox::DlgProc(HWND hDlg, UINT msg, WPARAM wparam, LPARAM lparam)
 {
   switch(msg)
 	{
 	  case WM_PAINT:
 		   Paint(hControl);
-		   return TRUE;
+		   return true;
 
 	  case WM_INITDIALOG:
-		   hControl = GetDlgItem(hDlg,IDD_DISPLAY);
-		   return TRUE;
+		   hControl = GetDlgItem(hDlg,IDD_ABOUT_DISPLAY);
+		   return true;
 
 	  case WM_COMMAND:
 			 switch(wparam)
 			  {
 			  case IDD_ABOUT_OK:
 				EndDialog(hDlg,0);
-				return TRUE;
+				return true;
 		   }
 		  break;
    }
-  return FALSE;
+  return false;
 }
 
 

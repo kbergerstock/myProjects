@@ -32,18 +32,18 @@ class cWinFrame: public ChildWindow
 
 	// message cracker handling routines
 	virtual void OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify);
-    virtual void OnKey(HWND , UINT , BOOL , int , UINT ){};
+    virtual void OnKey(HWND , UINT , bool , int , UINT ){};
 	virtual void OnChar(HWND,UINT,int) {};
 	virtual void OnTimer(HWND,UINT){};
 	virtual void OnUpdate(HWND);
 	virtual void OnPaint(HWND);
 	virtual void OnCreated(HWND);
 	virtual void OnDestroy(HWND);
-	virtual void OnLButtonDown(HWND hwnd, BOOL fDoubleClick, int x, int y, UINT keyFlags){};
+	virtual void OnLButtonDown(HWND hwnd, bool fDoubleClick, int x, int y, UINT keyFlags){};
 	virtual void OnLButtonUp(HWND hwnd, int x, int y, UINT keyFlags){};
-	virtual void OnRButtonDown(HWND hwnd, BOOL fDoubleClick, int x, int y, UINT keyFlags){};
+	virtual void OnRButtonDown(HWND hwnd, bool fDoubleClick, int x, int y, UINT keyFlags){};
 	virtual void OnRButtonUp(HWND hwnd, int x, int y, UINT flags){};
-	virtual void OnMButtonDown(HWND hwnd, BOOL fDoubleClick, int x, int y, UINT keyFlags){};
+	virtual void OnMButtonDown(HWND hwnd, bool fDoubleClick, int x, int y, UINT keyFlags){};
 	virtual void OnMButtonUp(HWND hwnd, int x, int y, UINT flags){};
 
     // child window procedure
@@ -65,7 +65,7 @@ class cWinFrame: public ChildWindow
 	void SetBkGnd(HBRUSH);
 	void SetName(LPSTR);
 	void SetDesc(LPSTR);
-    void SetQuit(void) { bQuit = TRUE; }
+    void SetQuit(void) { bQuit = true; }
 
 	virtual void Paint(HWND,HDC) = 0;
 
