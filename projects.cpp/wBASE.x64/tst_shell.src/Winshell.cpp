@@ -12,7 +12,7 @@
 #include "cMUTEX.h"
 #include "cDIALOG.H"
 #include "ABOUT.H"
-#include "resource.h"
+#include "shell_menu.rh"
 
 cWINSHELL::cWINSHELL(HINSTANCE hi,int nc) : cAppWinFrame(hi,nc){
     SetMenu(IDR_MENU1);

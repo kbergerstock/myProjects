@@ -21,6 +21,7 @@ unity
 wdf
 zenva
 debug
+.vs
 
 *.bak
 *.ipch
@@ -32,5 +33,4 @@ debug
 *.tlog
 *.zip
 
-/projects.cpp/wBASE.x64/.vs/tst_shell/v16
-/projects.cpp/wBASE.x64/.vs
+

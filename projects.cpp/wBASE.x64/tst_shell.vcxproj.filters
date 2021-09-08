@@ -75,13 +75,18 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="tst_shell.rc" />
     <ResourceCompile Include="tst_shell.src\aboutDialog.rc">
+      <Filter>shell.src</Filter>
+    </ResourceCompile>
+    <ResourceCompile Include="tst_shell.src\shell_menu.rc">
       <Filter>shell.src</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="tst_shell.src\aboutDialog.rh">
+      <Filter>shell.src</Filter>
+    </None>
+    <None Include="tst_shell.src\shell_menu.rh">
       <Filter>shell.src</Filter>
     </None>
   </ItemGroup>
