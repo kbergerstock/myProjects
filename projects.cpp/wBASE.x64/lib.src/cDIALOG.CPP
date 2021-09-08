@@ -39,26 +39,20 @@ static pDIALOGBOX   pDialogBox = 0;
 
 
 // constructor = sores hinst
-cDIALOGBOX::cDIALOGBOX(HINSTANCE hinst)
-{
-    hInstance = hinst;
-}
+cDIALOGBOX::cDIALOGBOX(HINSTANCE hinst):
+    hInstance(hinst),hDlgWin(nullptr),hDlg(nullptr),hParent(nullptr),parent(nullptr){ }
 
 // destructor
-cDIALOGBOX::~cDIALOGBOX()
-{
-}
+cDIALOGBOX::~cDIALOGBOX() { }
 
 // store the handle to the dialog box
-void cDIALOGBOX::set_handle(HWND hdlg)
-{
+void cDIALOGBOX::set_handle(HWND hdlg) {
    hDlgWin = hdlg;
 }
 
 
 // ok this is the guts of a modal dialog base class
-void cDIALOGBOX::Display(HWND hwnd, LPSTR lpszTemplate)
-{
+void cDIALOGBOX::Display(HWND hwnd, LPSTR lpszTemplate) {
     // store the handle to the parent window
     hParent = hwnd;
 

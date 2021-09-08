@@ -5,7 +5,7 @@
 #include <windows.h>
 #include "aboutDialog.rh"
 
-AboutBox DIALOG 87, 44, 139, 124
+AboutBox DIALOG 87, 44, 200, 124
 STYLE WS_POPUP | WS_DLGFRAME
 CAPTION "About"
 {
