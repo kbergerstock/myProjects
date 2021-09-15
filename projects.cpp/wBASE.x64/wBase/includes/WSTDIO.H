@@ -1,13 +1,12 @@
 /* Header file for use with WSTDIO.c */
-
-#ifndef __WINDBASE_H
-#include "windbase.h"
-#endif
+#ifndef  subWindow_h
+#include "subWindow.h"
+#endif 
 
 #ifndef __WSTDIO_H
 #define __WSTDIO_H
 
-class WSTDIO : public ChildWindow
+class WSTDIO : public subWindow
 {
   private:
     HMENU hMenu;                            // handle to the system menu
@@ -18,8 +17,10 @@ class WSTDIO : public ChildWindow
   protected:
 	#define _MaxLines   25
 	#define _MaxLine    (_MaxLines - 1)
-
-	char sScrBuff[_MaxLines][81];			// Array of characters on TTY
+	#define LINE_LEN 128
+	#define LINE_END LINE_LEN + 1
+	
+	char sScrBuff[_MaxLines][LINE_END];		// Array of characters on TTY
 											// could make this heap object so can realloc
 	short nFirstLine;						// Index of first line on TTY in the array
 	short nLastLine;						// Index of last line on TTY in the array
@@ -49,8 +50,7 @@ class WSTDIO : public ChildWindow
 	void Init(void);
 
   public:
-	WSTDIO();
-    WSTDIO(HINSTANCE);
+    WSTDIO(HINSTANCE, HWND);
 	~WSTDIO();
 	LRESULT WndProc( HWND, UINT, WPARAM , LPARAM );
 	bool Register();

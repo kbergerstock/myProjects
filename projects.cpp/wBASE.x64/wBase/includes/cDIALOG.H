@@ -41,7 +41,7 @@ class cDIALOGBOX
     
      friend INT_PTR MainDlgProc(HWND , UINT , WPARAM , LPARAM ); 
 
-     void cDIALOGBOX::set_handle(HWND hdlg);
+     void set_handle(HWND hdlg);
 
   protected:
 	 HWND 	   hParent;

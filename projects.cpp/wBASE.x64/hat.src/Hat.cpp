@@ -66,21 +66,21 @@ void cHAT::Draw(HDC hdc,SIZE Size)
 	StartTime = timeGetTime();
 
 	for(zi = -cx ; zi < cx ; zi++)
-//	 if ( abs(zi) <= ZP )
-     if( zi > -ZP && zi < ZP)
-	  {
-		zt = zf * (double)(zi);
-		xl = (int)(0.5 + sqrt(xp2 - (zt * zt)) );
+		if( zi > -ZP && zi < ZP)
+		{
+			zt = zf * (double)(zi);
+			xl = (int)(0.5 + sqrt(xp2 - (zt * zt)) );
 
-		for(xi = -xl; xi <= xl; xi+=2)
-			 {
-			   dxi = (double)(xi);
-			   xt = sqrt( dxi * dxi +  zt * zt) * xf;
-			   yy = (int) ( sin( sin(xt) + 0.4 * sin(3.0 * xt) ) * yf);
-			   sx = (XX+ZZ+cx); sy = (-yy+ZZ+cy);
-			   SetPixel (hdc,sx,sy, pen ) ;
-			 }
-	  }
+			for(xi = -xl; xi <= xl; xi+=2)
+				{
+				dxi = (double)(xi);
+				xt = sqrt( dxi * dxi +  zt * zt) * xf;
+				yy = (int) ( sin( sin(xt) + 0.4 * sin(3.0 * xt) ) * yf);
+				sx = (XX+ZZ+cx); 
+				sy = (-yy+ZZ+cy);
+				SetPixel (hdc,sx,sy, pen ) ;
+				}
+		}
 
    EndTime = timeGetTime();
 
@@ -88,8 +88,8 @@ void cHAT::Draw(HDC hdc,SIZE Size)
 
    ElapsedTime = (EndTime - StartTime);
 
-   lenszbuf = wsprintfA(szbuf,"Number Of MilliSeconds to Paint the Hat %ld", ElapsedTime);
+   lenszbuf = wsprintf(szbuf,"Number Of MilliSeconds to Paint the Hat %ld", ElapsedTime);
 
-   DrawTextA(hdc,szbuf,lenszbuf,&rect,DT_LEFT|DT_BOTTOM|DT_SINGLELINE);	// display the message
+   DrawText(hdc,szbuf,lenszbuf,&rect,DT_LEFT|DT_BOTTOM|DT_SINGLELINE);	// display the message
 
  } /* end of function body */

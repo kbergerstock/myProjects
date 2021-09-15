@@ -28,13 +28,13 @@
     
     #include <windows.h>
     #include <windowsx.h>
-    #include <mmsystem.h>
+    #include <strsafe.h>
 #endif
 
 #include "WM_MSGS.h"
 
 #ifndef __WINDBASE_H
-#define  __WINDBASE_H
+#define __WINDBASE_H
 
 //*******************************************************************
 //              
@@ -84,6 +84,8 @@ class cMSGLOOP
     static HWND  GetDlgModeless()       { return hDlgModeless; }
 };
 
+#define WIN_NAME_SIZE 64
+#define WIN_DESC_SIZE 128
 
 //*******************************************************************
 //              
@@ -96,87 +98,74 @@ class cMSGLOOP
 class cWINBASE
 {
   protected:
-    static HINSTANCE hInstance;
-    int nCmdShow;
+    HINSTANCE hinstance;
+    int     nCmdShow;
 
-	HWND hWnd;
-    HWND LastFocus;
+	HWND    hwnd;
+    HWND    LastFocus;
 
-	LPSTR szWinName;
-	LPSTR szWinDesc;
+    char    szWinName[WIN_NAME_SIZE];	// application name
+    char    szWinDesc[WIN_DESC_SIZE];	// application description
 
-	SIZE Size;		   			// holds width and height of client screen
-	LONG cxChar,cyChar,cxCaps;
+	//SIZE    Size;		   			    // holds width and height of client screen
+	LONG    cxChar,cyChar,cxCaps;       // font size
+    HBRUSH  bkGnd;					    // window background
+    HANDLE  menu;
+    HANDLE  icon;
+    HANDLE  iconSm;
+    HANDLE  cursor;
+
+    bool    bQuit;				// flag to send app quit message
+
+    DWORD   _style;			    // window style
+    DWORD   _ex_style;			// exteneded style
+
+    LONG    _x;					// window orgin
+    LONG    _y;
+    LONG    _w;					// window width
+    LONG    _h;					// window hieght
 
   public:
-      cWINBASE() :nCmdShow(0), hWnd(0), LastFocus(0), szWinName(""), szWinDesc(""), Size({ 0,0 }),cxChar(0),cyChar(0),cxCaps(0)
-      {
-          hInstance = 0;
-      };
-
-      cWINBASE(HINSTANCE _hInstance, int _nCmdShow = true)
-          : nCmdShow(_nCmdShow), hWnd(0), LastFocus(0), szWinName(""), szWinDesc(""), Size({ 0,0 }), cxChar(0), cyChar(0), cxCaps(0)
-      {
-          hInstance = _hInstance;
-      };
+ 
+    cWINBASE(HINSTANCE _hInstance, int _nCmdShow, LPSTR szName = NULL, LPSTR szDesc = NULL);
     
     ~cWINBASE() {};
 
+    inline HINSTANCE hInstance() { return hinstance; }
+    inline HWND hWnd() { return hwnd; }
 	void getTextMetrics(HWND);
-    void Show( int nCmdShow) { ShowWindow(hWnd, nCmdShow); }
-    void setFocus(void);
-	void Show(void);
-    void Clear(void);
-    void ExitWindow(void);
+    void Show( int nCmdShow) { ShowWindow(hwnd, nCmdShow); }
+    void SetName(LPSTR, LPSTR);
+    void setFocus();
+	void Show();
+    void Clear();
+    void ExitWindow();
 
-	void Update(void) { UpdateWindow(hWnd); }
+	void Update() { UpdateWindow(hwnd); }
     void Move(int,int,int,int);
     
     bool isRegistered(LPSTR);
 
-	virtual bool Register(void) = 0;
+    virtual bool Create() = 0;
+	virtual bool Register();
 
 	virtual void OnPaint(HWND) = 0;
 	virtual void OnDestroy(HWND);
 	virtual void OnSize(HWND , UINT , int , int );
 	virtual void OnCommand(HWND , int , HWND , UINT ) = 0;
-
 	virtual LRESULT WndProc( HWND, UINT, WPARAM , LPARAM ) = 0;
 
-	HWND GetWindowHandle(void) { return hWnd; }
-    HWND operator() (void) { return hWnd; }
-    static HINSTANCE GetInstance(void) { return hInstance; }
-
+    inline HICON loadIcon(int id) { return HICON(LoadImage(hinstance, MAKEINTRESOURCE(id), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE)); }
+    inline void setMenu(int id) {menu = HANDLE(MAKEINTRESOURCE(id)); }
+    inline void setIcon(int id) { icon = loadIcon(id); }
+    inline void setSmIcon(int id) { iconSm = loadIcon(id); }
+    inline void SetSize(int x, int y, int w, int h) { _x = x; _y = y; _h = h; _w = w; };
+    inline void SetStyle(DWORD style) { _style = style; };
+    inline void SetExStyle(DWORD style) { _ex_style = style; };
+    inline void SetBkGnd(HBRUSH brush) { bkGnd = brush; };
+    inline HBRUSH BkGnd() { return bkGnd; };
 };
 
-class Window : public cWINBASE
-{
-  protected:
-
-  public:
-    Window(HINSTANCE _hInstance, int _nCmdShow = true)
-        : cWINBASE (_hInstance,_nCmdShow)
-         {
-         }
-
-	virtual bool Create() = 0;
-
-};
-
-class ChildWindow : public cWINBASE
-{
-  protected:
-	int	 Control_id;						// child window control id
-	HWND  hParent;							// handle to the parent window
-
-  public:
-
-
-	int GetID(void)	 { return Control_id; }
-
-	virtual HWND Create (HWND, int ) = 0;
-
-};
 
 // functions to set and retrive data from window structures
 
@@ -192,12 +181,12 @@ inline LONG_PTR GetUserData(HWND hWnd)
 
 inline void SetPointer(HWND hWnd, LONG_PTR ptr)
 {
-	SetWindowLongPtrA(hWnd, 0, ptr);
+	SetWindowLongPtr(hWnd, 0, ptr);
 }
 
 inline void SetUserData(HWND hWnd, LONG_PTR ptr)
 {
-	SetWindowLongPtrA(hWnd, GWLP_USERDATA, ptr);
+	SetWindowLongPtr(hWnd, GWLP_USERDATA, ptr);
 }
 
 #endif

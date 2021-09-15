@@ -4,16 +4,13 @@
 //	child window frame
 // --------------------------------------------------
 
-#ifndef __CWFRAME_H
-#include "cwframe.h"
+#ifndef  __subWindow_h
+#include "subWindow.h"
 #endif
 
-static char Name[] = "cwf" ;
-static char Desc[] = "cwf";
-
-cWinFrame::cWinFrame() : ChildWindow()
+subWindow::subWindow(HINSTANCE hIinstance, int nCmdShow, LPSTR name, LPSTR desc) : 
+	cWINBASE(hInstance, nCmdShow, name, desc)
 {
-  hWnd = hParent = NULL;
   bQuit = false;
   isRegisteredOk = false;
   _style = WS_CHILDWINDOW | WS_CLIPSIBLINGS	| WS_BORDER | WS_VISIBLE;
@@ -25,56 +22,45 @@ cWinFrame::cWinFrame() : ChildWindow()
 
   bkGnd = HBRUSH(COLOR_WINDOW +1);
   newBK = 0;
-  SetName(Name);
-  SetDesc(Desc);
+
+  menu = NULL;
+  icon = NULL;
+  cursor = NULL;
 }
 
-HWND cWinFrame::wopen(HWND hWndParent, int control_id)
-{
-	// if window already created, return handle
-	if(hWnd != NULL) return hWnd;
-
-	if(Create(hWndParent,control_id) )
-	 {
-	   Show(SW_SHOW);
-	   Update();
-	 }
-	return hWnd;
-}
 
 // create the window
-HWND cWinFrame::Create(HWND hwnd, int control_id)
+HWND subWindow::CreateControl(HWND hwndParent)
 {
-  hParent = hwnd;
-  if( Register() )
-   {
-  	hWnd = CreateWindowEx ( _ex_style,
-                            szWinName,
-                            szWinDesc,
-                            _style,
-                            _x,
-                            _y,
-                            _w,
-                            _h,
-                            hParent, 				// parents window handle
-                            reinterpret_cast<HMENU>(control_id),
-                            hInstance,
-                            NULL) ;
+	HWND hwnd = 0;
+	hParent = hwndParent;
+	if( Register() )
+	{
+  		hwnd = CreateWindowEx ( _ex_style,
+			                    szWinName,
+				                szWinDesc,
+					            _style,
+						        _x,
+							    _y,
+	                            _w,
+		                        _h,
+			                    hParent, 			// parents window handle
+				                HMENU(Control_id),
+					            hInstance,
+						        NULL) ;
 
-      if(hWnd)										// if creation process was successful
-       {
-        SetPointer(hWnd,LONG_PTR(this));			// set a pointer to the class into the CbWndExtra
-        SendMessage(hWnd,WM_WIN_CREATED,0,0L);		// send a window created message to the call back function
-       }
-	 }
-	else
-     hWnd = 0;
+	    if(hwnd)									// if creation process was successful
+	    {
+		    SetPointer(hWnd,LONG_PTR(this));		// set a pointer to the class into the CbWndExtra
+			SendMessage(hWnd,WM_WIN_CREATED,0,0L);	// send a window created message to the call back function
+		}
+	}
 
-  return  hWnd; 								// return the handle to the child window
+	return  hwnd; 									// return the handle to the child window
 };
 
 
-bool cWinFrame::Register(void)
+bool subWindow::Register(void)
 {
   isRegisteredOk = isRegistered();
   if(!isRegisteredOk) 	 				// if this clas has not been registered
@@ -84,14 +70,14 @@ bool cWinFrame::Register(void)
 	  wndclass.style		 = CS_HREDRAW | CS_VREDRAW ;
 	  wndclass.lpfnWndProc	 = ::MainWndProc;
 	  wndclass.cbClsExtra	 = 0;
-	  wndclass.cbWndExtra	 = sizeof(Window*);
+	  wndclass.cbWndExtra	 = sizeof(cWINBASE*);
 	  wndclass.hInstance	 = hInstance ;
-	  wndclass.hIcon		 = NULL;
-	  wndclass.hCursor		 = LoadCursor (NULL, IDC_ARROW) ;
+	  wndclass.hIcon		 = HICON(icon);
+	  wndclass.hIconSm		 = HICON(iconSm);
+	  wndclass.hCursor		 = HCURSOR(cursor); // LoadCursor(NULL, IDC_ARROW);
 	  wndclass.hbrBackground = bkGnd;
 	  wndclass.lpszMenuName  = NULL;
 	  wndclass.lpszClassName = szWinName ;
-      wndclass.hIconSm 	     = NULL;
       wndclass.cbSize		 = sizeof(WNDCLASSEX);
 
 	  isRegisteredOk =  (RegisterClassEx (&wndclass) ? true : false );
@@ -100,7 +86,7 @@ bool cWinFrame::Register(void)
 }
 
 
-void cWinFrame::OnUpdate(HWND hwnd)
+void subWindow::OnUpdate(HWND hwnd)
 {
   RECT rect;
   GetClientRect(hwnd,&rect);
@@ -108,12 +94,12 @@ void cWinFrame::OnUpdate(HWND hwnd)
 }
 
 
-void cWinFrame::OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
+void subWindow::OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 {
     MessageBox(hwnd,"Function Not Impemented","NOT IMPLEMENTED",MB_ICONINFORMATION | MB_OK);
 }
 
-void cWinFrame::OnPaint(HWND hwnd)
+void subWindow::OnPaint(HWND hwnd)
 {
    HDC hdc;
    PAINTSTRUCT ps;
@@ -122,20 +108,20 @@ void cWinFrame::OnPaint(HWND hwnd)
    EndPaint(hwnd,&ps);
 }
 
-void cWinFrame::OnCreated(HWND hwnd)
+void subWindow::OnCreated(HWND hwnd)
 {
   getTextMetrics(hwnd);
 }
 
 
-void cWinFrame::OnDestroy(HWND hwnd)
+void subWindow::OnDestroy(HWND hwnd)
 {
 	hWnd = NULL;
 	if(bQuit)
 		PostQuitMessage (0);
 }
 
-void cWinFrame::SetSize(int x,int y,int w,int h)
+void subWindow::SetSize(int x,int y,int w,int h)
 {
   _x = x;
   _y = y;
@@ -143,30 +129,24 @@ void cWinFrame::SetSize(int x,int y,int w,int h)
   _h = h;
 }
 
-void cWinFrame::SetLocation(int x, int y)
+void subWindow::SetLocation(int x, int y)
 {
 	_x = x;
     _y = y;
 }
 
-void cWinFrame::SetStyle(DWORD style)
+void subWindow::SetStyle(DWORD style)
 { _style = style; }
 
-void cWinFrame::SetExStyle(DWORD exStyle)
+void subWindow::SetExStyle(DWORD exStyle)
 { _ex_style = exStyle; }
 
-void cWinFrame::SetBkGnd(HBRUSH brush)
+void subWindow::SetBkGnd(HBRUSH brush)
 {  bkGnd = brush; }
-
-void cWinFrame::SetName(LPSTR name)
-{ szWinName = name; }
-
-void cWinFrame::SetDesc(LPSTR desc)
-{ szWinDesc = desc; }
 
 
 // THE CLASS CALL BACK FUNCTION
-LRESULT cWinFrame::WndProc (HWND hwnd , UINT msg , WPARAM wParam , LPARAM lParam)
+LRESULT subWindow::WndProc (HWND hwnd , UINT msg , WPARAM wParam , LPARAM lParam)
  {
 	 switch (msg)
 	   {

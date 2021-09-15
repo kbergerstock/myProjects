@@ -19,15 +19,12 @@
 
 // Includes
 
-#ifndef __WINDBASE_H
-#include "windbase.h"
+#ifndef __cWINBASE_H
+	#include "cWINBASE.h"
 #endif
 
 #ifndef __cAPPBASE_H
 #define __cAPPBASE_H
-
-#define APP_NAME_SIZE 64
-#define APP_DESC_SIZE 128
 
 //*******************************************************************
 //              
@@ -56,24 +53,10 @@ class cAppFrame : public	cMSGLOOP
 //              
 //*******************************************************************
 
-class cAppWinFrame : public Window
+class cAppWinFrame : public cWINBASE
 {
   protected:
-	HBRUSH bkGnd;					// application background
-	char AppName[APP_NAME_SIZE];	// application name
-	char AppDesc[APP_DESC_SIZE];	// application description
-
-    int  MenuResourceId;	// id of a menu resource	
-    int  appLargeIcon;      // id of a large icon resource
-    int  appSmallIcon;      // id of a smalll icon resource
-
-	LONG _x;                // window orgin
-	LONG _y;
-	LONG _w;                // window width
-	LONG _h;                // window hieght
-
-	DWORD _style;			// window style
-    DWORD _ex_style;
+	
 
 	// message cracker handling routines
 	virtual void OnPaint(HWND);
@@ -92,22 +75,11 @@ class cAppWinFrame : public Window
 	virtual LRESULT WndProc( HWND, UINT, WPARAM , LPARAM );
 
   public:
-	bool Register();
 	bool Create();
-	void SetName(LPCSTR,LPCSTR);
-    void SetMenu(int id)        { MenuResourceId = id; }
-	void SetLargeIcon(int id)   { appLargeIcon = id; }
-    void SetSmallIcon(int id)   { appSmallIcon = id; }
-	void SetSize(int,int,int,int);
-    void SetStyle(DWORD style) { _style = style; };
-    void SetExStyle(DWORD style) { _ex_style = style; };
-	void SetBkGnd(HBRUSH);
-	HBRUSH GetBkGnd(void) { return bkGnd; };
 
     void Run(void);
 
-	cAppWinFrame(LPCSTR appName, LPCSTR appDesc, HINSTANCE, int);
-    cAppWinFrame(HINSTANCE, int);
+	cAppWinFrame(HINSTANCE _hinstance, int _nCmdShow, LPSTR appName = NULL, LPSTR appDesc = NULL );
 	virtual ~cAppWinFrame();
 
 };

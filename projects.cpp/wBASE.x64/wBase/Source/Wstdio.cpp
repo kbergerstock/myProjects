@@ -21,25 +21,14 @@
 //			StdioWndProc() - Processes messages for the I/O window.
 //
 
+#include <strsafe.h>
 #include "wstdio.h"
-// #include "stdmenu.h"
-// #include "stdlib.h"
 
-static char AppName[] = "WSTDIO";
-static char AppDesc[] = "WSTDIO";
-
-WSTDIO::WSTDIO()
+WSTDIO::WSTDIO(HINSTANCE hInstance, HWND parent):
+	subWindow(hInstance,1,LPSTR("STDIO"))
 {
 	Init();
-    if(hInstance && !isRegistered(AppName))
-        Register();
-}
-
-WSTDIO::WSTDIO(HINSTANCE hInst)
-{
-	hInstance = hInst;
-	Init();
-    if(hInstance && !isRegistered(AppName))
+    if(hInstance && !isRegistered() )
         Register();
 }
 
@@ -50,9 +39,9 @@ void WSTDIO::Init(void)
 
 	// initialize screen buffer to nulls
 	int i,j;
-	for(i=0; i<_MaxLines; i++)
-	for(j=0; j<81; j++)
-		sScrBuff[i][j] = '\0';
+	for(i=0; i<_MaxLines; i++)	
+		for(j=0; j < LINE_END; j++)
+			sScrBuff[i][j] = '\0';
 
 	nFirstLine = 0;
 	nLastLine = _MaxLine;

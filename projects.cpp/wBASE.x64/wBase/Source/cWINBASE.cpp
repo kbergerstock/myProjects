@@ -16,15 +16,13 @@
 //*******************************************************************
 
 // Includes
-
-#include "windbase.h"
+#include <strsafe.h>
+#include "cWINBASE.h"
 
 // --------------------------------------------------
 // static members
 
 HWND cMSGLOOP::hDlgModeless = 0;
-
-HINSTANCE cWINBASE::hInstance = 0;
 
 //*******************************************************************
 //              
@@ -40,7 +38,7 @@ HINSTANCE cWINBASE::hInstance = 0;
 
 LRESULT CALLBACK MainWndProc (HWND hwnd , UINT msg , WPARAM wParam , LPARAM lParam)
 {
-	Window *pWindow = (Window*) GetPointer( hwnd );
+	cWINBASE *pWindow = (cWINBASE*) GetPointer( hwnd );
 
 	if ( pWindow == 0 )
 	  return DefWindowProc( hwnd, msg, wParam, lParam );
@@ -144,6 +142,35 @@ int cMSGLOOP::MessageLoop()
 //              
 //*******************************************************************
 
+cWINBASE::cWINBASE(HINSTANCE _hInstance, int _nCmdShow, LPSTR szName, LPSTR szDesc)
+	: nCmdShow(_nCmdShow), hwnd(0), LastFocus(0), cxChar(0), cyChar(0), cxCaps(0), _x(0),_y(0),_w(0),_h(0)
+{
+	hinstance = _hInstance;
+	SetName(szName, szDesc);
+	menu = NULL;
+	icon = NULL;
+	iconSm = NULL;
+
+	// set default back ground color
+	bkGnd = (HBRUSH)(COLOR_BACKGROUND + 1);
+	// set default size
+	_x = _y = _h = _w = CW_USEDEFAULT;
+
+}
+
+void cWINBASE::SetName(LPSTR szName, LPSTR szDesc = NULL)
+{
+	if (szName == NULL)
+		StringCchCopy(szWinName, WIN_NAME_SIZE - 1, "SHELL x64");
+	else
+		StringCchCopy(szWinName, WIN_NAME_SIZE - 1, szName);
+
+	if (szDesc == NULL)
+		StringCchCopy(szWinDesc, WIN_DESC_SIZE - 1, szWinName);
+	else
+		StringCchCopy(szWinDesc, WIN_DESC_SIZE - 1, szDesc);
+}
+
 void cWINBASE::OnDestroy(HWND hwnd)
 {
 	if(LastFocus)
@@ -153,38 +180,38 @@ void cWINBASE::OnDestroy(HWND hwnd)
 
 void cWINBASE::OnSize(HWND hwnd, UINT state, int cx, int cy)
 {
-	Size.cx = cx;
-	Size.cy = cy;
+	_w = cx;
+	_h = cy;
 }
 
-void cWINBASE::Show(void)
+void cWINBASE::Show()
 {
   RECT rect;
-  GetClientRect(hWnd,&rect);
-  Size.cx = rect.right;
-  Size.cy = rect.bottom;
-  InvalidateRect(hWnd,&rect,false);
+  GetClientRect(hwnd,&rect);
+  _w = rect.right;
+  _h = rect.bottom;
+  InvalidateRect(hwnd,&rect,false);
   Update();
 }
 
-void cWINBASE::ExitWindow(void)
+void cWINBASE::ExitWindow()
 {
-	SendMessage(hWnd,WM_CLOSE,0,0L);
+	SendMessage(hwnd,WM_CLOSE,0,0L);
 }
 
-void cWINBASE::Clear(void)
+void cWINBASE::Clear()
 {
   RECT rect;
-  GetClientRect(hWnd,&rect);
-  Size.cx = rect.right;
-  Size.cy = rect.bottom;
-  InvalidateRect(hWnd,&rect,true);
+  GetClientRect(hwnd,&rect);
+  _w = rect.right;
+  _h = rect.bottom;
+  InvalidateRect(hwnd,&rect,true);
   Update();
 }
 
-void cWINBASE::setFocus(void)
+void cWINBASE::setFocus()
 {
-	LastFocus = SetFocus(hWnd);
+	LastFocus = SetFocus(hwnd);
 }
 
 void cWINBASE::getTextMetrics(HWND hwnd)
@@ -203,14 +230,10 @@ bool cWINBASE::isRegistered(LPSTR szClassName)
 {
     WNDCLASSEX WindowClass;
 	WindowClass.cbSize = sizeof(WNDCLASSEX);
-	return GetClassInfoEx(hInstance,szClassName,&WindowClass) ? true : false;
+	return GetClassInfoEx(hinstance,szClassName,&WindowClass) ? true : false;
 }
 
 void cWINBASE::Move(int x,int y ,int h ,int w)
 {
-	MoveWindow(hWnd,x,y,h,w,true);
+	MoveWindow(hwnd,x,y,h,w,true);
 }
-
-
-
-

@@ -1,0 +1,3 @@
+#include "IDI_ICON1.rh"
+
+IDI_ICON1 ICON  "IDI_ICON1.ico"

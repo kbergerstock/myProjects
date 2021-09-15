@@ -4,7 +4,7 @@
 //              
 //  AUTHOR:     Keith R. Bergerstock
 //              
-//  PROJECT:    shell32
+//  PROJECT:    cpp_hat
 //              
 //  COMPONENT:  AppWin
 //              
@@ -19,9 +19,9 @@
 
 // Includes
 
-#include "SHELL32.H"
-#include "what.rh"
+#include "cpp_hat.H"
 #include "HAT.h"
+#include "idi_icon1.rh"
 
 
 int PASCAL WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLine, int nCmdShow)
@@ -36,11 +36,11 @@ int PASCAL WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdL
 
 // ----------------------------------------------------------------
 
-char Name[] = "SHELL32" ;
-char Desc[] = "32 bit shell test program";
+char Name[] = "CPP_HAT" ;
+char Desc[] = "timed hat plot in cpp";
 
 AppWin::AppWin(HINSTANCE _hInstance,int _nCmdShow) 
-    : cAppWinFrame(Name, Desc, _hInstance,_nCmdShow )
+    : cAppWinFrame(Name, Desc, _hInstance, _nCmdShow )
 {
     SetLargeIcon(IDI_ICON1);
     SetSmallIcon(IDI_ICON1);
