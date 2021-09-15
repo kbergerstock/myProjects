@@ -79,7 +79,7 @@ class cAppWinFrame : public cWINBASE
 
     void Run(void);
 
-	cAppWinFrame(HINSTANCE _hinstance, int _nCmdShow, LPSTR appName = NULL, LPSTR appDesc = NULL );
+	cAppWinFrame(HINSTANCE _hinstance, int _nCmdShow, LPCSTR appName = "app", LPCSTR appDesc = "top level app window");
 	virtual ~cAppWinFrame();
 
 };

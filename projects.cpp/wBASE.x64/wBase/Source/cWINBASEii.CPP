@@ -28,7 +28,7 @@ bool cWINBASE::Register()
         WNDCLASSEX  wndclass ;
 
         wndclass.cbSize         = sizeof(WNDCLASSEX);
-        wndclass.style          = _style;            // FIX CS_HREDRAW | CS_VREDRAW;
+        wndclass.style          = class_style;            // typically CS_HREDRAW | CS_VREDRAW;
         wndclass.lpfnWndProc    = ::MainWndProc;
         wndclass.cbClsExtra	    = 0;
         wndclass.cbWndExtra	    = sizeof(cWINBASE*);

@@ -21,12 +21,13 @@
 
 
 
-cAppWinFrame::cAppWinFrame(HINSTANCE _hInstance, int _nCmdShow, LPSTR appName , LPSTR appDesc ) :
+cAppWinFrame::cAppWinFrame(HINSTANCE _hInstance, int _nCmdShow, LPCSTR appName , LPCSTR appDesc ) :
     cWINBASE(_hInstance, _nCmdShow, appName, appDesc)
 {
     // set defaults
-    SetStyle( WS_OVERLAPPEDWINDOW);
-    SetExStyle(0);
+    SetClassStyle(CS_HREDRAW | CS_VREDRAW);
+    SetWinStyle( WS_OVERLAPPEDWINDOW);
+    SetExtStyle(WS_EX_APPWINDOW | WS_EX_WINDOWEDGE);
 
     // fix try register class catch
     try

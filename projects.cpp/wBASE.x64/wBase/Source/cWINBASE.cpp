@@ -142,7 +142,7 @@ int cMSGLOOP::MessageLoop()
 //              
 //*******************************************************************
 
-cWINBASE::cWINBASE(HINSTANCE _hInstance, int _nCmdShow, LPSTR szName, LPSTR szDesc)
+cWINBASE::cWINBASE(HINSTANCE _hInstance, int _nCmdShow, LPCSTR szName, LPCSTR szDesc)
 	: nCmdShow(_nCmdShow), hwnd(0), LastFocus(0), cxChar(0), cyChar(0), cxCaps(0), _x(0),_y(0),_w(0),_h(0)
 {
 	hinstance = _hInstance;
@@ -158,7 +158,7 @@ cWINBASE::cWINBASE(HINSTANCE _hInstance, int _nCmdShow, LPSTR szName, LPSTR szDe
 
 }
 
-void cWINBASE::SetName(LPSTR szName, LPSTR szDesc = NULL)
+void cWINBASE::SetName(LPCSTR szName, LPCSTR szDesc = NULL)
 {
 	if (szName == NULL)
 		StringCchCopy(szWinName, WIN_NAME_SIZE - 1, "SHELL x64");

@@ -117,8 +117,9 @@ class cWINBASE
 
     bool    bQuit;				// flag to send app quit message
 
-    DWORD   _style;			    // window style
-    DWORD   _ex_style;			// exteneded style
+    DWORD   class_style;	    // class style
+    DWORD   dwExtStyle;         // extended window style
+    DWORD   dwStyle;			// window style
 
     LONG    _x;					// window orgin
     LONG    _y;
@@ -127,7 +128,7 @@ class cWINBASE
 
   public:
  
-    cWINBASE(HINSTANCE _hInstance, int _nCmdShow, LPSTR szName = NULL, LPSTR szDesc = NULL);
+    cWINBASE(HINSTANCE _hInstance, int _nCmdShow, LPCSTR szName = NULL, LPCSTR szDesc = NULL);
     
     ~cWINBASE() {};
 
@@ -135,7 +136,7 @@ class cWINBASE
     inline HWND hWnd() { return hwnd; }
 	void getTextMetrics(HWND);
     void Show( int nCmdShow) { ShowWindow(hwnd, nCmdShow); }
-    void SetName(LPSTR, LPSTR);
+    void SetName(LPCSTR, LPCSTR);
     void setFocus();
 	void Show();
     void Clear();
@@ -160,8 +161,9 @@ class cWINBASE
     inline void setIcon(int id) { icon = loadIcon(id); }
     inline void setSmIcon(int id) { iconSm = loadIcon(id); }
     inline void SetSize(int x, int y, int w, int h) { _x = x; _y = y; _h = h; _w = w; };
-    inline void SetStyle(DWORD style) { _style = style; };
-    inline void SetExStyle(DWORD style) { _ex_style = style; };
+    inline void SetClassStyle(DWORD style) { class_style = style; };
+    inline void SetExtStyle(DWORD style) { dwExtStyle = style; }
+    inline void SetWinStyle(DWORD style) { dwStyle = style; };
     inline void SetBkGnd(HBRUSH brush) { bkGnd = brush; };
     inline HBRUSH BkGnd() { return bkGnd; };
 };
