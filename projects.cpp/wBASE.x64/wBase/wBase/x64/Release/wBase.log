@@ -1,0 +1,14 @@
+﻿  ABOUT.CPP
+  bitBlit.cpp
+  cAPPBASE.CPP
+  cBITMAP.CPP
+  cDIALOG.CPP
+  cDIAMOND.CPP
+  cLED.CPP
+  cSPRITE.CPP
+  cWINBASEii.CPP
+  subWindow.cpp
+  LED.CPP
+  STATBAR.CPP
+  cWINBASE.cpp
+  wBase.vcxproj -> D:\myProjects\projects.cpp\wBASE.x64\wBase\x64\Release\wBase.lib
