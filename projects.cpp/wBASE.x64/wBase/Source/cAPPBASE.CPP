@@ -19,60 +19,20 @@
 
 #include "cAppBase.h"
 
-
-
 cAppWinFrame::cAppWinFrame(HINSTANCE _hInstance, int _nCmdShow, LPCSTR appName , LPCSTR appDesc ) :
     cWINBASE(_hInstance, _nCmdShow, appName, appDesc)
 {
-    // set defaults
+    // set window attributes
     SetClassStyle(CS_HREDRAW | CS_VREDRAW);
     SetWinStyle( WS_OVERLAPPEDWINDOW);
     SetExtStyle(WS_EX_APPWINDOW | WS_EX_WINDOWEDGE);
-
-    // fix try register class catch
-    try
-    {
-        if (Register())
-        {
-            Create();
-        }
-    }
-    catch (...)
-    {
-        // FIX HANDLE THE ERROR
-    }
+    setParentHwnd(NULL);
 }
 
 cAppWinFrame::~cAppWinFrame() 
 {
     //fix unregister class
 }
-
-// create the window
-bool cAppWinFrame::Create()					        
-{
-    hwnd = CreateWindowEx( _ex_style,
-                        szWinName,
-                        szWinDesc,
-                        _style,
-                        _x,						// set window orgin
-                        _y,
-                        _w,						// set window height
-                        _h,						// set window width
-                        NULL,
-                        NULL,
-                        hInstance(),
-                        NULL) ;
-
-    if(hWnd)									// if creation process was successful
-    {
-        SetPointer(hwnd,LONG_PTR(this));		// set a pointer to the class into the CbWndExtra
-        SendMessage(hwnd,WM_WIN_CREATED,0,0L);	// send a window created message to the call back function
-        Show(nCmdShow);
-    }
-  return ( hWnd ? true: false);				    // return true if creation process worked
-};
-
 
 void cAppWinFrame::OnPaint(HWND hwnd)
 {
@@ -88,7 +48,7 @@ void cAppWinFrame::OnUpdate(HWND hwnd)
   RECT rect;
   GetClientRect(hwnd,&rect);
   _w = rect.right;
-  _y = rect.bottom;
+  _h = rect.bottom;
   InvalidateRect(hwnd,&rect,true);
 }
 
@@ -140,8 +100,3 @@ LRESULT cAppWinFrame::WndProc (HWND hwnd , UINT msg , WPARAM wParam , LPARAM lPa
 	 return DefWindowProc (hwnd, msg, wParam, lParam) ;
 }
 
-void cAppWinFrame::Run(void)
-{
-    // create the message loop and execute it
-	cAppFrame app;
-}

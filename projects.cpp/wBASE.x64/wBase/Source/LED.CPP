@@ -4,13 +4,6 @@
 #include "led.h"
 #endif
 
-LED::LED()
-{
-	hBitmap = 0;
-    xCenter= 0;
-    yCenter= 0;
-}
-
 LED::~LED()
 {
 	if(hBitmap)
@@ -48,7 +41,7 @@ void LED::Draw(HWND hwnd)
     ReleaseDC(hwnd,hdc);
 }
 
-void LED::Create(HWND hwnd, COLORREF bkGnd, COLORREF color)
+void LED::CreateBitmap(HWND hwnd, COLORREF bkGnd, COLORREF color)
 {
 	RECT rect;
     HBRUSH hBrush;

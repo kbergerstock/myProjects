@@ -10,7 +10,7 @@ cDIAMOND::~cDIAMOND()
 		DeleteObject(hBitmap);
 }
 
-void cDIAMOND::Create(HWND hwnd, COLORREF bkGnd, COLORREF color)
+void cDIAMOND::CreateBitmap(HWND hwnd, COLORREF bkGnd, COLORREF color)
 {
 	RECT rect;
 	HBRUSH hBrush;

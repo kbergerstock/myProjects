@@ -22,11 +22,13 @@
 #ifndef __WINDOWS_H
     #ifndef STRICT
         #define STRICT
+        #define OEMRESOURCE
     #endif
 
     #define WIN32_LEAN_AND_MEAN
     
     #include <windows.h>
+    #include <WinUser.h>
     #include <windowsx.h>
     #include <strsafe.h>
 #endif
@@ -74,8 +76,8 @@ class cMSGLOOP
 	cMSGLOOP();
     ~cMSGLOOP();
 
-	int Run(HWND);
-    int	MessageLoop();
+	void Run(HWND);
+    void MessageLoop();
 
 	virtual void AuxRun(HWND) { Sleep(25); }
 
@@ -98,11 +100,11 @@ class cMSGLOOP
 class cWINBASE
 {
   protected:
-    HINSTANCE hinstance;
-    int     nCmdShow;
+    HINSTANCE __hInstance;
+    int       __nCmdShow;
 
-	HWND    hwnd;
-    HWND    LastFocus;
+	HWND    __hWnd;
+    HWND    __LastFocus;
 
     char    szWinName[WIN_NAME_SIZE];	// application name
     char    szWinDesc[WIN_DESC_SIZE];	// application description
@@ -114,6 +116,7 @@ class cWINBASE
     HANDLE  icon;
     HANDLE  iconSm;
     HANDLE  cursor;
+    HWND    hwndParent;
 
     bool    bQuit;				// flag to send app quit message
 
@@ -128,27 +131,29 @@ class cWINBASE
 
   public:
  
-    cWINBASE(HINSTANCE _hInstance, int _nCmdShow, LPCSTR szName = NULL, LPCSTR szDesc = NULL);
+    cWINBASE(HINSTANCE _hInstance, int _nCmdShow, LPCSTR szName = nullptr, LPCSTR szDesc = nullptr);
     
     ~cWINBASE() {};
 
-    inline HINSTANCE hInstance() { return hinstance; }
-    inline HWND hWnd() { return hwnd; }
+    inline HINSTANCE hInstance() { return __hInstance; }
+    inline HWND hWnd() { return __hWnd; }
+    inline void setHWND(HWND hwnd) { __hWnd = hwnd; }
+    inline int nCmdShow() { return __nCmdShow; }
 	void getTextMetrics(HWND);
-    void Show( int nCmdShow) { ShowWindow(hwnd, nCmdShow); }
+    void Show( int nCmdShow) { ShowWindow(hWnd(), nCmdShow); }
     void SetName(LPCSTR, LPCSTR);
     void setFocus();
 	void Show();
     void Clear();
     void ExitWindow();
 
-	void Update() { UpdateWindow(hwnd); }
+	void Update() { UpdateWindow(__hWnd); }
     void Move(int,int,int,int);
     
     bool isRegistered(LPSTR);
 
-    virtual bool Create() = 0;
-	virtual bool Register();
+    virtual bool Create();              // create the window    
+	virtual bool Register();            // register the window class
 
 	virtual void OnPaint(HWND) = 0;
 	virtual void OnDestroy(HWND);
@@ -156,16 +161,19 @@ class cWINBASE
 	virtual void OnCommand(HWND , int , HWND , UINT ) = 0;
 	virtual LRESULT WndProc( HWND, UINT, WPARAM , LPARAM ) = 0;
 
-    inline HICON loadIcon(int id) { return HICON(LoadImage(hinstance, MAKEINTRESOURCE(id), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE)); }
+    virtual HANDLE loadCursor(); 
+    inline HICON loadIcon(int id) { return HICON(LoadImage(hInstance(), MAKEINTRESOURCE(id), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE)); }
     inline void setMenu(int id) {menu = HANDLE(MAKEINTRESOURCE(id)); }
-    inline void setIcon(int id) { icon = loadIcon(id); }
-    inline void setSmIcon(int id) { iconSm = loadIcon(id); }
+    inline void setIcon(int id) { icon = (id == NULL) ? NULL : loadIcon(id); }
+    inline void setSmIcon(int id) { iconSm = (id == NULL) ? NULL : loadIcon(id); }
     inline void SetSize(int x, int y, int w, int h) { _x = x; _y = y; _h = h; _w = w; };
     inline void SetClassStyle(DWORD style) { class_style = style; };
     inline void SetExtStyle(DWORD style) { dwExtStyle = style; }
     inline void SetWinStyle(DWORD style) { dwStyle = style; };
     inline void SetBkGnd(HBRUSH brush) { bkGnd = brush; };
+    inline void setParentHwnd(HWND parent) { hwndParent = parent; }
     inline HBRUSH BkGnd() { return bkGnd; };
+    inline HWND hParent() { return hwndParent; }
 };
 
 

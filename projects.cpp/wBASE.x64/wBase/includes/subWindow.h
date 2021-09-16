@@ -16,7 +16,6 @@ class subWindow : public cWINBASE
 {
 protected:
 	int	  Control_id;			// child window control id
-	HWND  hParent;				// handle to the parent window
 	bool  isRegisteredOk;
 
 	COLORREF newBK;
@@ -42,23 +41,16 @@ protected:
 	virtual LRESULT WndProc(HWND, UINT, WPARAM, LPARAM);
 
 public:
-	int GetID(void) { return Control_id; }
+	inline void SetId(int id) { Control_id = id; }
+	inline int GetID(void) { return Control_id; }
 
-	virtual HWND Create(HWND, int) = 0;
+	subWindow(HINSTANCE , int , LPCSTR , LPCSTR = NULL);
 
-	subWindow(HINSTANCE hinstance, int nCmdShow, LPSTR name = NULL, LPSTR desc = NULL);
-
-    virtual bool Register();
     bool isRegistered() { return cWINBASE::isRegistered(szWinName); }
-	void set_control_id(int id) { Control_id = id; }
-	HWND CreateControl(HWND);
+	HWND CreateControl(HWND, int);
 
 	void SetSize(int,int,int,int);
     void SetLocation(int,int);
-	void SetStyle(DWORD);
-    void SetExStyle(DWORD);
-	void SetBkGnd(HBRUSH);
-    void SetQuit(void) { bQuit = true; }
 
 	virtual void Paint(HWND,HDC) = 0;
 

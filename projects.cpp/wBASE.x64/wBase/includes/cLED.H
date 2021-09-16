@@ -34,7 +34,7 @@ class cLED: public subWindow
         void OnCreated(HWND);
         
     public:
-		cLED(HINSTANCE , HWND );
+		cLED(HINSTANCE , HWND , int);
         ~cLED() {};
 
 		void Draw(short);

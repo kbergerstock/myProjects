@@ -28,25 +28,6 @@
 
 //*******************************************************************
 //              
-//  CLASS:      cMSGLOOP
-//              
-//  COMMENTS:   -
-//              
-//*******************************************************************
-
-class cAppFrame : public	cMSGLOOP
-{
-
-  public:
-    cAppFrame () : cMSGLOOP() { MessageLoop(); };
-    virtual ~cAppFrame() {};
-
-    virtual void AuxRun(HWND) {};
-};
-
-
-//*******************************************************************
-//              
 //  CLASS:      cAppWinFrame
 //              
 //  COMMENTS:   - base class to encpsulate an application window
@@ -81,7 +62,6 @@ class cAppWinFrame : public cWINBASE
 
 	cAppWinFrame(HINSTANCE _hinstance, int _nCmdShow, LPCSTR appName = "app", LPCSTR appDesc = "top level app window");
 	virtual ~cAppWinFrame();
-
 };
 
 #endif

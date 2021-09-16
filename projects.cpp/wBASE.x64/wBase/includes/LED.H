@@ -26,10 +26,10 @@ class LED
 	    HBITMAP  hBitmap;
 
     public:
-    	LED();
+    	LED() : yCenter(0), xCenter(0), hBitmap(0), cyTotal(0), cxTotal(0), yPixel(0), xPixel(0) { }
         ~LED();
 
-        void Create(HWND,COLORREF,COLORREF);
+        void CreateBitmap(HWND,COLORREF,COLORREF);
 	    void Draw(HWND);
 
         int GetcxTotal(void) { return cxTotal; }

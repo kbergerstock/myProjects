@@ -9,22 +9,25 @@
 #endif
 
 
-cSTATBAR::cSTATBAR(HINSTANCE hInstance, HWND hPwnd) :
-	subWindow(hInstance, 1, LPSTR("STATBAR"))
+cSTATBAR::cSTATBAR(HINSTANCE hInstance, HWND hPwnd, int control_id) :
+	subWindow(hInstance, SW_SHOW, LPSTR("STATBAR"))
 {
-    SetBkGnd(bkGnd);
-	SetStyle(WS_CHILDWINDOW | WS_VISIBLE );
-    SetExStyle(WS_EX_STATICEDGE	);
-	GetSize(hPwnd);
-    for(int i = 0; i < 4; i++)
-    	Msg[i][0] = '\0';
 
     if(!isRegistered() )
         Register();        
-	hWnd = CreateControl(hPwnd);
-	if (Control_id && hWnd)
+	   
+	if (isRegistered())
 	{
-		Show(SW_SHOW);
+		SetId(control_id);
+		SetBkGnd(bkGnd);
+		SetWinStyle(WS_CHILDWINDOW | WS_VISIBLE);
+		SetExtStyle(WS_EX_STATICEDGE);
+		GetSize(hPwnd);
+		for (int i = 0; i < 4; i++)
+			Msg[i][0] = '\0';
+
+		setHWND(CreateControl(hPwnd, Control_id));
+		Show(nCmdShow());
 		Update();
 	}
 }
@@ -32,7 +35,8 @@ cSTATBAR::cSTATBAR(HINSTANCE hInstance, HWND hPwnd) :
 void cSTATBAR::GetSize(HWND hPwnd)
 {
    RECT rect;
-   GetClientRect(hPwnd,&rect);					// get the size of the parent window
+   // get the size of the parent window
+   GetClientRect(hPwnd,&rect);					
    getTextMetrics(hPwnd);
    _h = cyChar + 4;
    _w = rect.right;
@@ -74,10 +78,10 @@ void cSTATBAR::SetMessage(LPSTR msg,int i ,int n)
 {
 	StringCchCopy(LPSTR(Msg[i]), MSG_SIZE, LPSTR(msg));
 	RECT rect;
-	GetClientRect(hWnd,&rect);
+	GetClientRect(hWnd(),&rect);
 	rect.left = sp[i];								// clear the message area
 	rect.right = sp[i+1] - 1;
-	InvalidateRect(hWnd,&rect,TRUE);
+	InvalidateRect(hWnd(),&rect,TRUE);
 	Update();
 }
 

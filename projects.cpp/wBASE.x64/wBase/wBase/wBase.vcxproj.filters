@@ -101,9 +101,6 @@
     <ClCompile Include="..\Source\cWINBASE.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Wstdio.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\cWINBASEii.CPP">
       <Filter>Source Files</Filter>
     </ClCompile>

@@ -78,7 +78,7 @@ void cMSGLOOP::SetDlgModeless(HWND hdlg)
 //              
 //*******************************************************************
 
-int cMSGLOOP::Run(HWND hwnd)
+void cMSGLOOP::Run(HWND hwnd)
 {
  MSG msg;
  bQuit = false;
@@ -99,7 +99,6 @@ int cMSGLOOP::Run(HWND hwnd)
 	  AuxRun(hwnd);
 	 }
   }
- return msg.wParam ;
 }
 
 //*******************************************************************
@@ -113,7 +112,7 @@ int cMSGLOOP::Run(HWND hwnd)
 //  COMMENTS:   - normal BLOCKED windows message loop
 //              
 //*******************************************************************
-int cMSGLOOP::MessageLoop()
+void cMSGLOOP::MessageLoop()
 {
     MSG msg;
 
@@ -130,8 +129,6 @@ int cMSGLOOP::MessageLoop()
 			  DispatchMessage(&msg) ;
 		  }
      }
-
-    return msg.wParam;
 }
 
 //*******************************************************************
@@ -143,9 +140,9 @@ int cMSGLOOP::MessageLoop()
 //*******************************************************************
 
 cWINBASE::cWINBASE(HINSTANCE _hInstance, int _nCmdShow, LPCSTR szName, LPCSTR szDesc)
-	: nCmdShow(_nCmdShow), hwnd(0), LastFocus(0), cxChar(0), cyChar(0), cxCaps(0), _x(0),_y(0),_w(0),_h(0)
+	: __nCmdShow(_nCmdShow), __hWnd(0), __LastFocus(0), cxChar(0), cyChar(0), cxCaps(0)
 {
-	hinstance = _hInstance;
+	__hInstance = _hInstance;
 	SetName(szName, szDesc);
 	menu = NULL;
 	icon = NULL;
@@ -173,8 +170,8 @@ void cWINBASE::SetName(LPCSTR szName, LPCSTR szDesc = NULL)
 
 void cWINBASE::OnDestroy(HWND hwnd)
 {
-	if(LastFocus)
-      	SetFocus(LastFocus);
+	if(__LastFocus)
+      	SetFocus(__LastFocus);
 	PostQuitMessage (0) ;
 }
 
@@ -187,31 +184,35 @@ void cWINBASE::OnSize(HWND hwnd, UINT state, int cx, int cy)
 void cWINBASE::Show()
 {
   RECT rect;
-  GetClientRect(hwnd,&rect);
+  GetClientRect(hWnd(),&rect);
   _w = rect.right;
   _h = rect.bottom;
-  InvalidateRect(hwnd,&rect,false);
+  InvalidateRect(hWnd(),&rect,false);
   Update();
 }
 
+HANDLE loadCursor()
+{
+	return LoadImage(NULL, MAKEINTRESOURCE(OCR_NORMAL), IMAGE_CURSOR, 0, 0, LR_DEFAULTSIZE | LR_SHARED);
+}
 void cWINBASE::ExitWindow()
 {
-	SendMessage(hwnd,WM_CLOSE,0,0L);
+	SendMessage(hWnd(),WM_CLOSE,0,0L);
 }
 
 void cWINBASE::Clear()
 {
   RECT rect;
-  GetClientRect(hwnd,&rect);
+  GetClientRect(hWnd(),&rect);
   _w = rect.right;
   _h = rect.bottom;
-  InvalidateRect(hwnd,&rect,true);
+  InvalidateRect(hWnd(),&rect,true);
   Update();
 }
 
 void cWINBASE::setFocus()
 {
-	LastFocus = SetFocus(hwnd);
+	__LastFocus = SetFocus(hWnd());
 }
 
 void cWINBASE::getTextMetrics(HWND hwnd)
@@ -230,10 +231,10 @@ bool cWINBASE::isRegistered(LPSTR szClassName)
 {
     WNDCLASSEX WindowClass;
 	WindowClass.cbSize = sizeof(WNDCLASSEX);
-	return GetClassInfoEx(hinstance,szClassName,&WindowClass) ? true : false;
+	return GetClassInfoEx(hInstance(),szClassName,&WindowClass) ? true : false;
 }
 
 void cWINBASE::Move(int x,int y ,int h ,int w)
 {
-	MoveWindow(hwnd,x,y,h,w,true);
+	MoveWindow(hWnd(),x,y,h,w,true);
 }

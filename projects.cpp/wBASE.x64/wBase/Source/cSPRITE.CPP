@@ -18,16 +18,16 @@
 // Includes
 #include "cSPRITE.h"
 
-cSPRITE::cSPRITE(HINSTANCE hInstance,int rcBitmap, int rcMask)
+cSPRITE::cSPRITE(HINSTANCE hInstance,int rcBitmap, int rcMask):_x(0),_y(0)
 {
-	Create(hInstance,rcBitmap,rcMask);
+	CreateBitmap(hInstance,rcBitmap,rcMask);
 }
 
 cSPRITE::~cSPRITE()
 {
 }
 
-void cSPRITE::Create(HINSTANCE hInstance,int rcBitmap, int rcMask)
+void cSPRITE::CreateBitmap(HINSTANCE hInstance,int rcBitmap, int rcMask)
 {
 	HBITMAP s = sprite.Create(hInstance,rcBitmap);
     HBITMAP m = mask.Create(hInstance,rcMask);

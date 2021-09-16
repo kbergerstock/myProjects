@@ -3,15 +3,10 @@
 #include "cLED.h"
 #include "wmacros.h"
 
-cLED::cLED(HINSTANCE hIinstance, HWND parent) : subWindow(hInstance, 1, LPSTR("LEDCONTROL"))
+cLED::cLED(HINSTANCE hInstance, HWND parent,int control_id) : subWindow(hInstance, 1, LPSTR("LEDCONTROL"))
 {
     color = NEUTRAL;
-    hParent = parent;
-
-	if(!isRegistered() )
-    	Register();
-    hWnd = CreateControl(parent);   // FIX
-    if (Control_id && hWnd)
+    if(CreateControl(parent,control_id) )
     {
         Show(SW_SHOW);
         Update();
@@ -26,9 +21,9 @@ void cLED::SetTitle(char* t)
 // once the control is created create the bitmaps needed
 void cLED::OnCreated(HWND hWnd)
 {
-	Red.Create(hWnd,RGB(255,255,255),RGB(255,0,0));
-    Green.Create(hWnd,RGB(255,255,255),RGB(0,192,0));
-    Neutral.Create(hWnd,RGB(255,255,255),RGB(128,128,128));
+	Red.CreateBitmap(cWINBASE::hWnd(),RGB(255,255,255),RGB(255,0,0));
+    Green.CreateBitmap(cWINBASE::hWnd(),RGB(255,255,255),RGB(0,192,0));
+    Neutral.CreateBitmap(cWINBASE::hWnd(),RGB(255,255,255),RGB(128,128,128));
 }
 
 void cLED::Draw(short c)
@@ -37,15 +32,15 @@ void cLED::Draw(short c)
     switch(color)
      {
         case RED:
-        	Red.Draw(hWnd);
+        	Red.Draw(hParent());
             break;
 
         case GREEN:
-        	Green.Draw(hWnd);
+        	Green.Draw(hParent());
             break;
 
         case NEUTRAL:
-        	Neutral.Draw(hWnd);
+        	Neutral.Draw(hParent());
             break;
      }
 }

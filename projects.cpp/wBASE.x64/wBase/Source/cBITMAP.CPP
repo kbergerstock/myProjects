@@ -19,10 +19,6 @@
 
 #include "cBITMAP.H"
 
-cBITMAP::cBITMAP()
-{
-}
-
 cBITMAP::~cBITMAP()
 {
 	Destroy();

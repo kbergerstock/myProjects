@@ -17,7 +17,7 @@ class cBITMAP
         BITMAP  bitmap;
 
     public:
-    cBITMAP();
+    cBITMAP() : handle(NULL), bitmap(){}
     virtual ~cBITMAP();
 
     HBITMAP Create(HDC,long cx, long cy);
@@ -33,7 +33,4 @@ class cBITMAP
     int getHeight(void) {return bitmap.bmHeight; }
 };
 
-
-
 #endif
-

@@ -44,7 +44,7 @@ class cSTATBAR : public subWindow
       void GetSize(HWND);
 
 	public:
-	  cSTATBAR(HINSTANCE, HWND);
+	  cSTATBAR(HINSTANCE, HWND, int);
 	  void Draw(HWND,HWND);
 	  void Paint(HWND,HDC);
       void SetMessage(LPSTR,int,int);
