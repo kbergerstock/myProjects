@@ -149,8 +149,8 @@ cWINBASE::cWINBASE( int _nCmdShow, LPCSTR szName, LPCSTR szDesc)
 	: __nCmdShow(_nCmdShow), __hWnd(0), __LastFocus(0), cxChar(0), cyChar(0), cxCaps(0)
 {
 	SetName(szName, szDesc);
-	menu = NULL;
-	icon = NULL;
+	menu   = NULL;
+	icon   = NULL;
 	iconSm = NULL;
 	cursor = loadCursor();
 
@@ -197,6 +197,11 @@ void cWINBASE::Show()
   _h = rect.bottom;
   InvalidateRect(hWnd(),&rect,false);
   Update();
+}
+
+HANDLE cWINBASE::loadMenu(int id) 
+{
+	return (id == NULL) ? NULL :MAKEINTRESOURCE(id);
 }
 
 HANDLE cWINBASE::loadIcon(int id)

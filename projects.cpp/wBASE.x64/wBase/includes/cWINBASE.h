@@ -153,7 +153,7 @@ class cWINBASE
 	void Update() { UpdateWindow(hWnd()); }
     void Move(int,int,int,int);
 
-    bool Create();              // create the window    
+    bool Create(int);           // create the window (control_id or NULL for top level)   
 	bool Register();            // register the window class
     bool isRegistered(LPSTR);
 
@@ -164,10 +164,11 @@ class cWINBASE
 	virtual LRESULT WndProc( HWND, UINT, WPARAM , LPARAM ) = 0;
 
     virtual HANDLE loadCursor(); 
-    virtual HANDLE loadIcon(int id); 
-    inline void setMenu(int id) {menu = HANDLE(MAKEINTRESOURCE(id)); }
-    inline void setIcon(int id) { icon = (id == NULL) ? NULL : loadIcon(id); }
-    inline void setSmIcon(int id) { iconSm = (id == NULL) ? NULL : loadIcon(id); }
+    virtual HANDLE loadIcon(int id);
+    virtual HANDLE loadMenu(int id);
+    inline void setMenu(int id) { menu = loadMenu(id); }
+    inline void setIcon(int id) { icon = (id == 0) ? NULL : loadIcon(id); }
+    inline void setSmIcon(int id) { iconSm = (id == 0) ? NULL : loadIcon(id); }
     inline void SetSize(int w, int h) { _h = h; _w = w; };
     inline void SetPosition(int x, int y) { _x = x; _y = y; };
     inline void SetClassStyle(DWORD style) { class_style = style; };

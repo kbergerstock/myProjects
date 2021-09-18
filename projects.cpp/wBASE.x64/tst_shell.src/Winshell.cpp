@@ -15,10 +15,10 @@
 #include "shell_menu.rh"
 
 cWINSHELL::cWINSHELL(int nc) : cAppWinFrame(nc){
-    // setMenu(IDR_MENU1);
+    setMenu(IDR_MENU1);
     setIcon(IDI_ICON1);
     setSmIcon(IDI_ICON1);
-    if(Create() ) {
+    if(Create(NULL) ) {
         Show(nc);
     }        
 }

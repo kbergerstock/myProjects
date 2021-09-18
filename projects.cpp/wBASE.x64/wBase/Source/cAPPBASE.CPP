@@ -25,7 +25,7 @@ cAppWinFrame::cAppWinFrame(int _nCmdShow, LPCSTR appName , LPCSTR appDesc ) :
     // set window attributes
     SetClassStyle(CS_HREDRAW | CS_VREDRAW);
     SetWinStyle( WS_OVERLAPPEDWINDOW);
-    SetExtStyle(WS_EX_APPWINDOW | WS_EX_WINDOWEDGE);
+    SetExtStyle(0);
     setParentHwnd(NULL);
 }
 

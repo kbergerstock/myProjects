@@ -33,9 +33,9 @@ bool cWINBASE::Register()
         wndclass.cbClsExtra	    = 0;
         wndclass.cbWndExtra	    = sizeof(cWINBASE*);
         wndclass.hInstance	    = hInstance();
-        wndclass.hIcon          = HICON(icon);      // FIX LoadIcon(NULL, IDI_APPLICATION);
+        wndclass.hIcon          = HICON(icon);     
         wndclass.hIconSm        = HICON(iconSm);  
-        wndclass.hCursor        = HCURSOR(cursor);  // FIX LoadCursor(NULL, IDC_ARROW);
+        wndclass.hCursor        = HCURSOR(cursor); 
         wndclass.hbrBackground  = bkGnd;
         wndclass.lpszMenuName   = LPCSTR(menu);
         wndclass.lpszClassName  = szWinName ;
@@ -51,8 +51,9 @@ bool cWINBASE::Register()
 
 
 // create the window
-bool cWINBASE::Create()
+bool cWINBASE::Create(int ctrl_id)
 {
+    
     try
     {
         if (Register())                // REGISTER THE CLASS
@@ -62,12 +63,12 @@ bool cWINBASE::Create()
                 szWinName,
                 szWinDesc,
                 dwStyle,
-                _x,						// set window orgin
+                _x,						    // set window orgin
                 _y,
-                _w,						// set window height
-                _h,						// set window width
-                hwndParent,             // set the parent window if null this is the top level
-                HMENU(menu),            // set up the menu handle or the control id
+                _w,						    // set window height
+                _h,						    // set window width
+                hwndParent,                 // set the parent window if null this is the top level
+                MAKEINTRESOURCE(ctrl_id),   // set up the menu handle or the control id
                 hInstance(),
                 NULL
             );
@@ -88,10 +89,13 @@ bool cWINBASE::Create()
             throw "window register error";
         }
     }
-    catch (...)
+    catch (const char* errmsg)    
     {
-        // FIX HANDLE THE ERROR
+        // HANDLE THE ERROR
+        MessageBox(NULL, errmsg, "ERROR", MB_OK);
         setHWND(NULL);
+        ExitWindows(-1);
     }
+    
     return (hWnd() ? true : false);				    // return true if creation process worked
 };
