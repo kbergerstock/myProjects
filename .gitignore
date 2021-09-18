@@ -20,12 +20,16 @@ tools
 unity
 wdf
 zenva
-debug
+Debug
+Eelease
+x64\Debug
+x64\Release
+v16
 .vs
 
 *.bak
 *.ipch
-*/log
+*.log
 *.obj
 *.idb
 *.pdb

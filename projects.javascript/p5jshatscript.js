@@ -1,5 +1,7 @@
 // p5js 
 // hat.script
+// k.r.bergerstock @8/2021
+
 function setup() {
   createCanvas(640, 480);
 }

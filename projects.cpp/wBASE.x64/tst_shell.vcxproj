@@ -99,31 +99,33 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\myProjects\projects.cpp\wBASE.x64\tst_shell.src;D:\myProjects\projects.cpp\wBASE.x64;D:\myProjects\projects.cpp\wBASE.x64\lib.src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\myProjects\projects.cpp\wBASE.x64\wBase\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\myProjects\projects.cpp\wBASE.x64\wBase\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="lib.src\ABOUT.CPP" />
-    <ClCompile Include="lib.src\bitBlit.cpp" />
-    <ClCompile Include="lib.src\cAPPBASE.CPP" />
-    <ClCompile Include="lib.src\cDIALOG.CPP" />
-    <ClCompile Include="lib.src\CWFRAME.CPP" />
-    <ClCompile Include="lib.src\Windbase.cpp" />
-    <ClCompile Include="lib.src\Wstdio.cpp" />
     <ClCompile Include="tst_shell.src\Winshell.cpp" />
+    <ClCompile Include="wBase\Source\ABOUT.CPP" />
+    <ClCompile Include="wBase\Source\bitBlit.cpp" />
+    <ClCompile Include="wBase\Source\cAPPBASE.CPP" />
+    <ClCompile Include="wBase\Source\cBITMAP.CPP" />
+    <ClCompile Include="wBase\Source\cDIALOG.CPP" />
+    <ClCompile Include="wBase\Source\cWINBASE.cpp" />
+    <ClCompile Include="wBase\Source\cWINBASEii.CPP" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="lib.src\ABOUT.H" />
-    <ClInclude Include="lib.src\cAPPBASE.H" />
-    <ClInclude Include="lib.src\cDIALOG.H" />
-    <ClInclude Include="lib.src\cMUTEX.h" />
-    <ClInclude Include="lib.src\CWFRAME.H" />
-    <ClInclude Include="lib.src\WINDBASE.H" />
-    <ClInclude Include="lib.src\WMACROS.H" />
-    <ClInclude Include="lib.src\WM_MSGS.H" />
-    <ClInclude Include="lib.src\WSTDIO.H" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="tst_shell.src\Winshell.h" />
+    <ClInclude Include="wBase\includes\ABOUT.H" />
+    <ClInclude Include="wBase\includes\cAPPBASE.H" />
+    <ClInclude Include="wBase\includes\cBITMAP.H" />
+    <ClInclude Include="wBase\includes\cDIALOG.H" />
+    <ClInclude Include="wBase\includes\cWINBASE.h" />
+    <ClInclude Include="wBase\includes\WMACROS.H" />
+    <ClInclude Include="wBase\includes\WM_MSGS.H" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="tst_shell.src\aboutDialog.rc" />

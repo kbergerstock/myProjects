@@ -1,77 +1,66 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="shell.src">
       <UniqueIdentifier>{eb7d36a8-db66-4f13-aaf3-8fac9d563945}</UniqueIdentifier>
     </Filter>
+    <Filter Include="lib.src">
+      <UniqueIdentifier>{ab2d9e1a-6825-48a1-a6b6-aea54d393ba6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib.include">
+      <UniqueIdentifier>{5027cf79-f50c-4808-bfb7-c7b3541b6408}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="lib.src\ABOUT.CPP">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="lib.src\bitBlit.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="lib.src\cAPPBASE.CPP">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="lib.src\CWFRAME.CPP">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="lib.src\Windbase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="lib.src\Wstdio.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="lib.src\cDIALOG.CPP">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="tst_shell.src\Winshell.cpp">
       <Filter>shell.src</Filter>
     </ClCompile>
+    <ClCompile Include="wBase\Source\ABOUT.CPP">
+      <Filter>lib.src</Filter>
+    </ClCompile>
+    <ClCompile Include="wBase\Source\bitBlit.cpp">
+      <Filter>lib.src</Filter>
+    </ClCompile>
+    <ClCompile Include="wBase\Source\cAPPBASE.CPP">
+      <Filter>lib.src</Filter>
+    </ClCompile>
+    <ClCompile Include="wBase\Source\cBITMAP.CPP">
+      <Filter>lib.src</Filter>
+    </ClCompile>
+    <ClCompile Include="wBase\Source\cDIALOG.CPP">
+      <Filter>lib.src</Filter>
+    </ClCompile>
+    <ClCompile Include="wBase\Source\cWINBASE.cpp">
+      <Filter>lib.src</Filter>
+    </ClCompile>
+    <ClCompile Include="wBase\Source\cWINBASEii.CPP">
+      <Filter>lib.src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="lib.src\ABOUT.H">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="lib.src\cAPPBASE.H">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="lib.src\cMUTEX.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="lib.src\CWFRAME.H">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="lib.src\WINDBASE.H">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="lib.src\WMACROS.H">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="lib.src\WM_MSGS.H">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="lib.src\WSTDIO.H">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="lib.src\cDIALOG.H">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="tst_shell.src\Winshell.h">
       <Filter>shell.src</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="wBase\includes\ABOUT.H">
+      <Filter>lib.include</Filter>
+    </ClInclude>
+    <ClInclude Include="wBase\includes\cAPPBASE.H">
+      <Filter>lib.include</Filter>
+    </ClInclude>
+    <ClInclude Include="wBase\includes\cBITMAP.H">
+      <Filter>lib.include</Filter>
+    </ClInclude>
+    <ClInclude Include="wBase\includes\cDIALOG.H">
+      <Filter>lib.include</Filter>
+    </ClInclude>
+    <ClInclude Include="wBase\includes\cWINBASE.h">
+      <Filter>lib.include</Filter>
+    </ClInclude>
+    <ClInclude Include="wBase\includes\WM_MSGS.H">
+      <Filter>lib.include</Filter>
+    </ClInclude>
+    <ClInclude Include="wBase\includes\WMACROS.H">
+      <Filter>lib.include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
