@@ -77,7 +77,7 @@ class cMSGLOOP
     ~cMSGLOOP();
 
 	void Run(HWND);
-    void MessageLoop();
+    void run();
 
 	virtual void AuxRun(HWND) { Sleep(25); }
 
@@ -99,8 +99,10 @@ class cMSGLOOP
 
 class cWINBASE
 {
+  private:
+    static HINSTANCE __hInstance;
+
   protected:
-    HINSTANCE __hInstance;
     int       __nCmdShow;
 
 	HWND    __hWnd;
@@ -124,17 +126,18 @@ class cWINBASE
     DWORD   dwExtStyle;         // extended window style
     DWORD   dwStyle;			// window style
 
-    LONG    _x;					// window orgin
-    LONG    _y;
-    LONG    _w;					// window width
-    LONG    _h;					// window hieght
+    int    _x;					// window orgin
+    int    _y;
+    int    _w;					// window width
+    int    _h;					// window hieght
 
   public:
  
-    cWINBASE(HINSTANCE _hInstance, int _nCmdShow, LPCSTR szName = nullptr, LPCSTR szDesc = nullptr);
+    cWINBASE(int _nCmdShow, LPCSTR szName = nullptr, LPCSTR szDesc = nullptr);
     
     ~cWINBASE() {};
 
+    static void set_hInstance(HINSTANCE);
     inline HINSTANCE hInstance() { return __hInstance; }
     inline HWND hWnd() { return __hWnd; }
     inline void setHWND(HWND hwnd) { __hWnd = hwnd; }
@@ -147,13 +150,12 @@ class cWINBASE
     void Clear();
     void ExitWindow();
 
-	void Update() { UpdateWindow(__hWnd); }
+	void Update() { UpdateWindow(hWnd()); }
     void Move(int,int,int,int);
-    
-    bool isRegistered(LPSTR);
 
-    virtual bool Create();              // create the window    
-	virtual bool Register();            // register the window class
+    bool Create();              // create the window    
+	bool Register();            // register the window class
+    bool isRegistered(LPSTR);
 
 	virtual void OnPaint(HWND) = 0;
 	virtual void OnDestroy(HWND);
@@ -162,11 +164,12 @@ class cWINBASE
 	virtual LRESULT WndProc( HWND, UINT, WPARAM , LPARAM ) = 0;
 
     virtual HANDLE loadCursor(); 
-    inline HICON loadIcon(int id) { return HICON(LoadImage(hInstance(), MAKEINTRESOURCE(id), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE)); }
+    virtual HANDLE loadIcon(int id); 
     inline void setMenu(int id) {menu = HANDLE(MAKEINTRESOURCE(id)); }
     inline void setIcon(int id) { icon = (id == NULL) ? NULL : loadIcon(id); }
     inline void setSmIcon(int id) { iconSm = (id == NULL) ? NULL : loadIcon(id); }
-    inline void SetSize(int x, int y, int w, int h) { _x = x; _y = y; _h = h; _w = w; };
+    inline void SetSize(int w, int h) { _h = h; _w = w; };
+    inline void SetPosition(int x, int y) { _x = x; _y = y; };
     inline void SetClassStyle(DWORD style) { class_style = style; };
     inline void SetExtStyle(DWORD style) { dwExtStyle = style; }
     inline void SetWinStyle(DWORD style) { dwStyle = style; };

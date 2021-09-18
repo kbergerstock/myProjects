@@ -56,11 +56,8 @@ class cAppWinFrame : public cWINBASE
 	virtual LRESULT WndProc( HWND, UINT, WPARAM , LPARAM );
 
   public:
-	bool Create();
 
-    void Run(void);
-
-	cAppWinFrame(HINSTANCE _hinstance, int _nCmdShow, LPCSTR appName = "app", LPCSTR appDesc = "top level app window");
+	cAppWinFrame(int _nCmdShow, LPCSTR appName = "app", LPCSTR appDesc = "top level app window");
 	virtual ~cAppWinFrame();
 };
 

@@ -57,7 +57,7 @@ bool cWINBASE::Create()
     {
         if (Register())                // REGISTER THE CLASS
         {
-            setHWND( CreateWindowEx(   // CREATE THE APPLICATION WINDOW
+            HWND m_hwnd = CreateWindowEx(   // CREATE THE APPLICATION WINDOW
                 dwExtStyle,
                 szWinName,
                 szWinDesc,
@@ -70,7 +70,8 @@ bool cWINBASE::Create()
                 HMENU(menu),            // set up the menu handle or the control id
                 hInstance(),
                 NULL
-            ) );
+            );
+            setHWND(m_hwnd);
             if (hWnd())					// if creation process was successful
             {
                 SetPointer(hWnd(), LONG_PTR(this));		    // set a pointer to the class into the CbWndExtra

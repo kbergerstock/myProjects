@@ -31,7 +31,7 @@ AboutBox::AboutBox(HINSTANCE hinst) :
 AboutBox::AboutBox(HINSTANCE hinst, int id_bitmap) :
    cDIALOGBOX(hinst), hControl(0)
 {
-  hBitmap = LoadBitmap(hinst,MAKEINTRESOURCE(id_bitmap) );
+  hBitmap = LoadBitmap(hinst,MAKEINTRESOURCE(id_bitmap) ); // FIX
 }
 
 AboutBox::~AboutBox()

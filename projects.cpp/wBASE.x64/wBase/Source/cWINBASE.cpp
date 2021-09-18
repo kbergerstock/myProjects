@@ -57,7 +57,7 @@ LRESULT CALLBACK MainWndProc (HWND hwnd , UINT msg , WPARAM wParam , LPARAM lPar
 cMSGLOOP::cMSGLOOP():bQuit(false)
 {
    	GetCurrentDirectory(MAX_PATH ,szCurrentDir);
-   	lstrcat(szCurrentDir,"\\");
+   	StringCchCat(szCurrentDir,MAX_PATH,"\\");
 }
 
 cMSGLOOP::~cMSGLOOP() {}
@@ -112,7 +112,7 @@ void cMSGLOOP::Run(HWND hwnd)
 //  COMMENTS:   - normal BLOCKED windows message loop
 //              
 //*******************************************************************
-void cMSGLOOP::MessageLoop()
+void cMSGLOOP::run()
 {
     MSG msg;
 
@@ -139,20 +139,28 @@ void cMSGLOOP::MessageLoop()
 //              
 //*******************************************************************
 
-cWINBASE::cWINBASE(HINSTANCE _hInstance, int _nCmdShow, LPCSTR szName, LPCSTR szDesc)
+HINSTANCE cWINBASE::__hInstance = NULL;
+void cWINBASE::set_hInstance(HINSTANCE hInstance)
+{
+	__hInstance = hInstance;
+}
+
+cWINBASE::cWINBASE( int _nCmdShow, LPCSTR szName, LPCSTR szDesc)
 	: __nCmdShow(_nCmdShow), __hWnd(0), __LastFocus(0), cxChar(0), cyChar(0), cxCaps(0)
 {
-	__hInstance = _hInstance;
 	SetName(szName, szDesc);
 	menu = NULL;
 	icon = NULL;
 	iconSm = NULL;
+	cursor = loadCursor();
 
 	// set default back ground color
 	bkGnd = (HBRUSH)(COLOR_BACKGROUND + 1);
 	// set default size
-	_x = _y = _h = _w = CW_USEDEFAULT;
-
+	_x = 10;
+	_y = 10;
+	_h = 480;
+	_w = 640;
 }
 
 void cWINBASE::SetName(LPCSTR szName, LPCSTR szDesc = NULL)
@@ -191,10 +199,16 @@ void cWINBASE::Show()
   Update();
 }
 
-HANDLE loadCursor()
+HANDLE cWINBASE::loadIcon(int id)
+{
+	return LoadImage(hInstance(), MAKEINTRESOURCE(id), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE); 
+}
+
+HANDLE cWINBASE::loadCursor()
 {
 	return LoadImage(NULL, MAKEINTRESOURCE(OCR_NORMAL), IMAGE_CURSOR, 0, 0, LR_DEFAULTSIZE | LR_SHARED);
 }
+
 void cWINBASE::ExitWindow()
 {
 	SendMessage(hWnd(),WM_CLOSE,0,0L);

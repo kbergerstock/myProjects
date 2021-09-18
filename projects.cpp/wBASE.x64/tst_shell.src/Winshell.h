@@ -30,7 +30,7 @@ class cWINSHELL : public cAppWinFrame
 
     public:
 
-        cWINSHELL(HINSTANCE,int);
+        cWINSHELL(int);
         ~cWINSHELL();
 };
 

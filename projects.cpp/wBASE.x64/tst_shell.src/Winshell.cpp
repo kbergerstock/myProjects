@@ -14,15 +14,13 @@
 #include "ABOUT.H"
 #include "shell_menu.rh"
 
-cWINSHELL::cWINSHELL(HINSTANCE hi,int nc) : cAppWinFrame(hi,nc){
-    SetMenu(IDR_MENU1);
-    SetLargeIcon(IDI_ICON1);
-    SetSmallIcon(IDI_ICON1);
+cWINSHELL::cWINSHELL(int nc) : cAppWinFrame(nc){
+    // setMenu(IDR_MENU1);
+    setIcon(IDI_ICON1);
+    setSmIcon(IDI_ICON1);
     if(Create() ) {
         Show(nc);
-        Run();
     }        
-
 }
 
 cWINSHELL::~cWINSHELL(){ }
@@ -46,7 +44,7 @@ void cWINSHELL::OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 
         case IDM_ABOUT_CMD:
         {
-            pDIALOGBOX pBox = new AboutBox(hInstance);
+            pDIALOGBOX pBox = new AboutBox(hInstance());
             pBox->Display(hwnd, "AboutBox");
             delete pBox;
         }
@@ -69,8 +67,10 @@ int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdL
     tMUTEX prg(true,"WINSHELL");
     if(!prg.doesExist() )
      {
-        
-         cWINSHELL shell(hInstance,nCmdShow);
+        cWINBASE::set_hInstance(hInstance);
+        cWINSHELL shell(nCmdShow);
+        cMSGLOOP  app;
+        app.run();
 
      }
     else

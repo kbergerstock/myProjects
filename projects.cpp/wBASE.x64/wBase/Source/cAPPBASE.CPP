@@ -19,8 +19,8 @@
 
 #include "cAppBase.h"
 
-cAppWinFrame::cAppWinFrame(HINSTANCE _hInstance, int _nCmdShow, LPCSTR appName , LPCSTR appDesc ) :
-    cWINBASE(_hInstance, _nCmdShow, appName, appDesc)
+cAppWinFrame::cAppWinFrame(int _nCmdShow, LPCSTR appName , LPCSTR appDesc ) :
+    cWINBASE( _nCmdShow, appName, appDesc)
 {
     // set window attributes
     SetClassStyle(CS_HREDRAW | CS_VREDRAW);
