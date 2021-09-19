@@ -19,6 +19,8 @@ class cWINSHELL : public cAppWinFrame
 {
 
     private:
+		bool ready_2_run;
+
 		// message cracker handling routines
 		void OnCommand(HWND, int, HWND, UINT);
 
@@ -32,6 +34,7 @@ class cWINSHELL : public cAppWinFrame
 
         cWINSHELL(int);
         ~cWINSHELL();
+		inline bool ready() { return ready_2_run; }
 };
 
 #endif

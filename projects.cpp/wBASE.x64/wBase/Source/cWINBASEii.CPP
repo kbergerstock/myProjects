@@ -53,27 +53,26 @@ bool cWINBASE::Register()
 // create the window
 bool cWINBASE::Create(int ctrl_id)
 {
-    
+    HMENU control_id = HMENU(MAKEINTRESOURCE(ctrl_id));
     try
     {
-        if (Register())                // REGISTER THE CLASS
+        if (Register())         // REGISTER THE CLASS
         {
-            HWND m_hwnd = CreateWindowEx(   // CREATE THE APPLICATION WINDOW
+            setHWND( CreateWindowEx(   // CREATE THE APPLICATION WINDOW
                 dwExtStyle,
                 szWinName,
                 szWinDesc,
                 dwStyle,
-                _x,						    // set window orgin
+                _x,				// set window orgin
                 _y,
-                _w,						    // set window height
-                _h,						    // set window width
-                hwndParent,                 // set the parent window if null this is the top level
-                MAKEINTRESOURCE(ctrl_id),   // set up the menu handle or the control id
+                _w,				// set window height
+                _h,				// set window width
+                hwndParent,     // set the parent window if null this is the top level
+                control_id,     // set up the menu the control id use NULL for a top level window
                 hInstance(),
                 NULL
-            );
-            setHWND(m_hwnd);
-            if (hWnd())					// if creation process was successful
+            ));
+            if (hWnd())		    // if creation process was successful
             {
                 SetPointer(hWnd(), LONG_PTR(this));		    // set a pointer to the class into the CbWndExtra
                 SendMessage(hWnd(), WM_WIN_CREATED, 0, 0L);	// send a window created message to the call back function
@@ -94,7 +93,6 @@ bool cWINBASE::Create(int ctrl_id)
         // HANDLE THE ERROR
         MessageBox(NULL, errmsg, "ERROR", MB_OK);
         setHWND(NULL);
-        ExitWindows(-1);
     }
     
     return (hWnd() ? true : false);				    // return true if creation process worked

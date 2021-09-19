@@ -18,7 +18,8 @@ cWINSHELL::cWINSHELL(int nc) : cAppWinFrame(nc){
     setMenu(IDR_MENU1);
     setIcon(IDI_ICON1);
     setSmIcon(IDI_ICON1);
-    if(Create(NULL) ) {
+    ready_2_run = Create(NULL);
+    if(ready_2_run)  {
         Show(nc);
     }        
 }
@@ -70,7 +71,8 @@ int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdL
         cWINBASE::set_hInstance(hInstance);
         cWINSHELL shell(nCmdShow);
         cMSGLOOP  app;
-        app.run();
+        if (shell.ready())
+            app.run();  
 
      }
     else
