@@ -246,11 +246,11 @@ void cWINBASE::getTextMetrics(HWND hwnd)
 	 ReleaseDC(hwnd,hdc);
 }
 
-bool cWINBASE::isRegistered(LPSTR szClassName)
+bool cWINBASE::isRegistered()
 {
     WNDCLASSEX WindowClass;
 	WindowClass.cbSize = sizeof(WNDCLASSEX);
-	return GetClassInfoEx(hInstance(),szClassName,&WindowClass) ? true : false;
+	return GetClassInfoEx(hInstance(),szWinName,&WindowClass) ? true : false;
 }
 
 void cWINBASE::Move(int x,int y ,int h ,int w)

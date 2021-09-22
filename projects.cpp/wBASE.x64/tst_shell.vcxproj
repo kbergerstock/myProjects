@@ -116,6 +116,7 @@
     <ClCompile Include="wBase\Source\cDIALOG.CPP" />
     <ClCompile Include="wBase\Source\cWINBASE.cpp" />
     <ClCompile Include="wBase\Source\cWINBASEii.CPP" />
+    <ClCompile Include="wSKELETON\SKELETON.CPP" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tst_shell.src\Winshell.h" />
@@ -126,6 +127,7 @@
     <ClInclude Include="wBase\includes\cWINBASE.h" />
     <ClInclude Include="wBase\includes\WMACROS.H" />
     <ClInclude Include="wBase\includes\WM_MSGS.H" />
+    <ClInclude Include="wSKELETON\SKELETON.H" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="tst_shell.src\aboutDialog.rc" />

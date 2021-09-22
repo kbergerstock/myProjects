@@ -1,16 +1,16 @@
-// slide custom control
+// the diamond bitmap used by slide custom control
 
-#ifndef __cDIAMOND_H
-#include "cDIAMOND.h"
+#ifndef __diamond_h
+#include "diamond.h"
 #endif
 
-cDIAMOND::~cDIAMOND()
+Diamond::~Diamond()
 {
 	if(hBitmap)
 		DeleteObject(hBitmap);
 }
 
-void cDIAMOND::CreateBitmap(HWND hwnd, COLORREF bkGnd, COLORREF color)
+void Diamond::CreateBitmap(HWND hwnd, COLORREF bkGnd, COLORREF color)
 {
 	RECT rect;
 	HBRUSH hBrush;
@@ -50,7 +50,7 @@ void cDIAMOND::CreateBitmap(HWND hwnd, COLORREF bkGnd, COLORREF color)
 	ReleaseDC(hwnd,hdc);
 }
 
-void cDIAMOND::Draw(HWND hwnd, int yCenter)
+void Diamond::Draw(HWND hwnd, int yCenter)
 {
 	HDC    hdc = GetDC(hwnd);
 	HDC    hdcMem;

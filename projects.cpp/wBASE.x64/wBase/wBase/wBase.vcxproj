@@ -23,7 +23,7 @@
     <ClInclude Include="..\includes\cAPPBASE.H" />
     <ClInclude Include="..\includes\cBITMAP.H" />
     <ClInclude Include="..\includes\cDIALOG.H" />
-    <ClInclude Include="..\includes\cDIAMOND.H" />
+    <ClInclude Include="..\includes\diamond.h" />
     <ClInclude Include="..\includes\cLED.H" />
     <ClInclude Include="..\includes\cMUTEX.h" />
     <ClInclude Include="..\includes\cSPRITE.h" />
@@ -35,6 +35,24 @@
     <ClInclude Include="..\includes\WMACROS.H" />
     <ClInclude Include="..\includes\WM_MSGS.H" />
     <ClInclude Include="..\includes\WSTDIO.H" />
+    <ClInclude Include="..\tmp\CFILE.H" />
+    <ClInclude Include="..\tmp\CNTR.H" />
+    <ClInclude Include="..\tmp\CNTRS.H" />
+    <ClInclude Include="..\tmp\CPROCESS.H" />
+    <ClInclude Include="..\tmp\CRANDOM.H" />
+    <ClInclude Include="..\tmp\CSLIDE.H" />
+    <ClInclude Include="..\tmp\CVALUE.H" />
+    <ClInclude Include="..\tmp\DATAWIN.H" />
+    <ClInclude Include="..\tmp\DLGBASE.H" />
+    <ClInclude Include="..\tmp\DLGEXT.H" />
+    <ClInclude Include="..\tmp\DMACROS.H" />
+    <ClInclude Include="..\tmp\FNAME.H" />
+    <ClInclude Include="..\tmp\KTERM.H" />
+    <ClInclude Include="..\tmp\MEDIT.H" />
+    <ClInclude Include="..\tmp\MODELESS.H" />
+    <ClInclude Include="..\tmp\OMSGBOX.H" />
+    <ClInclude Include="..\tmp\Popfile.h" />
+    <ClInclude Include="..\tmp\TIMER.H" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\ABOUT.CPP" />
@@ -42,7 +60,7 @@
     <ClCompile Include="..\Source\cAPPBASE.CPP" />
     <ClCompile Include="..\Source\cBITMAP.CPP" />
     <ClCompile Include="..\Source\cDIALOG.CPP" />
-    <ClCompile Include="..\Source\cDIAMOND.CPP" />
+    <ClCompile Include="..\Source\diamond.cpp" />
     <ClCompile Include="..\Source\cLED.CPP" />
     <ClCompile Include="..\Source\cSPRITE.CPP" />
     <ClCompile Include="..\Source\cWINBASEii.CPP" />
@@ -50,6 +68,27 @@
     <ClCompile Include="..\Source\LED.CPP" />
     <ClCompile Include="..\Source\STATBAR.CPP" />
     <ClCompile Include="..\Source\cWINBASE.cpp" />
+    <ClCompile Include="..\tmp\CFILE.CPP" />
+    <ClCompile Include="..\tmp\CFILE1.CPP" />
+    <ClCompile Include="..\tmp\CNTR.CPP" />
+    <ClCompile Include="..\tmp\CNTRS.CPP" />
+    <ClCompile Include="..\tmp\CPROCESS.CPP" />
+    <ClCompile Include="..\tmp\CSLIDE.CPP" />
+    <ClCompile Include="..\tmp\CVALUE.CPP" />
+    <ClCompile Include="..\tmp\DATAWIN.CPP" />
+    <ClCompile Include="..\tmp\DLGBASE.CPP" />
+    <ClCompile Include="..\tmp\Dlgext.cpp" />
+    <ClCompile Include="..\tmp\DRAWBM.CPP" />
+    <ClCompile Include="..\tmp\FNAME.CPP" />
+    <ClCompile Include="..\tmp\GPPCHAR.CPP" />
+    <ClCompile Include="..\tmp\GPPF.CPP" />
+    <ClCompile Include="..\tmp\ITOD.CPP" />
+    <ClCompile Include="..\tmp\KTERM.CPP" />
+    <ClCompile Include="..\tmp\MEDIT.CPP" />
+    <ClCompile Include="..\tmp\MODELESS.CPP" />
+    <ClCompile Include="..\tmp\OMSGBOX.CPP" />
+    <ClCompile Include="..\tmp\POPFILE.CPP" />
+    <ClCompile Include="..\tmp\TIMER.CPP" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

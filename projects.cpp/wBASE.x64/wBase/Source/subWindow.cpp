@@ -7,35 +7,25 @@
 #include "subWindow.h"
 #endif
 
-subWindow::subWindow(HINSTANCE _hInstance, int _nCmdShow, LPCSTR name, LPCSTR desc) : 
-	cWINBASE(_hInstance, _nCmdShow, name, desc)
+subWindow::subWindow( int _nCmdShow, LPCSTR name, LPCSTR desc) : 
+	cWINBASE(_nCmdShow, name, desc), Control_id(0), newBK(0), oldBK(0)
 {
-  bQuit = false;
-  isRegisteredOk = false;
-
 }
 
-
 // create the window
-HWND subWindow::CreateControl(HWND hwndParent, int control_id)
+bool subWindow::CreateControl(HWND hwndParent, int control_id)
 {
-
-	if (!isRegisteredOk)
+	bool isOk = false;
+	if (isRegistered() )
 	{
 		Control_id = control_id;
 		setParentHwnd(hwndParent);
 		setIcon(NULL);
 		setSmIcon(NULL);
 		loadCursor();
-		isRegisteredOk = Register();
+		isOk = Create(control_id);
 	}
-
-	if (isRegisteredOk)
-	{
-		menu = MAKEINTRESOURCE(control_id);
-		Create();
-	}
-	return hWnd();
+	return isOk;
 }
 
 void subWindow::OnUpdate(HWND hwnd)
@@ -71,20 +61,6 @@ void subWindow::OnDestroy(HWND hWnd)
 	setHWND(NULL);
 	if(bQuit)
 		PostQuitMessage (0);
-}
-
-void subWindow::SetSize(int x,int y,int w,int h)
-{
-  _x = x;
-  _y = y;
-  _w = w;
-  _h = h;
-}
-
-void subWindow::SetLocation(int x, int y)
-{
-	_x = x;
-    _y = y;
 }
 
 // THE CLASS CALL BACK FUNCTION

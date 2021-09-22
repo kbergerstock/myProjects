@@ -11,12 +11,11 @@
 #ifndef  __subWindow_h
 #define  __subWindow_h
 
-// sub windows are used to create custom controls
+// sub windows are used to create child windows or custom controls
 class subWindow : public cWINBASE
 {
 protected:
 	int	  Control_id;			// child window control id
-	bool  isRegisteredOk;
 
 	COLORREF newBK;
 	COLORREF oldBK;
@@ -41,16 +40,11 @@ protected:
 	virtual LRESULT WndProc(HWND, UINT, WPARAM, LPARAM);
 
 public:
-	inline void SetId(int id) { Control_id = id; }
 	inline int GetID(void) { return Control_id; }
 
-	subWindow(HINSTANCE , int , LPCSTR , LPCSTR = NULL);
+	subWindow(int , LPCSTR , LPCSTR);
 
-    bool isRegistered() { return cWINBASE::isRegistered(szWinName); }
-	HWND CreateControl(HWND, int);
-
-	void SetSize(int,int,int,int);
-    void SetLocation(int,int);
+	bool CreateControl(HWND, int);
 
 	virtual void Paint(HWND,HDC) = 0;
 

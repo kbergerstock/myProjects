@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="suplimentary">
+      <UniqueIdentifier>{b8d6802c-5ad3-423e-8279-52e198ed7863}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\includes\ABOUT.H">
@@ -27,7 +30,7 @@
     <ClInclude Include="..\includes\cDIALOG.H">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\includes\cDIAMOND.H">
+    <ClInclude Include="..\includes\diamond.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\includes\cLED.H">
@@ -63,6 +66,60 @@
     <ClInclude Include="..\includes\WSTDIO.H">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\tmp\CFILE.H">
+      <Filter>suplimentary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tmp\CNTR.H">
+      <Filter>suplimentary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tmp\CNTRS.H">
+      <Filter>suplimentary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tmp\CPROCESS.H">
+      <Filter>suplimentary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tmp\CRANDOM.H">
+      <Filter>suplimentary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tmp\CSLIDE.H">
+      <Filter>suplimentary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tmp\CVALUE.H">
+      <Filter>suplimentary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tmp\DATAWIN.H">
+      <Filter>suplimentary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tmp\DLGBASE.H">
+      <Filter>suplimentary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tmp\DLGEXT.H">
+      <Filter>suplimentary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tmp\DMACROS.H">
+      <Filter>suplimentary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tmp\FNAME.H">
+      <Filter>suplimentary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tmp\KTERM.H">
+      <Filter>suplimentary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tmp\MEDIT.H">
+      <Filter>suplimentary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tmp\MODELESS.H">
+      <Filter>suplimentary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tmp\OMSGBOX.H">
+      <Filter>suplimentary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tmp\Popfile.h">
+      <Filter>suplimentary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tmp\TIMER.H">
+      <Filter>suplimentary</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\ABOUT.CPP">
@@ -80,7 +137,7 @@
     <ClCompile Include="..\Source\cDIALOG.CPP">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\cDIAMOND.CPP">
+    <ClCompile Include="..\Source\diamond.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\cLED.CPP">
@@ -103,6 +160,69 @@
     </ClCompile>
     <ClCompile Include="..\Source\cWINBASEii.CPP">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmp\CFILE.CPP">
+      <Filter>suplimentary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmp\CFILE1.CPP">
+      <Filter>suplimentary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmp\CNTR.CPP">
+      <Filter>suplimentary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmp\CNTRS.CPP">
+      <Filter>suplimentary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmp\CPROCESS.CPP">
+      <Filter>suplimentary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmp\CSLIDE.CPP">
+      <Filter>suplimentary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmp\CVALUE.CPP">
+      <Filter>suplimentary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmp\DATAWIN.CPP">
+      <Filter>suplimentary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmp\DLGBASE.CPP">
+      <Filter>suplimentary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmp\Dlgext.cpp">
+      <Filter>suplimentary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmp\DRAWBM.CPP">
+      <Filter>suplimentary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmp\FNAME.CPP">
+      <Filter>suplimentary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmp\GPPCHAR.CPP">
+      <Filter>suplimentary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmp\GPPF.CPP">
+      <Filter>suplimentary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmp\ITOD.CPP">
+      <Filter>suplimentary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmp\KTERM.CPP">
+      <Filter>suplimentary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmp\MEDIT.CPP">
+      <Filter>suplimentary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmp\MODELESS.CPP">
+      <Filter>suplimentary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmp\OMSGBOX.CPP">
+      <Filter>suplimentary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmp\POPFILE.CPP">
+      <Filter>suplimentary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tmp\TIMER.CPP">
+      <Filter>suplimentary</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

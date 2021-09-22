@@ -1,4 +1,4 @@
-// slide custom control header file
+// diamond bitmap used by slide custom control 
 
 #ifndef __WINDOWS_H
     #ifndef STRICT
@@ -12,10 +12,10 @@
     #include <mmsystem.h>
 #endif
 
-#ifndef __cDIAMOND_H
-#define __cDIAMOND_H
+#ifndef __diamond_h
+#define __diamond_h
 
-class cDIAMOND
+class Diamond
 {
 	private:
 		int xPixel;
@@ -29,8 +29,8 @@ class cDIAMOND
 	    HBITMAP  hBitmap;
 
     public:
-    	cDIAMOND() : yCenterOld(-1),xCenterOld(0),hBitmap(0),cyTotal(0),cxTotal(0),yPixel(0),xPixel(0) { }
-        ~cDIAMOND();
+    	Diamond() : yCenterOld(-1),xCenterOld(0),hBitmap(0),cyTotal(0),cxTotal(0),yPixel(0),xPixel(0) { }
+        ~Diamond();
         void CreateBitmap(HWND,COLORREF,COLORREF);
 	    void Draw(HWND,int);
         int  GetXtotal()    { return cxTotal; }

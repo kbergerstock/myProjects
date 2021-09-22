@@ -133,7 +133,7 @@ class cWINBASE
 
   public:
  
-    cWINBASE(int _nCmdShow, LPCSTR szName = nullptr, LPCSTR szDesc = nullptr);
+    cWINBASE(int _nCmdShow, LPCSTR , LPCSTR );
     
     ~cWINBASE() {};
 
@@ -155,7 +155,7 @@ class cWINBASE
 
     bool Create(int);           // create the window (control_id or NULL for top level)   
 	bool Register();            // register the window class
-    bool isRegistered(LPSTR);
+    bool isRegistered();
 
 	virtual void OnPaint(HWND) = 0;
 	virtual void OnDestroy(HWND);
