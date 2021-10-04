@@ -2,60 +2,41 @@
 // Keith r bergerstock
 
 #include <iostream>
+#include <stdio.h>
+#include <thread>
 #include <string>
 #include <sieve.h>
 #include <FFmt.h>
 
-#ifdef	 CLOCK_CHRONO
 #include <ctime>
 #include <ratio>
 #include <chrono>
 using namespace std::chrono;
-#else
-#include <time.h>
-#endif
 
-void time_sieve(UINT32 prime_limit, double time_limit, bool show_primes){
+void time_sieve(UINT32 prime_limit,  unsigned int time_limit, bool show_primes){
 	Sieve P;
-	#ifdef CLOCK_CHRONO
-		steady_clock::time_point t0, t1;
-		
-	#else
-		struct timespec t0, t1;
-		clockid_t clk_id = CLOCK_MONOTONIC;
-	#endif
-	
-	double et = 0;
+	int primes_found = 0;
 	UINT32 passes = 0;
+	unsigned int et = 0;
+	auto t0 = steady_clock::now();
 	do {
-		#ifdef CLOCK_CHRONO
-			t0 = steady_clock::now();
-			P.empty();
-			P.init(prime_limit);
-			P.sieve2();
-			t1 = steady_clock::now();
-			duration<double> lt = duration<double>(t1 - t0);
-			et += lt.count() * 1000.0;
-		#else
-			clock_gettime(clk_id, &t0);
-			p.empty();
-			P.init(pime_limit);
-			P.sieve2();
-			clock_gettime(clk_id, &t1);
-			et += (double(t1.tv_sec - t0.tv_sec)* 1000.0) + (double(t1.tv_nsec - t0.tv_nsec) / 1000000.0); 
-		#endif
+		P.empty();
+		P.init(prime_limit);
+		primes_found = P.sieve2();
 		passes++;
-	} while (P.validate() && (et < time_limit));
+		et = duration_cast<milliseconds>(steady_clock::now()-t0).count();
+	} while (P.validate(primes_found) && et < time_limit);
+
 
 	 // output the results
 	FFmt time(10,4);
 
 	std::cout << std::dec << "passes: " << passes
 	 	  << " elapsed time " << time << et << " mS"
-		  << " avg/pass " << time << et / passes << " mS"
+		  << " avg/pass " << time << double(et) / double(passes) << " mS"
 		  << " limit " << prime_limit
-		  << " count " << P.counted()
-		  << " valid " << P.validate() << std::endl;
+		  << " count " << primes_found
+		  << " valid " << P.validate(primes_found) << std::endl;
 
 	if(show_primes){
 		std::cout << P;

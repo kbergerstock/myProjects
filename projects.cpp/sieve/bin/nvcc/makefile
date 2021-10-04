@@ -1,4 +1,4 @@
-CFLAGS = -O2 -D CLOCK_CHRONO -m64
+CFLAGS = -O2 -m64
 INC = ..\..\headers
 SRC = ..\..\src
 CC = nvcc.exe

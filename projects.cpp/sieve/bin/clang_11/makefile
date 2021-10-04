@@ -1,4 +1,4 @@
-CFLAGS = -O2 -D CLOCK_CHRONO  -Ofast -m64
+CFLAGS = -O2 -Ofast -m64
 INC = ..\..\headers
 SRC = ..\..\src
 CC = clang++.exe

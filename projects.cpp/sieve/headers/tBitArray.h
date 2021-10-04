@@ -19,12 +19,13 @@ private:
     // divide idx by 8 to get the indice into the bitarray
     inline UINT32 idx(UINT32 i) { return i >> 3; }
     // use the bottom 3 bits of idx to form the mask 
-    inline BITS mask(UINT32 i) { return 1 << (i & 0x07); }
+    inline BITS mask(UINT32 i) { return 1 << (i & 0x7); }
 
     public:
         tBitArray();
         void init(UINT32 size);
         void empty();
+        unsigned int count(UINT32);
  
         ~tBitArray(){ empty(); }
 

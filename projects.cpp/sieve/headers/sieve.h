@@ -20,7 +20,9 @@ class Sieve
 				UINT32 expected;
 			}ELEMENT;
 		public:
+			Map() : value(0) {};
 			UINT32 find(UINT32);
+			UINT32 value;
 		};
 
 		UINT32  prime_limit;
@@ -34,9 +36,9 @@ class Sieve
 
 		void init(UINT32);
 		void empty();
-		void sieve2();
-		UINT32 counted();
-		bool validate(); 
+		int sieve2();
+		// UINT32 counted();
+		bool validate(int); 
 		
 		friend std::ostream& operator<<(std::ostream& os, Sieve &P);
 

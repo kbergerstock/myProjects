@@ -125,7 +125,7 @@
       <MultiProcessorCompilation>false</MultiProcessorCompilation>
       <PreprocessorDefinitions>CLOCK_CHRONO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
-      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
       <DebugInformationFormat>None</DebugInformationFormat>
       <SDLCheck>false</SDLCheck>
       <LanguageStandard_C>stdc11</LanguageStandard_C>

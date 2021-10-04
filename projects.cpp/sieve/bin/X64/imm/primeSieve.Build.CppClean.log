@@ -5,8 +5,11 @@ d:\myprojects\projects.cpp\sieve\bin\x64\imm\sieve.xdc
 d:\myprojects\projects.cpp\sieve\bin\x64\imm\tbitarray.cpp.json
 d:\myprojects\projects.cpp\sieve\bin\x64\imm\tbitarray.xdc
 d:\myprojects\projects.cpp\sieve\bin\x64\imm\tbitarray.obj
+d:\myprojects\projects.cpp\sieve\bin\x64\imm\tbitarray.asm
 d:\myprojects\projects.cpp\sieve\bin\x64\imm\sieve.obj
+d:\myprojects\projects.cpp\sieve\bin\x64\imm\sieve.asm
 d:\myprojects\projects.cpp\sieve\bin\x64\imm\primesieve.obj
+d:\myprojects\projects.cpp\sieve\bin\x64\imm\primesieve.asm
 d:\myprojects\projects.cpp\sieve\bin\x64\concrt140.dll
 d:\myprojects\projects.cpp\sieve\bin\x64\msvcp140.dll
 d:\myprojects\projects.cpp\sieve\bin\x64\msvcp140_1.dll
@@ -19,9 +22,7 @@ d:\myprojects\projects.cpp\sieve\bin\x64\vcruntime140_1.dll
 d:\myprojects\projects.cpp\sieve\bin\x64\vcamp140.dll
 d:\myprojects\projects.cpp\sieve\bin\x64\vcomp140.dll
 d:\myprojects\projects.cpp\sieve\bin\x64\primesieve.exe
-d:\myprojects\projects.cpp\sieve\bin\x64\imm\primesieve.asm
-d:\myprojects\projects.cpp\sieve\bin\x64\imm\sieve.asm
-d:\myprojects\projects.cpp\sieve\bin\x64\imm\tbitarray.asm
+d:\myprojects\projects.cpp\sieve\bin\x64\primesieve.ilk
 d:\myprojects\projects.cpp\sieve\bin\x64\primesieve.pdb
 d:\myprojects\projects.cpp\sieve\bin\x64\primesieve.xml
 d:\myprojects\projects.cpp\sieve\bin\x64\imm\sieve2.tlog\cl.command.1.tlog
