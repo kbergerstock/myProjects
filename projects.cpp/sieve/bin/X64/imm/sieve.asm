@@ -35,6 +35,7 @@ EXTRN	__imp_?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV12@XZ:PR
 EXTRN	??0tBitArray@@QEAA@XZ:PROC			; tBitArray::tBitArray
 EXTRN	?init@tBitArray@@QEAAXI@Z:PROC			; tBitArray::init
 EXTRN	?empty@tBitArray@@QEAAXXZ:PROC			; tBitArray::empty
+EXTRN	?sieve@tBitArray@@QEAAHII@Z:PROC		; tBitArray::sieve
 EXTRN	__CxxFrameHandler4:PROC
 ;	COMDAT pdata
 pdata	SEGMENT
@@ -59,30 +60,6 @@ pdata	SEGMENT
 $pdata$?empty@Sieve@@QEAAXXZ DD imagerel $LN4
 	DD	imagerel $LN4+29
 	DD	imagerel $unwind$?empty@Sieve@@QEAAXXZ
-pdata	ENDS
-;	COMDAT pdata
-pdata	SEGMENT
-$pdata$?sieve2@Sieve@@QEAAHXZ DD imagerel $LN58
-	DD	imagerel $LN58+42
-	DD	imagerel $unwind$?sieve2@Sieve@@QEAAHXZ
-pdata	ENDS
-;	COMDAT pdata
-pdata	SEGMENT
-$pdata$0$?sieve2@Sieve@@QEAAHXZ DD imagerel $LN58+42
-	DD	imagerel $LN58+180
-	DD	imagerel $chain$0$?sieve2@Sieve@@QEAAHXZ
-pdata	ENDS
-;	COMDAT pdata
-pdata	SEGMENT
-$pdata$2$?sieve2@Sieve@@QEAAHXZ DD imagerel $LN58+180
-	DD	imagerel $LN58+257
-	DD	imagerel $chain$2$?sieve2@Sieve@@QEAAHXZ
-pdata	ENDS
-;	COMDAT pdata
-pdata	SEGMENT
-$pdata$3$?sieve2@Sieve@@QEAAHXZ DD imagerel $LN58+257
-	DD	imagerel $LN58+271
-	DD	imagerel $chain$3$?sieve2@Sieve@@QEAAHXZ
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
@@ -314,36 +291,6 @@ xdata	ENDS
 xdata	SEGMENT
 $unwind$?validate@Sieve@@QEAA_NH@Z DD 010701H
 	DD	0a207H
-xdata	ENDS
-;	COMDAT xdata
-xdata	SEGMENT
-$chain$3$?sieve2@Sieve@@QEAAHXZ DD 021H
-	DD	imagerel $LN58
-	DD	imagerel $LN58+42
-	DD	imagerel $unwind$?sieve2@Sieve@@QEAAHXZ
-xdata	ENDS
-;	COMDAT xdata
-xdata	SEGMENT
-$chain$2$?sieve2@Sieve@@QEAAHXZ DD 020021H
-	DD	025400H
-	DD	imagerel $LN58
-	DD	imagerel $LN58+42
-	DD	imagerel $unwind$?sieve2@Sieve@@QEAAHXZ
-xdata	ENDS
-;	COMDAT xdata
-xdata	SEGMENT
-$chain$0$?sieve2@Sieve@@QEAAHXZ DD 020521H
-	DD	025405H
-	DD	imagerel $LN58
-	DD	imagerel $LN58+42
-	DD	imagerel $unwind$?sieve2@Sieve@@QEAAHXZ
-xdata	ENDS
-;	COMDAT xdata
-xdata	SEGMENT
-$unwind$?sieve2@Sieve@@QEAAHXZ DD 050b01H
-	DD	04640bH
-	DD	03340bH
-	DD	0700bH
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -827,17 +774,17 @@ os$ = 48
 P$ = 56
 ??6@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@std@@AEAV01@AEAVSieve@@@Z PROC ; operator<<, COMDAT
 ; File D:\myProjects\projects.cpp\sieve\src\sieve.cpp
-; Line 130
+; Line 87
 $LN32:
 	mov	QWORD PTR [rsp+8], rbx
 	mov	QWORD PTR [rsp+16], rbp
 	mov	QWORD PTR [rsp+24], rsi
 	push	rdi
 	sub	rsp, 32					; 00000020H
-; Line 132
+; Line 89
 	mov	rax, QWORD PTR [rcx]
 	xor	esi, esi
-; Line 133
+; Line 90
 	xor	ebx, ebx
 	mov	rbp, rdx
 	mov	rdi, rcx
@@ -846,15 +793,15 @@ $LN32:
 ; Line 368
 	mov	QWORD PTR [r8+rcx+40], 6
 ; File D:\myProjects\projects.cpp\sieve\src\sieve.cpp
-; Line 133
+; Line 90
 	cmp	DWORD PTR [rdx+4], ebx
 	jbe	SHORT $LN30@operator
 $LL4@operator:
-; Line 118
+; Line 75
 	test	ebx, ebx
 	je	SHORT $LN13@operator
 ; File D:\myProjects\projects.cpp\sieve\headers\tBitArray.h
-; Line 32
+; Line 34
 	mov	r8, QWORD PTR [rbp+24]
 ; Line 22
 	mov	ecx, ebx
@@ -865,49 +812,49 @@ $LL4@operator:
 ; Line 22
 	mov	edx, 1
 	shl	dl, cl
-; Line 32
+; Line 34
 	test	BYTE PTR [r9+r8], dl
 ; File D:\myProjects\projects.cpp\sieve\src\sieve.cpp
-; Line 123
+; Line 80
 	jne	SHORT $LN2@operator
-; Line 124
+; Line 81
 	lea	edx, DWORD PTR [rbx*2+1]
 	jmp	SHORT $LN29@operator
 $LN13@operator:
-; Line 120
+; Line 77
 	mov	edx, 2
 $LN29@operator:
-; Line 136
+; Line 93
 	mov	rax, QWORD PTR [rdi]
 	movsxd	rcx, DWORD PTR [rax+4]
 ; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xiosbase
 ; Line 368
 	mov	QWORD PTR [rcx+rdi+40], 6
 ; File D:\myProjects\projects.cpp\sieve\src\sieve.cpp
-; Line 137
+; Line 94
 	mov	rcx, rdi
 	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@I@Z
 	mov	rcx, rax
 	lea	rdx, OFFSET FLAT:??_C@_01IHBHIGKO@?0@
 	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
-; Line 138
+; Line 95
 	inc	esi
-; Line 139
+; Line 96
 	cmp	esi, 12
 	jle	SHORT $LN2@operator
-; Line 140
+; Line 97
 	xor	esi, esi
-; Line 141
+; Line 98
 	lea	rdx, OFFSET FLAT:??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z ; std::endl<char,std::char_traits<char> >
 	mov	rcx, rdi
 	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z
 $LN2@operator:
-; Line 133
+; Line 90
 	inc	ebx
 	cmp	ebx, DWORD PTR [rbp+4]
 	jb	SHORT $LL4@operator
 $LN30@operator:
-; Line 146
+; Line 103
 	mov	rbx, QWORD PTR [rsp+48]
 	mov	rax, rdi
 	mov	rbp, QWORD PTR [rsp+56]
@@ -925,15 +872,15 @@ this$ = 96
 k$ = 104
 ?validate@Sieve@@QEAA_NH@Z PROC				; Sieve::validate, COMDAT
 ; File D:\myProjects\projects.cpp\sieve\src\sieve.cpp
-; Line 110
+; Line 69
 $LN16:
 	mov	rax, rsp
 	sub	rsp, 88					; 00000058H
 ; Line 12
 	mov	r8d, DWORD PTR [rcx+8]
-; Line 110
+; Line 69
 	mov	r10, rcx
-; Line 111
+; Line 70
 	mov	r9d, DWORD PTR [rcx]
 ; Line 12
 	test	r8d, r8d
@@ -970,10 +917,10 @@ $LL6@validate:
 	inc	rax
 	cmp	rax, 9
 	jl	SHORT $LL6@validate
-; Line 113
-	cmp	r8d, edx
+; Line 70
+	cmp	edx, r8d
 	sete	al
-; Line 114
+; Line 71
 	add	rsp, 88					; 00000058H
 	ret	0
 $LN11@validate:
@@ -983,10 +930,10 @@ $LN11@validate:
 	mov	r8d, ecx
 	mov	DWORD PTR [r10+8], ecx
 $LN5@validate:
-; Line 113
-	cmp	r8d, edx
+; Line 70
+	cmp	edx, r8d
 	sete	al
-; Line 114
+; Line 71
 	add	rsp, 88					; 00000058H
 	ret	0
 ?validate@Sieve@@QEAA_NH@Z ENDP				; Sieve::validate
@@ -994,151 +941,16 @@ _TEXT	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT ?sieve2@Sieve@@QEAAHXZ
 _TEXT	SEGMENT
-this$ = 16
+this$ = 8
 ?sieve2@Sieve@@QEAAHXZ PROC				; Sieve::sieve2, COMDAT
 ; File D:\myProjects\projects.cpp\sieve\src\sieve.cpp
-; Line 62
-$LN58:
-	mov	QWORD PTR [rsp+16], rbx
-	mov	QWORD PTR [rsp+24], rsi
-	push	rdi
-; File D:\myProjects\projects.cpp\sieve\headers\tBitArray.h
-; Line 33
-	mov	rax, QWORD PTR [rcx+24]
-; File D:\myProjects\projects.cpp\sieve\src\sieve.cpp
+; Line 63
+	mov	rax, rcx
 ; Line 64
-	mov	esi, 1
-	mov	r9, rcx
-	mov	edi, esi
-; Line 67
-	mov	r10d, esi
-; File D:\myProjects\projects.cpp\sieve\headers\tBitArray.h
-; Line 33
-	or	BYTE PTR [rax], sil
-; File D:\myProjects\projects.cpp\sieve\src\sieve.cpp
-; Line 67
-	mov	ebx, DWORD PTR [rcx+4]
-	cmp	ebx, esi
-	jbe	$LN54@sieve2
-	mov	QWORD PTR [rsp+16], rbp
-	npad	1
-$LL4@sieve2:
-; File D:\myProjects\projects.cpp\sieve\headers\tBitArray.h
-; Line 32
-	mov	rbp, QWORD PTR [r9+24]
-; Line 22
-	mov	ecx, r10d
-	and	ecx, 7
-; Line 20
-	mov	eax, r10d
-	shr	rax, 3
-; Line 22
-	mov	edx, esi
-	shl	dl, cl
-; Line 32
-	mov	r8d, ebx
-	test	dl, BYTE PTR [rax+rbp]
-; File D:\myProjects\projects.cpp\sieve\src\sieve.cpp
-; Line 69
-	jne	SHORT $LN2@sieve2
-; Line 73
-	lea	r11d, DWORD PTR [r10*2+1]
-	inc	edi
-; Line 74
-	mov	eax, r11d
-	imul	eax, r11d
-; Line 78
-	cmp	eax, DWORD PTR [r9]
-	jae	SHORT $LN12@sieve2
-; Line 81
-	dec	eax
-	shr	eax, 1
-	cmp	eax, ebx
-	jae	SHORT $LN2@sieve2
-	npad	5
-$LL7@sieve2:
-; File D:\myProjects\projects.cpp\sieve\headers\tBitArray.h
-; Line 20
-	mov	r8d, eax
-; Line 22
-	mov	ecx, eax
-; Line 20
-	shr	r8, 3
-; Line 22
-	and	ecx, 7
-; Line 33
-	add	r8, QWORD PTR [r9+24]
-; File D:\myProjects\projects.cpp\sieve\src\sieve.cpp
-; Line 81
-	add	eax, r11d
-; File D:\myProjects\projects.cpp\sieve\headers\tBitArray.h
-; Line 33
-	movzx	edx, BYTE PTR [r8]
-	bts	edx, ecx
-	mov	BYTE PTR [r8], dl
-; File D:\myProjects\projects.cpp\sieve\src\sieve.cpp
-; Line 81
-	mov	r8d, DWORD PTR [r9+4]
-	cmp	eax, r8d
-	jb	SHORT $LL7@sieve2
-$LN2@sieve2:
-; Line 67
-	inc	r10d
-	mov	ebx, r8d
-	cmp	r10d, r8d
-	jb	SHORT $LL4@sieve2
-; Line 97
-	mov	rbp, QWORD PTR [rsp+16]
-	mov	eax, edi
-; Line 98
-	mov	rbx, QWORD PTR [rsp+24]
-	mov	rsi, QWORD PTR [rsp+32]
-	pop	rdi
-	ret	0
-$LN12@sieve2:
-; Line 89
-	inc	r10d
-	cmp	r10d, ebx
-	jae	SHORT $LN55@sieve2
-; File D:\myProjects\projects.cpp\sieve\headers\tBitArray.h
-; Line 32
-	movzx	ecx, r10b
-	rol	sil, cl
-	npad	13
-$LL10@sieve2:
-; Line 20
-	mov	eax, r10d
-; File D:\myProjects\projects.cpp\sieve\src\sieve.cpp
-; Line 89
-	lea	ecx, DWORD PTR [rdi+1]
-; File D:\myProjects\projects.cpp\sieve\headers\tBitArray.h
-; Line 20
-	shr	rax, 3
-; Line 32
-	test	BYTE PTR [rax+rbp], sil
-; File D:\myProjects\projects.cpp\sieve\src\sieve.cpp
-; Line 89
-	cmovne	ecx, edi
-	inc	r10d
-	rol	sil, 1
-	mov	edi, ecx
-	cmp	r10d, ebx
-	jb	SHORT $LL10@sieve2
-$LN55@sieve2:
-	mov	rbp, QWORD PTR [rsp+16]
-; Line 97
-	mov	eax, edi
-; Line 98
-	mov	rbx, QWORD PTR [rsp+24]
-	mov	rsi, QWORD PTR [rsp+32]
-	pop	rdi
-	ret	0
-$LN54@sieve2:
-	mov	rbx, QWORD PTR [rsp+24]
-	mov	eax, esi
-	mov	rsi, QWORD PTR [rsp+32]
-	pop	rdi
-	ret	0
+	add	rcx, 16
+	mov	r8d, DWORD PTR [rax]
+	mov	edx, DWORD PTR [rax+4]
+	jmp	?sieve@tBitArray@@QEAAHII@Z		; tBitArray::sieve
 ?sieve2@Sieve@@QEAAHXZ ENDP				; Sieve::sieve2
 _TEXT	ENDS
 ; Function compile flags: /Ogtpy
@@ -1216,11 +1028,11 @@ this$ = 8
 i$ = 16
 ?itor@Sieve@@AEAAII@Z PROC				; Sieve::itor, COMDAT
 ; File D:\myProjects\projects.cpp\sieve\src\sieve.cpp
-; Line 118
+; Line 75
 	test	edx, edx
 	je	SHORT $LN4@itor
 ; File D:\myProjects\projects.cpp\sieve\headers\tBitArray.h
-; Line 32
+; Line 34
 	mov	r9, QWORD PTR [rcx+24]
 ; Line 22
 	mov	r8d, 1
@@ -1233,24 +1045,24 @@ i$ = 16
 	shr	r10, 3
 ; Line 22
 	shl	r8b, cl
-; Line 32
+; Line 34
 	test	BYTE PTR [r10+r9], r8b
 ; File D:\myProjects\projects.cpp\sieve\src\sieve.cpp
-; Line 123
+; Line 80
 	jne	SHORT $LN14@itor
-; Line 124
+; Line 81
 	lea	eax, DWORD PTR [rdx*2+1]
-; Line 127
+; Line 84
 	ret	0
 $LN14@itor:
-; Line 126
+; Line 83
 	xor	eax, eax
-; Line 127
+; Line 84
 	ret	0
 $LN4@itor:
-; Line 126
+; Line 83
 	mov	eax, 2
-; Line 127
+; Line 84
 	ret	0
 ?itor@Sieve@@AEAAII@Z ENDP				; Sieve::itor
 _TEXT	ENDS

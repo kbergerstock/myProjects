@@ -37,7 +37,6 @@ class Sieve
 		void init(UINT32);
 		void empty();
 		int sieve2();
-		// UINT32 counted();
 		bool validate(int); 
 		
 		friend std::ostream& operator<<(std::ostream& os, Sieve &P);

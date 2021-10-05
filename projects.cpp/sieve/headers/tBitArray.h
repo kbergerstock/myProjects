@@ -26,6 +26,8 @@ private:
         void init(UINT32 size);
         void empty();
         unsigned int count(UINT32);
+        unsigned int count(UINT32,UINT32);
+        int sieve(UINT32 nl, UINT32 prime_limit);
  
         ~tBitArray(){ empty(); }
 

@@ -60,6 +60,8 @@ PUBLIC	??_C@_0P@PHNIAHAC@?5elapsed?5time?5@		; `string'
 PUBLIC	??_C@_08DBACIOND@passes?3?5@			; `string'
 PUBLIC	??_C@_03PHCFDOEB@?9?9t@				; `string'
 PUBLIC	??_C@_03EHAIMEJK@?9?9n@				; `string'
+PUBLIC	??_R0PEAD@8					; char * `RTTI Type Descriptor'
+PUBLIC	??_C@_0BE@CEADDODL@unhandled?5exception@	; `string'
 PUBLIC	??_C@_0BI@CFPLBAOH@invalid?5string?5position@	; `string'
 PUBLIC	??_C@_1BK@MHIKGOKE@?$AA?3?$AAA?$AAM?$AA?3?$AAa?$AAm?$AA?3?$AAP?$AAM?$AA?3?$AAp?$AAm@ ; `string'
 PUBLIC	??_R4exception@std@@6B@				; std::exception::`RTTI Complete Object Locator'
@@ -124,6 +126,7 @@ EXTRN	memcpy:PROC
 EXTRN	memmove:PROC
 EXTRN	??_7type_info@@6B@:BYTE				; type_info::`vftable'
 EXTRN	__imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A:BYTE
+EXTRN	__imp_?cerr@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A:BYTE
 EXTRN	_fltused:DWORD
 ;	COMDAT pdata
 pdata	SEGMENT
@@ -349,8 +352,8 @@ $pdata$??$_Getvals@_W@?$time_get@_WV?$istreambuf_iterator@_WU?$char_traits@_W@st
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?time_sieve@@YAXII_N@Z DD imagerel $LN76
-	DD	imagerel $LN76+676
+$pdata$?time_sieve@@YAXII_N@Z DD imagerel $LN82
+	DD	imagerel $LN82+687
 	DD	imagerel $unwind$?time_sieve@@YAXII_N@Z
 pdata	ENDS
 ;	COMDAT pdata
@@ -373,9 +376,21 @@ $pdata$??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_trait
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$main DD	imagerel $LN529
-	DD	imagerel $LN529+1523
+$pdata$main DD	imagerel $LN531
+	DD	imagerel $LN531+1656
 	DD	imagerel $unwind$main
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$main$catch$22 DD imagerel main$catch$22
+	DD	imagerel main$catch$22+50
+	DD	imagerel $unwind$main$catch$22
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$main$catch$23 DD imagerel main$catch$23
+	DD	imagerel main$catch$23+50
+	DD	imagerel $unwind$main$catch$23
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
@@ -580,6 +595,16 @@ CONST	SEGMENT
 ??_C@_0BI@CFPLBAOH@invalid?5string?5position@ DB 'invalid string position'
 	DB	00H						; `string'
 CONST	ENDS
+;	COMDAT ??_C@_0BE@CEADDODL@unhandled?5exception@
+CONST	SEGMENT
+??_C@_0BE@CEADDODL@unhandled?5exception@ DB 'unhandled exception', 00H ; `string'
+CONST	ENDS
+;	COMDAT ??_R0PEAD@8
+data$r	SEGMENT
+??_R0PEAD@8 DQ	FLAT:??_7type_info@@6B@			; char * `RTTI Type Descriptor'
+	DQ	0000000000000000H
+	DB	'.PEAD', 00H
+data$r	ENDS
 ;	COMDAT ??_C@_03EHAIMEJK@?9?9n@
 CONST	SEGMENT
 ??_C@_03EHAIMEJK@?9?9n@ DB '--n', 00H			; `string'
@@ -875,31 +900,73 @@ xdata	SEGMENT
 $unwind$??$?8DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@QEBD@Z DD 010401H
 	DD	04204H
 xdata	ENDS
+;	COMDAT voltbl
+voltbl	SEGMENT
+_volmd	DB	00H
+voltbl	ENDS
+;	COMDAT voltbl
+voltbl	SEGMENT
+_volmd	DB	00H
+voltbl	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$ip2state$main DB 012H
-	DB	05H, 02H
-	DB	00H
-	DB	05H, 04H
-	DB	04H
-	DB	094H
-	DB	06H
-	DB	')', 02H
-	DB	08H
-	DB	0f1H, 03H
-	DB	06H
-	DB	0a9H, 06H
-	DB	00H
-	DB	'Q', 02H
-	DB	06H
-	DB	'F'
-	DB	04H
-	DB	018H
-	DB	08H
+$unwind$main$catch$23 DD 020a01H
+	DD	05006320aH
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$stateUnwindMap$main DB 08H
+$unwind$main$catch$22 DD 020a01H
+	DD	05006320aH
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$ip2state$main DB 014H
+	DB	'a', 02H
+	DB	02H
+	DB	01dH, 04H
+	DB	06H
+	DB	0feH
+	DB	08H
+	DB	'e', 02H
+	DB	0aH
+	DB	']', 04H
+	DB	08H
+	DB	'5', 07H
+	DB	02H
+	DB	01dH, 02H
+	DB	00H
+	DB	'.'
+	DB	06H
+	DB	018H
+	DB	0aH
+	DB	'd'
+	DB	00H
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$handlerMap$main DB 04H
+	DB	016H
+	DD	imagerel ??_R0PEAD@8
+	DB	01H, 03H
+	DD	imagerel main$catch$22
+	DB	0ddH, 018H
+	DB	011H
+	DB	080H
+	DD	imagerel main$catch$23
+	DB	089H, 018H
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$tryMap$main DB	02H
+	DB	00H
+	DB	08H
+	DB	0aH
+	DD	imagerel $handlerMap$main
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$stateUnwindMap$main DB 0cH
+	DB	08H
 	DB	0aH
 	DD	imagerel ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ
 	DB	041H
@@ -909,25 +976,27 @@ $stateUnwindMap$main DB 08H
 	DB	0e0H
 	DB	032H
 	DD	imagerel ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ
-	DB	080H
+	DB	0a0H
 	DB	032H
 	DD	imagerel ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ
-	DB	040H
+	DB	060H
+	DB	0d8H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$cppxdata$main DB 028H
+$cppxdata$main DB 038H
 	DD	imagerel $stateUnwindMap$main
+	DD	imagerel $tryMap$main
 	DD	imagerel $ip2state$main
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$main DD	0a1d11H
-	DD	019011dH
-	DD	0e00ff011H
-	DD	0c00bd00dH
-	DD	060087009H
-	DD	050063007H
+$unwind$main DD	091b19H
+	DD	01a011bH
+	DD	0e012f014H
+	DD	0c00ed010H
+	DD	0600b700cH
+	DD	0300aH
 	DD	imagerel __CxxFrameHandler4
 	DD	imagerel $cppxdata$main
 xdata	ENDS
@@ -1017,7 +1086,7 @@ xdata	SEGMENT
 $ip2state$?time_sieve@@YAXII_N@Z DB 08H
 	DB	'V'
 	DB	00H
-	DB	'~'
+	DB	094H
 	DB	02H
 	DB	'=', 08H
 	DB	04H
@@ -1470,25 +1539,26 @@ _TEXT	ENDS
 ;	COMDAT main
 _TEXT	SEGMENT
 $T1 = 32
-$T2 = 32
-par$3 = 64
-$T4 = 96
-tv2134 = 104
+prime_limit$1$ = 36
+time_limit$1$ = 40
+$T2 = 48
+$T3 = 48
+par$4 = 80
 cmd$5 = 112
 arg$6 = 144
 _Eptr$7 = 176
 _Eptr$8 = 184
-tv2243 = 272
+szErr$9 = 192
 argc$ = 272
 argv$ = 280
-prime_limit$1$ = 288
-time_limit$1$ = 296
+tv2238 = 288
+i$1$ = 296
 main	PROC						; COMDAT
 ; File D:\myProjects\projects.cpp\sieve\src\primeSieve.cpp
-; Line 46
-$LN529:
+; Line 49
+$LN531:
 	mov	QWORD PTR [rsp+16], rdx
-	push	rbp
+	mov	DWORD PTR [rsp+8], ecx
 	push	rbx
 	push	rsi
 	push	rdi
@@ -1496,126 +1566,142 @@ $LN529:
 	push	r13
 	push	r14
 	push	r15
-	lea	rbp, QWORD PTR [rsp-31]
-	sub	rsp, 200				; 000000c8H
-	mov	r14, rdx
-; Line 48
+	sub	rsp, 208				; 000000d0H
+	mov	eax, ecx
+	xor	ecx, ecx
+	mov	DWORD PTR $T1[rsp], ecx
+; Line 51
 	mov	ebx, 1000000				; 000f4240H
-	mov	DWORD PTR prime_limit$1$[rbp-169], ebx
-; Line 49
-	mov	edi, 5000				; 00001388H
-	mov	DWORD PTR time_limit$1$[rbp-169], edi
-; Line 50
-	xor	r15b, r15b
-	mov	DWORD PTR tv2243[rbp-169], r15d
+	mov	DWORD PTR prime_limit$1$[rsp], ebx
 ; Line 52
-	movsxd	rsi, ecx
-	mov	QWORD PTR tv2134[rbp-169], rsi
-	cmp	rsi, 1
-	jle	$LN510@main
-	mov	eax, 1
-	mov	edi, eax
-	mov	QWORD PTR $T4[rbp-169], rax
-$LN526@main:
+	mov	edi, 5000				; 00001388H
+	mov	DWORD PTR time_limit$1$[rsp], edi
 ; Line 53
-	xor	eax, eax
-	mov	rdx, QWORD PTR [r14+rdi*8]
+	xor	r15b, r15b
+	mov	DWORD PTR tv2238[rsp], r15d
+; Line 56
+	mov	edi, 1
+$LN521@main:
+	mov	DWORD PTR i$1$[rsp], edi
+	cmp	edi, eax
+	jge	$LN3@main
+; Line 57
+	movsxd	rax, edi
+	mov	rdx, QWORD PTR [rdx+rax*8]
 ; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xstring
 ; Line 2346
-	mov	QWORD PTR arg$6[rbp-169], rax
+	mov	QWORD PTR arg$6[rsp], rcx
 ; Line 4596
-	mov	QWORD PTR arg$6[rbp-153], rax
+	mov	QWORD PTR arg$6[rsp+16], rcx
 ; Line 4610
-	mov	QWORD PTR arg$6[rbp-145], 15
+	mov	QWORD PTR arg$6[rsp+24], 15
 ; Line 4612
-	mov	BYTE PTR arg$6[rbp-169], al
+	mov	BYTE PTR arg$6[rsp], 0
 ; Line 412
 	mov	r8, -1
-$LL519@main:
+$LL514@main:
 	inc	r8
 	cmp	BYTE PTR [rdx+r8], 0
-	jne	SHORT $LL519@main
+	jne	SHORT $LL514@main
 ; Line 3264
-	lea	rcx, QWORD PTR arg$6[rbp-169]
+	lea	rcx, QWORD PTR arg$6[rsp]
 	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD_K@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
 	npad	1
 ; File D:\myProjects\projects.cpp\sieve\src\primeSieve.cpp
-; Line 54
-	mov	r12, QWORD PTR arg$6[rbp-145]
-	mov	r13, QWORD PTR arg$6[rbp-169]
-	mov	rbx, QWORD PTR arg$6[rbp-153]
+; Line 58
+	mov	rbx, QWORD PTR arg$6[rsp+16]
+	mov	r13, QWORD PTR arg$6[rsp]
+	mov	r12, QWORD PTR arg$6[rsp+24]
 	cmp	rbx, 3
-	jb	$LN450@main
+	jb	$LN458@main
 ; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xstring
 ; Line 2346
 	xor	edi, edi
-	mov	QWORD PTR cmd$5[rbp-169], rdi
+	mov	QWORD PTR cmd$5[rsp], rdi
 ; Line 4610
-	mov	QWORD PTR cmd$5[rbp-145], 15
+	mov	QWORD PTR cmd$5[rsp+24], 15
 ; Line 4612
-	mov	BYTE PTR cmd$5[rbp-169], dil
+	mov	BYTE PTR cmd$5[rsp], dil
 ; Line 2305
-	lea	rdx, QWORD PTR arg$6[rbp-169]
+	lea	rdx, QWORD PTR arg$6[rsp]
 ; Line 2306
 	cmp	r12, 16
 	cmovae	rdx, r13
 ; Line 3248
-	mov	QWORD PTR cmd$5[rbp-153], 3
+	mov	QWORD PTR cmd$5[rsp+16], 3
 ; Line 122
 	lea	r8d, QWORD PTR [rdi+3]
-	lea	rcx, QWORD PTR cmd$5[rbp-169]
+	lea	rcx, QWORD PTR cmd$5[rsp]
 	call	memmove
 ; Line 3250
-	mov	BYTE PTR cmd$5[rbp-166], dil
+	mov	BYTE PTR cmd$5[rsp+3], dil
+; Line 4367
+	mov	r15d, DWORD PTR $T1[rsp]
+	or	r15d, 1
 ; Line 2346
-	mov	QWORD PTR par$3[rbp-169], rdi
+	mov	QWORD PTR par$4[rsp], rdi
 ; Line 4596
-	mov	QWORD PTR par$3[rbp-153], rdi
+	mov	QWORD PTR par$4[rsp+16], rdi
 ; Line 4610
-	mov	QWORD PTR par$3[rbp-145], 15
+	mov	QWORD PTR par$4[rsp+24], 15
 ; Line 4612
-	mov	BYTE PTR par$3[rbp-169], dil
+	mov	BYTE PTR par$4[rsp], dil
 ; Line 2342
 	lea	rax, QWORD PTR [rbx-3]
 	mov	rsi, -1
 	cmp	rax, rsi
 	cmovb	rsi, rax
 ; Line 2305
-	lea	r14, QWORD PTR arg$6[rbp-169]
+	lea	r14, QWORD PTR arg$6[rsp]
 ; Line 2306
 	cmp	r12, 16
 	cmovae	r14, r13
 ; Line 3224
 	cmp	rsi, 15
 ; Line 3246
-	ja	SHORT $LN166@main
+	ja	SHORT $LN174@main
 ; Line 3248
-	mov	QWORD PTR par$3[rbp-153], rsi
+	mov	QWORD PTR par$4[rsp+16], rsi
 ; Line 122
 	mov	r8, rsi
 	lea	rdx, QWORD PTR [r14+3]
-	lea	rcx, QWORD PTR par$3[rbp-169]
+	lea	rcx, QWORD PTR par$4[rsp]
 	call	memmove
 ; Line 3250
-	mov	BYTE PTR par$3[rbp+rsi-169], dil
+	mov	BYTE PTR par$4[rsp+rsi], dil
 ; Line 3251
-	jmp	$LN178@main
-$LN166@main:
+	jmp	$LN186@main
+$LN174@main:
 ; Line 4508
 	mov	rax, 9223372036854775807		; 7fffffffffffffffH
 	cmp	rsi, rax
-	ja	$LN497@main
+	ja	$LN525@main
 ; Line 4488
 	mov	rbx, rsi
 	or	rbx, 15
 	cmp	rbx, rax
 ; Line 4489
-	jbe	SHORT $LN183@main
+	jbe	SHORT $LN191@main
 ; Line 4490
 	mov	rbx, rax
 	mov	rax, -9223372036854775769		; 8000000000000027H
-	jmp	SHORT $LN509@main
-$LN183@main:
+$LN209@main:
+; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xmemory
+; Line 85
+	mov	rcx, rax
+	call	??2@YAPEAX_K@Z				; operator new
+; Line 142
+	test	rax, rax
+	je	$LN438@main
+; Line 143
+	lea	rdi, QWORD PTR [rax+39]
+	and	rdi, -32				; ffffffffffffffe0H
+; Line 144
+	mov	QWORD PTR [rdi-8], rax
+; Line 238
+	jmp	SHORT $LN200@main
+$LN191@main:
+; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xstring
 ; Line 4497
 	cmp	rbx, 22
 	mov	eax, 22
@@ -1625,39 +1711,26 @@ $LN183@main:
 ; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xmemory
 ; Line 237
 	cmp	rcx, 4096				; 00001000H
-	jb	SHORT $LN191@main
+	jb	SHORT $LN199@main
 ; Line 136
 	lea	rax, QWORD PTR [rcx+39]
 ; Line 137
 	cmp	rax, rcx
-	jbe	$LN498@main
-$LN509@main:
-; Line 85
-	mov	rcx, rax
-	call	??2@YAPEAX_K@Z				; operator new
-; Line 142
-	test	rax, rax
-	je	$LN430@main
-; Line 143
-	lea	rdi, QWORD PTR [rax+39]
-	and	rdi, -32				; ffffffffffffffe0H
-; Line 144
-	mov	QWORD PTR [rdi-8], rax
-; Line 238
-	jmp	SHORT $LN192@main
-$LN191@main:
+	jbe	$LN526@main
+	jmp	SHORT $LN209@main
+$LN199@main:
 ; Line 243
 	test	rcx, rcx
-	je	SHORT $LN192@main
+	je	SHORT $LN200@main
 ; Line 85
 	call	??2@YAPEAX_K@Z				; operator new
 	mov	rdi, rax
-$LN192@main:
+$LN200@main:
 ; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xstring
 ; Line 4523
-	mov	QWORD PTR par$3[rbp-153], rsi
+	mov	QWORD PTR par$4[rsp+16], rsi
 ; Line 4524
-	mov	QWORD PTR par$3[rbp-145], rbx
+	mov	QWORD PTR par$4[rsp+24], rbx
 ; Line 65
 	mov	r8, rsi
 	lea	rdx, QWORD PTR [r14+3]
@@ -1666,65 +1739,182 @@ $LN192@main:
 ; Line 3258
 	mov	BYTE PTR [rdi+rsi], 0
 ; Line 4530
-	mov	QWORD PTR par$3[rbp-169], rdi
+	mov	QWORD PTR par$4[rsp], rdi
 	xor	edi, edi
-$LN178@main:
+$LN186@main:
+; Line 4367
+	or	r15d, 2
+	mov	DWORD PTR $T1[rsp], r15d
 ; Line 2305
-	lea	rax, QWORD PTR cmd$5[rbp-169]
+	lea	rax, QWORD PTR cmd$5[rsp]
 ; Line 2306
-	mov	rsi, QWORD PTR cmd$5[rbp-169]
-	mov	r14, QWORD PTR cmd$5[rbp-145]
+	mov	rsi, QWORD PTR cmd$5[rsp]
+	mov	r14, QWORD PTR cmd$5[rsp+24]
 	cmp	r14, 16
 	cmovae	rax, rsi
 ; Line 583
-	mov	r15, QWORD PTR cmd$5[rbp-153]
+	mov	r15, QWORD PTR cmd$5[rsp+16]
 	cmp	r15, 3
-	jne	SHORT $LN249@main
+	jne	SHORT $LN257@main
 ; Line 392
 	cmp	BYTE PTR [rax], 45			; 0000002dH
-	jne	SHORT $LN517@main
+	jne	SHORT $LN512@main
 	cmp	BYTE PTR [rax+1], 45			; 0000002dH
-	jne	SHORT $LN517@main
+	jne	SHORT $LN512@main
 	cmp	BYTE PTR [rax+2], 116			; 00000074H
-	jne	SHORT $LN517@main
+	jne	SHORT $LN512@main
 	mov	eax, edi
-	jmp	SHORT $LN518@main
-$LN517@main:
+	jmp	SHORT $LN513@main
+$LN512@main:
 	sbb	eax, eax
 	or	eax, 1
-$LN518@main:
+$LN513@main:
 ; Line 583
 	test	eax, eax
-	jne	SHORT $LN249@main
+	jne	SHORT $LN257@main
 	mov	al, 1
-	jmp	SHORT $LN250@main
-$LN249@main:
+	jmp	SHORT $LN258@main
+$LN257@main:
 	xor	al, al
-$LN250@main:
+$LN258@main:
 ; File D:\myProjects\projects.cpp\sieve\src\primeSieve.cpp
-; Line 57
+; Line 61
 	test	al, al
-	je	$LN520@main
+	je	$LN515@main
 ; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xstring
 ; Line 2305
-	lea	rdx, QWORD PTR par$3[rbp-169]
+	lea	rdx, QWORD PTR par$4[rsp]
 ; Line 2306
-	cmp	QWORD PTR par$3[rbp-145], 16
-	cmovae	rdx, QWORD PTR par$3[rbp-169]
+	cmp	QWORD PTR par$4[rsp+24], 16
+	cmovae	rdx, QWORD PTR par$4[rsp]
 ; Line 2346
-	mov	QWORD PTR $T2[rsp], rdi
+	mov	QWORD PTR $T3[rsp], rdi
 ; Line 4596
-	mov	QWORD PTR $T2[rbp-153], rdi
+	mov	QWORD PTR $T3[rsp+16], rdi
 ; Line 4610
-	mov	QWORD PTR $T2[rbp-145], 15
+	mov	QWORD PTR $T3[rsp+24], 15
 ; Line 4612
-	mov	BYTE PTR $T2[rsp], 0
+	mov	BYTE PTR $T3[rsp], 0
 ; Line 412
 	mov	r8, -1
-$LL516@main:
+$LL511@main:
 	inc	r8
 	cmp	BYTE PTR [rdx+r8], 0
-	jne	SHORT $LL516@main
+	jne	SHORT $LL511@main
+; Line 3264
+	lea	rcx, QWORD PTR $T3[rsp]
+	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD_K@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
+	npad	1
+; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\string
+; Line 136
+	call	QWORD PTR __imp__errno
+	mov	rdi, rax
+; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xstring
+; Line 2305
+	lea	rbx, QWORD PTR $T3[rsp]
+; Line 2306
+	cmp	QWORD PTR $T3[rsp+24], 16
+	cmovae	rbx, QWORD PTR $T3[rsp]
+; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\string
+; Line 139
+	mov	DWORD PTR [rax], 0
+; Line 140
+	mov	r8d, 10
+	lea	rdx, QWORD PTR _Eptr$7[rsp]
+	mov	rcx, rbx
+	call	QWORD PTR __imp_strtoul
+	mov	DWORD PTR time_limit$1$[rsp], eax
+; Line 142
+	cmp	rbx, QWORD PTR _Eptr$7[rsp]
+	je	$LN527@main
+; Line 146
+	cmp	DWORD PTR [rdi], 34			; 00000022H
+	je	$LN528@main
+; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xstring
+; Line 4618
+	mov	rdx, QWORD PTR $T3[rsp+24]
+	cmp	rdx, 16
+	jb	SHORT $LN515@main
+; Line 4622
+	inc	rdx
+; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xmemory
+; Line 835
+	mov	rcx, QWORD PTR $T3[rsp]
+	mov	rax, rcx
+; Line 260
+	cmp	rdx, 4096				; 00001000H
+	jb	SHORT $LN318@main
+; Line 155
+	add	rdx, 39					; 00000027H
+; Line 158
+	mov	rcx, QWORD PTR [rcx-8]
+	sub	rax, rcx
+; Line 172
+	add	rax, -8
+	cmp	rax, 31
+	jbe	SHORT $LN318@main
+	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
+	int	3
+$LN318@main:
+; Line 264
+	call	??3@YAXPEAX_K@Z				; operator delete
+$LN515@main:
+; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xstring
+; Line 2305
+	lea	rax, QWORD PTR cmd$5[rsp]
+; Line 2306
+	cmp	r14, 16
+	cmovae	rax, rsi
+; Line 583
+	cmp	r15, 3
+	jne	SHORT $LN336@main
+; Line 392
+	cmp	BYTE PTR [rax], 45			; 0000002dH
+	jne	SHORT $LN509@main
+	cmp	BYTE PTR [rax+1], 45			; 0000002dH
+	jne	SHORT $LN509@main
+	cmp	BYTE PTR [rax+2], 110			; 0000006eH
+	jne	SHORT $LN509@main
+	xor	eax, eax
+	jmp	SHORT $LN510@main
+$LN509@main:
+	sbb	eax, eax
+	or	eax, 1
+$LN510@main:
+; Line 583
+	test	eax, eax
+	jne	SHORT $LN336@main
+	mov	al, 1
+	jmp	SHORT $LN337@main
+$LN336@main:
+	xor	al, al
+$LN337@main:
+; File D:\myProjects\projects.cpp\sieve\src\primeSieve.cpp
+; Line 64
+	test	al, al
+	je	$LN516@main
+; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xstring
+; Line 2305
+	lea	rdx, QWORD PTR par$4[rsp]
+; Line 2306
+	cmp	QWORD PTR par$4[rsp+24], 16
+	cmovae	rdx, QWORD PTR par$4[rsp]
+; Line 2346
+	xor	eax, eax
+	mov	QWORD PTR $T2[rsp], rax
+; Line 4596
+	mov	QWORD PTR $T2[rsp+16], rax
+; Line 4610
+	mov	QWORD PTR $T2[rsp+24], 15
+; Line 4612
+	mov	BYTE PTR $T2[rsp], al
+; Line 412
+	mov	r8, -1
+	npad	7
+$LL508@main:
+	inc	r8
+	cmp	BYTE PTR [rdx+r8], al
+	jne	SHORT $LL508@main
 ; Line 3264
 	lea	rcx, QWORD PTR $T2[rsp]
 	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD_K@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
@@ -1737,28 +1927,28 @@ $LL516@main:
 ; Line 2305
 	lea	rbx, QWORD PTR $T2[rsp]
 ; Line 2306
-	cmp	QWORD PTR $T2[rbp-145], 16
+	cmp	QWORD PTR $T2[rsp+24], 16
 	cmovae	rbx, QWORD PTR $T2[rsp]
 ; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\string
 ; Line 139
 	mov	DWORD PTR [rax], 0
 ; Line 140
 	mov	r8d, 10
-	lea	rdx, QWORD PTR _Eptr$7[rbp-169]
+	lea	rdx, QWORD PTR _Eptr$8[rsp]
 	mov	rcx, rbx
 	call	QWORD PTR __imp_strtoul
-	mov	DWORD PTR time_limit$1$[rbp-169], eax
+	mov	DWORD PTR prime_limit$1$[rsp], eax
 ; Line 142
-	cmp	rbx, QWORD PTR _Eptr$7[rbp-169]
-	je	$LN499@main
+	cmp	rbx, QWORD PTR _Eptr$8[rsp]
+	je	$LN529@main
 ; Line 146
 	cmp	DWORD PTR [rdi], 34			; 00000022H
-	je	$LN500@main
+	je	$LN530@main
 ; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xstring
 ; Line 4618
-	mov	rdx, QWORD PTR $T2[rbp-145]
+	mov	rdx, QWORD PTR $T2[rsp+24]
 	cmp	rdx, 16
-	jb	SHORT $LN520@main
+	jb	SHORT $LN516@main
 ; Line 4622
 	inc	rdx
 ; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xmemory
@@ -1767,7 +1957,7 @@ $LL516@main:
 	mov	rax, rcx
 ; Line 260
 	cmp	rdx, 4096				; 00001000H
-	jb	SHORT $LN310@main
+	jb	SHORT $LN397@main
 ; Line 155
 	add	rdx, 39					; 00000027H
 ; Line 158
@@ -1776,168 +1966,59 @@ $LL516@main:
 ; Line 172
 	add	rax, -8
 	cmp	rax, 31
-	ja	$LN307@main
-$LN310@main:
+	jbe	SHORT $LN397@main
+	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
+	int	3
+$LN397@main:
 ; Line 264
 	call	??3@YAXPEAX_K@Z				; operator delete
-$LN520@main:
+$LN516@main:
 ; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xstring
 ; Line 2305
-	lea	rax, QWORD PTR cmd$5[rbp-169]
+	lea	rax, QWORD PTR cmd$5[rsp]
 ; Line 2306
 	cmp	r14, 16
 	cmovae	rax, rsi
 ; Line 583
 	cmp	r15, 3
-	jne	SHORT $LN328@main
+	jne	SHORT $LN519@main
 ; Line 392
 	cmp	BYTE PTR [rax], 45			; 0000002dH
-	jne	SHORT $LN514@main
+	jne	SHORT $LN506@main
 	cmp	BYTE PTR [rax+1], 45			; 0000002dH
-	jne	SHORT $LN514@main
-	cmp	BYTE PTR [rax+2], 110			; 0000006eH
-	jne	SHORT $LN514@main
-	xor	eax, eax
-	jmp	SHORT $LN515@main
-$LN514@main:
-	sbb	eax, eax
-	or	eax, 1
-$LN515@main:
-; Line 583
-	test	eax, eax
-	jne	SHORT $LN328@main
-	mov	al, 1
-	jmp	SHORT $LN329@main
-$LN328@main:
-	xor	al, al
-$LN329@main:
-; File D:\myProjects\projects.cpp\sieve\src\primeSieve.cpp
-; Line 60
-	test	al, al
-	je	$LN521@main
-; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xstring
-; Line 2305
-	lea	rdx, QWORD PTR par$3[rbp-169]
-; Line 2306
-	cmp	QWORD PTR par$3[rbp-145], 16
-	cmovae	rdx, QWORD PTR par$3[rbp-169]
-; Line 2346
-	xor	eax, eax
-	mov	QWORD PTR $T1[rsp], rax
-; Line 4596
-	mov	QWORD PTR $T1[rbp-153], rax
-; Line 4610
-	mov	QWORD PTR $T1[rbp-145], 15
-; Line 4612
-	mov	BYTE PTR $T1[rsp], al
-; Line 412
-	mov	r8, -1
-$LL513@main:
-	inc	r8
-	cmp	BYTE PTR [rdx+r8], al
-	jne	SHORT $LL513@main
-; Line 3264
-	lea	rcx, QWORD PTR $T1[rsp]
-	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV12@QEBD_K@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
-	npad	1
-; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\string
-; Line 136
-	call	QWORD PTR __imp__errno
-	mov	rdi, rax
-; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xstring
-; Line 2305
-	lea	rbx, QWORD PTR $T1[rsp]
-; Line 2306
-	cmp	QWORD PTR $T1[rbp-145], 16
-	cmovae	rbx, QWORD PTR $T1[rsp]
-; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\string
-; Line 139
-	mov	DWORD PTR [rax], 0
-; Line 140
-	mov	r8d, 10
-	lea	rdx, QWORD PTR _Eptr$8[rbp-169]
-	mov	rcx, rbx
-	call	QWORD PTR __imp_strtoul
-	mov	DWORD PTR prime_limit$1$[rbp-169], eax
-; Line 142
-	cmp	rbx, QWORD PTR _Eptr$8[rbp-169]
-	je	$LN501@main
-; Line 146
-	cmp	DWORD PTR [rdi], 34			; 00000022H
-	je	$LN502@main
-; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xstring
-; Line 4618
-	mov	rdx, QWORD PTR $T1[rbp-145]
-	cmp	rdx, 16
-	jb	SHORT $LN521@main
-; Line 4622
-	inc	rdx
-; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xmemory
-; Line 835
-	mov	rcx, QWORD PTR $T1[rsp]
-	mov	rax, rcx
-; Line 260
-	cmp	rdx, 4096				; 00001000H
-	jb	SHORT $LN389@main
-; Line 155
-	add	rdx, 39					; 00000027H
-; Line 158
-	mov	rcx, QWORD PTR [rcx-8]
-	sub	rax, rcx
-; Line 172
-	add	rax, -8
-	cmp	rax, 31
-	ja	$LN386@main
-$LN389@main:
-; Line 264
-	call	??3@YAXPEAX_K@Z				; operator delete
-$LN521@main:
-; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xstring
-; Line 2305
-	lea	rax, QWORD PTR cmd$5[rbp-169]
-; Line 2306
-	cmp	r14, 16
-	cmovae	rax, rsi
-; Line 583
-	cmp	r15, 3
-	jne	SHORT $LN523@main
-; Line 392
-	cmp	BYTE PTR [rax], 45			; 0000002dH
-	jne	SHORT $LN511@main
-	cmp	BYTE PTR [rax+1], 45			; 0000002dH
-	jne	SHORT $LN511@main
+	jne	SHORT $LN506@main
 	cmp	BYTE PTR [rax+2], 115			; 00000073H
-	jne	SHORT $LN511@main
+	jne	SHORT $LN506@main
 	xor	eax, eax
-	jmp	SHORT $LN512@main
-$LN511@main:
+	jmp	SHORT $LN507@main
+$LN506@main:
 	sbb	eax, eax
 	or	eax, 1
-$LN512@main:
+$LN507@main:
 ; Line 583
-	mov	r15d, DWORD PTR tv2243[rbp-169]
+	mov	r15d, DWORD PTR tv2238[rsp]
 	movzx	r15d, r15b
 	test	eax, eax
 	mov	eax, 1
 	cmove	r15d, eax
-	mov	DWORD PTR tv2243[rbp-169], r15d
-	jmp	SHORT $LN8@main
-$LN523@main:
-	mov	r15d, DWORD PTR tv2243[rbp-169]
-$LN8@main:
+	mov	DWORD PTR tv2238[rsp], r15d
+	jmp	SHORT $LN9@main
+$LN519@main:
+	mov	r15d, DWORD PTR tv2238[rsp]
+$LN9@main:
 ; Line 4618
-	mov	rdx, QWORD PTR par$3[rbp-145]
+	mov	rdx, QWORD PTR par$4[rsp+24]
 	cmp	rdx, 16
-	jb	SHORT $LN423@main
+	jb	SHORT $LN431@main
 ; Line 4622
 	inc	rdx
 ; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xmemory
 ; Line 835
-	mov	rcx, QWORD PTR par$3[rbp-169]
+	mov	rcx, QWORD PTR par$4[rsp]
 	mov	rax, rcx
 ; Line 260
 	cmp	rdx, 4096				; 00001000H
-	jb	SHORT $LN433@main
+	jb	SHORT $LN441@main
 ; Line 155
 	add	rdx, 39					; 00000027H
 ; Line 158
@@ -1946,16 +2027,19 @@ $LN8@main:
 ; Line 172
 	add	rax, -8
 	cmp	rax, 31
-	ja	$LN430@main
-$LN433@main:
+	jbe	SHORT $LN441@main
+$LN438@main:
+	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
+	int	3
+$LN441@main:
 ; Line 264
 	call	??3@YAXPEAX_K@Z				; operator delete
 	npad	1
-$LN423@main:
+$LN431@main:
 ; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xstring
 ; Line 4618
 	cmp	r14, 16
-	jb	SHORT $LN522@main
+	jb	SHORT $LN518@main
 ; Line 4622
 	lea	rdx, QWORD PTR [r14+1]
 ; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xmemory
@@ -1963,7 +2047,7 @@ $LN423@main:
 	mov	rax, rsi
 ; Line 260
 	cmp	rdx, 4096				; 00001000H
-	jb	SHORT $LN460@main
+	jb	SHORT $LN468@main
 ; Line 155
 	add	rdx, 39					; 00000027H
 ; Line 158
@@ -1972,23 +2056,23 @@ $LN423@main:
 ; Line 172
 	add	rax, -8
 	cmp	rax, 31
-	ja	$LN457@main
-$LN460@main:
+	jbe	SHORT $LN468@main
+	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
+	int	3
+$LN468@main:
 ; Line 264
 	mov	rcx, rsi
 	call	??3@YAXPEAX_K@Z				; operator delete
-$LN522@main:
+$LN518@main:
 ; File D:\myProjects\projects.cpp\sieve\src\primeSieve.cpp
-; Line 67
-	mov	r14, QWORD PTR argv$[rbp-169]
-	mov	rsi, QWORD PTR tv2134[rbp-169]
-	mov	rdi, QWORD PTR $T4[rbp-169]
-$LN450@main:
+; Line 71
+	mov	edi, DWORD PTR i$1$[rsp]
+$LN458@main:
 ; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xstring
 ; Line 2319
 	cmp	r12, 16
 ; Line 4618
-	jb	SHORT $LN477@main
+	jb	SHORT $LN485@main
 ; Line 4622
 	lea	rdx, QWORD PTR [r12+1]
 ; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xmemory
@@ -1996,7 +2080,7 @@ $LN450@main:
 	mov	rax, r13
 ; Line 260
 	cmp	rdx, 4096				; 00001000H
-	jb	SHORT $LN487@main
+	jb	SHORT $LN495@main
 ; Line 155
 	add	rdx, 39					; 00000027H
 ; Line 158
@@ -2005,57 +2089,62 @@ $LN450@main:
 ; Line 172
 	add	rax, -8
 	cmp	rax, 31
-	ja	$LN484@main
-$LN487@main:
+	jbe	SHORT $LN495@main
+	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
+	int	3
+$LN495@main:
 ; Line 264
 	mov	rcx, r13
 	call	??3@YAXPEAX_K@Z				; operator delete
-$LN477@main:
+$LN485@main:
 ; File D:\myProjects\projects.cpp\sieve\src\primeSieve.cpp
-; Line 52
-	inc	rdi
-	mov	QWORD PTR $T4[rbp-169], rdi
-	cmp	rdi, rsi
-	jl	$LN526@main
-	mov	ebx, DWORD PTR prime_limit$1$[rbp-169]
-	mov	edi, DWORD PTR time_limit$1$[rbp-169]
-$LN510@main:
-; Line 68
-	mov	rdx, QWORD PTR [r14]
+; Line 56
+	inc	edi
+	mov	rdx, QWORD PTR argv$[rsp]
+	mov	eax, DWORD PTR argc$[rsp]
+	xor	ecx, ecx
+	jmp	$LN521@main
+$LN3@main:
+; Line 72
+	mov	rdx, QWORD PTR [rdx]
 	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
 	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
-	mov	rcx, rax
 	lea	rdx, OFFSET FLAT:??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z ; std::endl<char,std::char_traits<char> >
+	mov	rcx, rax
 	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z
-; Line 69
+; Line 73
 	lea	rdx, OFFSET FLAT:??_C@_03EHAIMEJK@?9?9n@
 	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
 	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
-	mov	rcx, rax
+	mov	ebx, DWORD PTR prime_limit$1$[rsp]
 	mov	edx, ebx
-	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@I@Z
 	mov	rcx, rax
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@I@Z
 	lea	rdx, OFFSET FLAT:??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z ; std::endl<char,std::char_traits<char> >
+	mov	rcx, rax
 	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z
-; Line 70
+; Line 74
 	lea	rdx, OFFSET FLAT:??_C@_03PHCFDOEB@?9?9t@
 	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
 	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
-	mov	rcx, rax
+	mov	edi, DWORD PTR time_limit$1$[rsp]
 	mov	edx, edi
-	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@I@Z
 	mov	rcx, rax
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@I@Z
 	lea	rdx, OFFSET FLAT:??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z ; std::endl<char,std::char_traits<char> >
+	mov	rcx, rax
 	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z
-; Line 71
+; Line 76
 	movzx	r8d, r15b
 	mov	edx, edi
 	mov	ecx, ebx
 	call	?time_sieve@@YAXII_N@Z			; time_sieve
-; Line 72
+	npad	1
+$LN22@main:
+; Line 86
 	xor	eax, eax
-; Line 73
-	add	rsp, 200				; 000000c8H
+; Line 87
+	add	rsp, 208				; 000000d0H
 	pop	r15
 	pop	r14
 	pop	r13
@@ -2063,75 +2152,60 @@ $LN510@main:
 	pop	rdi
 	pop	rsi
 	pop	rbx
-	pop	rbp
 	ret	0
-$LN307@main:
-; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xmemory
-; Line 172
-	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
-	npad	1
-$LN386@main:
-	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
-	npad	1
-$LN430@main:
-	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
-	npad	1
-$LN457@main:
-	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
-	npad	1
-$LN484@main:
-	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
-	npad	1
-$LN497@main:
+$LN20@main:
+; Line 81
+	jmp	SHORT $LN22@main
+$LN525@main:
 ; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xstring
 ; Line 4509
 	call	?_Xlen_string@std@@YAXXZ		; std::_Xlen_string
-	int	3
-$LN498@main:
+	npad	1
+$LN526@main:
 ; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\xmemory
 ; Line 138
 	call	?_Throw_bad_array_new_length@std@@YAXXZ	; std::_Throw_bad_array_new_length
 	npad	1
-$LN500@main:
+$LN527@main:
 ; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\string
-; Line 147
-	lea	rcx, OFFSET FLAT:??_C@_0BM@MOLGGFGJ@stoul?5argument?5out?5of?5range@
-	call	?_Xout_of_range@std@@YAXPEBD@Z		; std::_Xout_of_range
-	int	3
-$LN499@main:
 ; Line 143
 	lea	rcx, OFFSET FLAT:??_C@_0BH@DPNNDOEK@invalid?5stoul?5argument@
 	call	?_Xinvalid_argument@std@@YAXPEBD@Z	; std::_Xinvalid_argument
+$LN528@main:
+; Line 147
+	lea	rcx, OFFSET FLAT:??_C@_0BM@MOLGGFGJ@stoul?5argument?5out?5of?5range@
+	call	?_Xout_of_range@std@@YAXPEBD@Z		; std::_Xout_of_range
 	npad	1
-$LN502@main:
+$LN529@main:
+; Line 143
+	lea	rcx, OFFSET FLAT:??_C@_0BH@DPNNDOEK@invalid?5stoul?5argument@
+	call	?_Xinvalid_argument@std@@YAXPEBD@Z	; std::_Xinvalid_argument
+$LN530@main:
 ; Line 147
 	lea	rcx, OFFSET FLAT:??_C@_0BM@MOLGGFGJ@stoul?5argument?5out?5of?5range@
 	call	?_Xout_of_range@std@@YAXPEBD@Z		; std::_Xout_of_range
 	int	3
-$LN501@main:
-; Line 143
-	lea	rcx, OFFSET FLAT:??_C@_0BH@DPNNDOEK@invalid?5stoul?5argument@
-	call	?_Xinvalid_argument@std@@YAXPEBD@Z	; std::_Xinvalid_argument
+$LN520@main:
 	int	3
-$LN525@main:
 main	ENDP
 _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 $T1 = 32
-$T2 = 32
-par$3 = 64
-$T4 = 96
-tv2134 = 104
+prime_limit$1$ = 36
+time_limit$1$ = 40
+$T2 = 48
+$T3 = 48
+par$4 = 80
 cmd$5 = 112
 arg$6 = 144
 _Eptr$7 = 176
 _Eptr$8 = 184
-tv2243 = 272
+szErr$9 = 192
 argc$ = 272
 argv$ = 280
-prime_limit$1$ = 288
-time_limit$1$ = 296
+tv2238 = 288
+i$1$ = 296
 main$dtor$0 PROC
 	lea	rcx, QWORD PTR arg$6[rdx]
 	jmp	??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
@@ -2140,19 +2214,20 @@ text$x	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 $T1 = 32
-$T2 = 32
-par$3 = 64
-$T4 = 96
-tv2134 = 104
+prime_limit$1$ = 36
+time_limit$1$ = 40
+$T2 = 48
+$T3 = 48
+par$4 = 80
 cmd$5 = 112
 arg$6 = 144
 _Eptr$7 = 176
 _Eptr$8 = 184
-tv2243 = 272
+szErr$9 = 192
 argc$ = 272
 argv$ = 280
-prime_limit$1$ = 288
-time_limit$1$ = 296
+tv2238 = 288
+i$1$ = 296
 main$dtor$1 PROC
 	lea	rcx, QWORD PTR cmd$5[rdx]
 	jmp	??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
@@ -2161,83 +2236,162 @@ text$x	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 $T1 = 32
-$T2 = 32
-par$3 = 64
-$T4 = 96
-tv2134 = 104
+prime_limit$1$ = 36
+time_limit$1$ = 40
+$T2 = 48
+$T3 = 48
+par$4 = 80
 cmd$5 = 112
 arg$6 = 144
 _Eptr$7 = 176
 _Eptr$8 = 184
-tv2243 = 272
+szErr$9 = 192
 argc$ = 272
 argv$ = 280
-prime_limit$1$ = 288
-time_limit$1$ = 296
+tv2238 = 288
+i$1$ = 296
 main$dtor$2 PROC
-	lea	rcx, QWORD PTR par$3[rdx]
+	lea	rcx, QWORD PTR par$4[rdx]
 	jmp	??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
 main$dtor$2 ENDP
 text$x	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 $T1 = 32
-$T2 = 32
-par$3 = 64
-$T4 = 96
-tv2134 = 104
+prime_limit$1$ = 36
+time_limit$1$ = 40
+$T2 = 48
+$T3 = 48
+par$4 = 80
 cmd$5 = 112
 arg$6 = 144
 _Eptr$7 = 176
 _Eptr$8 = 184
-tv2243 = 272
+szErr$9 = 192
 argc$ = 272
 argv$ = 280
-prime_limit$1$ = 288
-time_limit$1$ = 296
+tv2238 = 288
+i$1$ = 296
 main$dtor$3 PROC
-	lea	rcx, QWORD PTR $T2[rdx]
+	lea	rcx, QWORD PTR $T3[rdx]
 	jmp	??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
 main$dtor$3 ENDP
 text$x	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 $T1 = 32
-$T2 = 32
-par$3 = 64
-$T4 = 96
-tv2134 = 104
+prime_limit$1$ = 36
+time_limit$1$ = 40
+$T2 = 48
+$T3 = 48
+par$4 = 80
 cmd$5 = 112
 arg$6 = 144
 _Eptr$7 = 176
 _Eptr$8 = 184
-tv2243 = 272
+szErr$9 = 192
 argc$ = 272
 argv$ = 280
-prime_limit$1$ = 288
-time_limit$1$ = 296
+tv2238 = 288
+i$1$ = 296
 main$dtor$4 PROC
-	lea	rcx, QWORD PTR $T1[rdx]
+	lea	rcx, QWORD PTR $T2[rdx]
 	jmp	??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
 main$dtor$4 ENDP
+text$x	ENDS
+;	COMDAT text$x
+text$x	SEGMENT
+$T1 = 32
+prime_limit$1$ = 36
+time_limit$1$ = 40
+$T2 = 48
+$T3 = 48
+par$4 = 80
+cmd$5 = 112
+arg$6 = 144
+_Eptr$7 = 176
+_Eptr$8 = 184
+szErr$9 = 192
+argc$ = 272
+argv$ = 280
+tv2238 = 288
+i$1$ = 296
+main$catch$22 PROC
+; File D:\myProjects\projects.cpp\sieve\src\primeSieve.cpp
+; Line 79
+	mov	QWORD PTR [rsp+16], rdx
+	push	rbp
+	sub	rsp, 32					; 00000020H
+	mov	rbp, rdx
+__catch$main$0:
+; Line 80
+	mov	rdx, QWORD PTR szErr$9[rbp]
+	mov	rcx, QWORD PTR __imp_?cerr@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
+	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+	npad	1
+; Line 81
+	mov	rax, 0
+	add	rsp, 32					; 00000020H
+	pop	rbp
+	ret	0
+	int	3
+main$catch$22 ENDP
+text$x	ENDS
+;	COMDAT text$x
+text$x	SEGMENT
+$T1 = 32
+prime_limit$1$ = 36
+time_limit$1$ = 40
+$T2 = 48
+$T3 = 48
+par$4 = 80
+cmd$5 = 112
+arg$6 = 144
+_Eptr$7 = 176
+_Eptr$8 = 184
+szErr$9 = 192
+argc$ = 272
+argv$ = 280
+tv2238 = 288
+i$1$ = 296
+main$catch$23 PROC
+; Line 83
+	mov	QWORD PTR [rsp+16], rdx
+	push	rbp
+	sub	rsp, 32					; 00000020H
+	mov	rbp, rdx
+__catch$main$1:
+; Line 84
+	lea	rdx, OFFSET FLAT:??_C@_0BE@CEADDODL@unhandled?5exception@
+	mov	rcx, QWORD PTR __imp_?cerr@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
+	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+	npad	1
+; Line 85
+	mov	rax, 0
+	add	rsp, 32					; 00000020H
+	pop	rbp
+	ret	0
+	int	3
+main$catch$23 ENDP
 text$x	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT text$x
 text$x	SEGMENT
 $T1 = 32
-$T2 = 32
-par$3 = 64
-$T4 = 96
-tv2134 = 104
+prime_limit$1$ = 36
+time_limit$1$ = 40
+$T2 = 48
+$T3 = 48
+par$4 = 80
 cmd$5 = 112
 arg$6 = 144
 _Eptr$7 = 176
 _Eptr$8 = 184
-tv2243 = 272
+szErr$9 = 192
 argc$ = 272
 argv$ = 280
-prime_limit$1$ = 288
-time_limit$1$ = 296
+tv2238 = 288
+i$1$ = 296
 main$dtor$0 PROC
 	lea	rcx, QWORD PTR arg$6[rdx]
 	jmp	??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
@@ -2247,19 +2401,20 @@ text$x	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 $T1 = 32
-$T2 = 32
-par$3 = 64
-$T4 = 96
-tv2134 = 104
+prime_limit$1$ = 36
+time_limit$1$ = 40
+$T2 = 48
+$T3 = 48
+par$4 = 80
 cmd$5 = 112
 arg$6 = 144
 _Eptr$7 = 176
 _Eptr$8 = 184
-tv2243 = 272
+szErr$9 = 192
 argc$ = 272
 argv$ = 280
-prime_limit$1$ = 288
-time_limit$1$ = 296
+tv2238 = 288
+i$1$ = 296
 main$dtor$1 PROC
 	lea	rcx, QWORD PTR cmd$5[rdx]
 	jmp	??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
@@ -2269,21 +2424,22 @@ text$x	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 $T1 = 32
-$T2 = 32
-par$3 = 64
-$T4 = 96
-tv2134 = 104
+prime_limit$1$ = 36
+time_limit$1$ = 40
+$T2 = 48
+$T3 = 48
+par$4 = 80
 cmd$5 = 112
 arg$6 = 144
 _Eptr$7 = 176
 _Eptr$8 = 184
-tv2243 = 272
+szErr$9 = 192
 argc$ = 272
 argv$ = 280
-prime_limit$1$ = 288
-time_limit$1$ = 296
+tv2238 = 288
+i$1$ = 296
 main$dtor$2 PROC
-	lea	rcx, QWORD PTR par$3[rdx]
+	lea	rcx, QWORD PTR par$4[rdx]
 	jmp	??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
 main$dtor$2 ENDP
 text$x	ENDS
@@ -2291,21 +2447,22 @@ text$x	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 $T1 = 32
-$T2 = 32
-par$3 = 64
-$T4 = 96
-tv2134 = 104
+prime_limit$1$ = 36
+time_limit$1$ = 40
+$T2 = 48
+$T3 = 48
+par$4 = 80
 cmd$5 = 112
 arg$6 = 144
 _Eptr$7 = 176
 _Eptr$8 = 184
-tv2243 = 272
+szErr$9 = 192
 argc$ = 272
 argv$ = 280
-prime_limit$1$ = 288
-time_limit$1$ = 296
+tv2238 = 288
+i$1$ = 296
 main$dtor$3 PROC
-	lea	rcx, QWORD PTR $T2[rdx]
+	lea	rcx, QWORD PTR $T3[rdx]
 	jmp	??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
 main$dtor$3 ENDP
 text$x	ENDS
@@ -2313,23 +2470,100 @@ text$x	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 $T1 = 32
-$T2 = 32
-par$3 = 64
-$T4 = 96
-tv2134 = 104
+prime_limit$1$ = 36
+time_limit$1$ = 40
+$T2 = 48
+$T3 = 48
+par$4 = 80
 cmd$5 = 112
 arg$6 = 144
 _Eptr$7 = 176
 _Eptr$8 = 184
-tv2243 = 272
+szErr$9 = 192
 argc$ = 272
 argv$ = 280
-prime_limit$1$ = 288
-time_limit$1$ = 296
+tv2238 = 288
+i$1$ = 296
 main$dtor$4 PROC
-	lea	rcx, QWORD PTR $T1[rdx]
+	lea	rcx, QWORD PTR $T2[rdx]
 	jmp	??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
 main$dtor$4 ENDP
+text$x	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT text$x
+text$x	SEGMENT
+$T1 = 32
+prime_limit$1$ = 36
+time_limit$1$ = 40
+$T2 = 48
+$T3 = 48
+par$4 = 80
+cmd$5 = 112
+arg$6 = 144
+_Eptr$7 = 176
+_Eptr$8 = 184
+szErr$9 = 192
+argc$ = 272
+argv$ = 280
+tv2238 = 288
+i$1$ = 296
+main$catch$22 PROC
+; Line 79
+	mov	QWORD PTR [rsp+16], rdx
+	push	rbp
+	sub	rsp, 32					; 00000020H
+	mov	rbp, rdx
+__catch$main$0:
+; Line 80
+	mov	rdx, QWORD PTR szErr$9[rbp]
+	mov	rcx, QWORD PTR __imp_?cerr@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
+	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+	npad	1
+; Line 81
+	mov	rax, 0
+	add	rsp, 32					; 00000020H
+	pop	rbp
+	ret	0
+	int	3
+main$catch$22 ENDP
+text$x	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT text$x
+text$x	SEGMENT
+$T1 = 32
+prime_limit$1$ = 36
+time_limit$1$ = 40
+$T2 = 48
+$T3 = 48
+par$4 = 80
+cmd$5 = 112
+arg$6 = 144
+_Eptr$7 = 176
+_Eptr$8 = 184
+szErr$9 = 192
+argc$ = 272
+argv$ = 280
+tv2238 = 288
+i$1$ = 296
+main$catch$23 PROC
+; Line 83
+	mov	QWORD PTR [rsp+16], rdx
+	push	rbp
+	sub	rsp, 32					; 00000020H
+	mov	rbp, rdx
+__catch$main$1:
+; Line 84
+	lea	rdx, OFFSET FLAT:??_C@_0BE@CEADDODL@unhandled?5exception@
+	mov	rcx, QWORD PTR __imp_?cerr@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
+	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+	npad	1
+; Line 85
+	mov	rax, 0
+	add	rsp, 32					; 00000020H
+	pop	rbp
+	ret	0
+	int	3
+main$catch$23 ENDP
 text$x	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT ??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z
@@ -2710,7 +2944,7 @@ show_primes$ = 128
 ?time_sieve@@YAXII_N@Z PROC				; time_sieve, COMDAT
 ; File D:\myProjects\projects.cpp\sieve\src\primeSieve.cpp
 ; Line 16
-$LN76:
+$LN82:
 	mov	QWORD PTR [rsp+8], rbx
 	mov	QWORD PTR [rsp+16], rbp
 	mov	QWORD PTR [rsp+32], rsi
@@ -2732,6 +2966,10 @@ $LN76:
 ; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\chrono
 ; Line 705
 	call	_Query_perf_frequency
+; Line 706
+	call	_Query_perf_counter
+; Line 705
+	call	_Query_perf_frequency
 	mov	rbx, rax
 ; Line 706
 	call	_Query_perf_counter
@@ -2746,20 +2984,21 @@ $LN76:
 ; Line 715
 	add	r12, rax
 	mov	r13, 4835703278458516699		; 431bde82d7b634dbH
+	npad	1
 $LL4@time_sieve:
 ; File D:\myProjects\projects.cpp\sieve\src\primeSieve.cpp
-; Line 23
+; Line 26
 	lea	rcx, QWORD PTR P$[rsp]
 	call	?empty@Sieve@@QEAAXXZ			; Sieve::empty
-; Line 24
+; Line 27
 	mov	edx, r15d
 	lea	rcx, QWORD PTR P$[rsp]
 	call	?init@Sieve@@QEAAXI@Z			; Sieve::init
-; Line 25
+; Line 28
 	lea	rcx, QWORD PTR P$[rsp]
 	call	?sieve2@Sieve@@QEAAHXZ			; Sieve::sieve2
 	mov	r14d, eax
-; Line 26
+; Line 29
 	inc	ebp
 ; File C:\myPrograms\vs2019\VC\Tools\MSVC\14.29.30133\include\chrono
 ; Line 705
@@ -2788,7 +3027,7 @@ $LL4@time_sieve:
 	shr	rax, 63					; 0000003fH
 	add	rsi, rax
 ; File D:\myProjects\projects.cpp\sieve\src\primeSieve.cpp
-; Line 28
+; Line 31
 	mov	edx, r14d
 	lea	rcx, QWORD PTR P$[rsp]
 	call	?validate@Sieve@@QEAA_NH@Z		; Sieve::validate
@@ -2797,7 +3036,7 @@ $LL4@time_sieve:
 	cmp	esi, edi
 	jb	SHORT $LL4@time_sieve
 $LN5@time_sieve:
-; Line 34
+; Line 37
 	lea	rdx, OFFSET FLAT:?dec@std@@YAAEAVios_base@1@AEAV21@@Z ; std::dec
 	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
 	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAVios_base@1@AEAV21@@Z@Z
@@ -2837,7 +3076,7 @@ $LN5@time_sieve:
 ; Line 368
 	mov	QWORD PTR [rcx+r8+40], 10
 ; File D:\myProjects\projects.cpp\sieve\src\primeSieve.cpp
-; Line 34
+; Line 37
 	mov	edx, esi
 	mov	rcx, r8
 	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@I@Z
@@ -2874,7 +3113,7 @@ $LN5@time_sieve:
 ; Line 368
 	mov	QWORD PTR [rcx+rdi+40], 10
 ; File D:\myProjects\projects.cpp\sieve\src\primeSieve.cpp
-; Line 34
+; Line 37
 	mov	edx, r14d
 	lea	rcx, QWORD PTR P$[rsp]
 	call	?validate@Sieve@@QEAA_NH@Z		; Sieve::validate
@@ -2912,22 +3151,22 @@ $LN5@time_sieve:
 	mov	rcx, rax
 	lea	rdx, OFFSET FLAT:??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z ; std::endl<char,std::char_traits<char> >
 	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z
-; Line 41
+; Line 44
 	cmp	BYTE PTR show_primes$[rsp], 0
 	je	SHORT $LN6@time_sieve
-; Line 42
+; Line 45
 	lea	rdx, QWORD PTR P$[rsp]
 	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
 	call	??6@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@std@@AEAV01@AEAVSieve@@@Z ; operator<<
 	npad	1
 $LN6@time_sieve:
 ; File D:\myProjects\projects.cpp\sieve\headers\tBitArray.h
-; Line 30
+; Line 32
 	lea	rcx, QWORD PTR P$[rsp+16]
 	call	?empty@tBitArray@@QEAAXXZ		; tBitArray::empty
 	npad	1
 ; File D:\myProjects\projects.cpp\sieve\src\primeSieve.cpp
-; Line 44
+; Line 47
 	mov	rbx, QWORD PTR [rsp+112]
 	mov	rbp, QWORD PTR [rsp+120]
 	mov	rsi, QWORD PTR [rsp+136]
@@ -3134,7 +3373,7 @@ $LN8:
 	sub	rsp, 40					; 00000028H
 	add	rcx, 16
 ; File D:\myProjects\projects.cpp\sieve\headers\tBitArray.h
-; Line 30
+; Line 32
 	call	?empty@tBitArray@@QEAAXXZ		; tBitArray::empty
 	npad	1
 	add	rsp, 40					; 00000028H

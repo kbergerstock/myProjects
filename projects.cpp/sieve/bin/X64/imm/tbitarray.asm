@@ -11,6 +11,9 @@ CONST	ENDS
 PUBLIC	??0tBitArray@@QEAA@XZ				; tBitArray::tBitArray
 PUBLIC	?init@tBitArray@@QEAAXI@Z			; tBitArray::init
 PUBLIC	?empty@tBitArray@@QEAAXXZ			; tBitArray::empty
+PUBLIC	?count@tBitArray@@QEAAII@Z			; tBitArray::count
+PUBLIC	?count@tBitArray@@QEAAIII@Z			; tBitArray::count
+PUBLIC	?sieve@tBitArray@@QEAAHII@Z			; tBitArray::sieve
 PUBLIC	_TI2PEAD
 PUBLIC	_CTA2PEAD
 PUBLIC	??_R0PEAD@8					; char * `RTTI Type Descriptor'
@@ -18,6 +21,7 @@ PUBLIC	_CT??_R0PEAD@88
 PUBLIC	??_R0PEAX@8					; void * `RTTI Type Descriptor'
 PUBLIC	_CT??_R0PEAX@88
 PUBLIC	??_C@_0BI@CLLIGLLN@MEMORY?5ALLOCATION?5ERROR@	; `string'
+PUBLIC	??_C@_0BA@LFCAGDJK@empty?5bit?5array@		; `string'
 EXTRN	??_U@YAPEAX_K@Z:PROC				; operator new[]
 EXTRN	??_V@YAXPEAX@Z:PROC				; operator delete[]
 EXTRN	_CxxThrowException:PROC
@@ -42,6 +46,16 @@ $pdata$?empty@tBitArray@@QEAAXXZ DD imagerel $LN5
 	DD	imagerel $LN5+37
 	DD	imagerel $unwind$?empty@tBitArray@@QEAAXXZ
 pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$?sieve@tBitArray@@QEAAHII@Z DD imagerel $LN54
+	DD	imagerel $LN54+277
+	DD	imagerel $unwind$?sieve@tBitArray@@QEAAHII@Z
+pdata	ENDS
+;	COMDAT ??_C@_0BA@LFCAGDJK@empty?5bit?5array@
+CONST	SEGMENT
+??_C@_0BA@LFCAGDJK@empty?5bit?5array@ DB 'empty bit array', 00H ; `string'
+CONST	ENDS
 ;	COMDAT ??_C@_0BI@CLLIGLLN@MEMORY?5ALLOCATION?5ERROR@
 CONST	SEGMENT
 ??_C@_0BI@CLLIGLLN@MEMORY?5ALLOCATION?5ERROR@ DB 'MEMORY ALLOCATION ERROR'
@@ -92,6 +106,14 @@ _TI2PEAD DD	00H
 	DD	00H
 	DD	imagerel _CTA2PEAD
 xdata$x	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?sieve@tBitArray@@QEAAHII@Z DD 081401H
+	DD	096414H
+	DD	085414H
+	DD	073414H
+	DD	070103214H
+xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
 $unwind$?empty@tBitArray@@QEAAXXZ DD 020601H
@@ -147,6 +169,240 @@ $unwind$?init@tBitArray@@QEAAXI@Z DD 020a19H
 	DD	imagerel __CxxFrameHandler4
 	DD	imagerel $cppxdata$?init@tBitArray@@QEAAXI@Z
 xdata	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ?sieve@tBitArray@@QEAAHII@Z
+_TEXT	SEGMENT
+$T1 = 48
+this$ = 48
+nl$ = 56
+prime_limit$ = 64
+?sieve@tBitArray@@QEAAHII@Z PROC			; tBitArray::sieve, COMDAT
+; File D:\myProjects\projects.cpp\sieve\src\tbitarray.cpp
+; Line 59
+$LN54:
+	mov	QWORD PTR [rsp+16], rbx
+	mov	QWORD PTR [rsp+24], rbp
+	mov	QWORD PTR [rsp+32], rsi
+	push	rdi
+	sub	rsp, 32					; 00000020H
+; Line 62
+	cmp	QWORD PTR [rcx+8], 0
+	mov	ebx, 1
+	mov	esi, ebx
+	mov	ebp, r8d
+	mov	r10d, edx
+	mov	rdi, rcx
+	je	$LN8@sieve
+; Line 65
+	mov	r9d, ebx
+	cmp	edx, ebx
+	jbe	$LN51@sieve
+	npad	6
+$LL4@sieve:
+; File D:\myProjects\projects.cpp\sieve\headers\tBitArray.h
+; Line 34
+	mov	r8, QWORD PTR [rdi+8]
+; Line 22
+	mov	ecx, r9d
+	and	ecx, 7
+; Line 20
+	mov	eax, r9d
+	shr	rax, 3
+; Line 22
+	mov	edx, ebx
+	shl	dl, cl
+; Line 34
+	test	dl, BYTE PTR [rax+r8]
+; File D:\myProjects\projects.cpp\sieve\src\tbitarray.cpp
+; Line 68
+	jne	SHORT $LN2@sieve
+; Line 73
+	lea	r11d, DWORD PTR [r9*2+1]
+	inc	esi
+	mov	eax, r11d
+	imul	eax, r11d
+; Line 77
+	cmp	eax, ebp
+	jae	SHORT $LN11@sieve
+; Line 81
+	dec	eax
+	shr	eax, 1
+	cmp	eax, r10d
+	jae	SHORT $LN2@sieve
+	npad	7
+$LL7@sieve:
+; File D:\myProjects\projects.cpp\sieve\headers\tBitArray.h
+; Line 20
+	mov	r8d, eax
+; Line 22
+	mov	ecx, eax
+; Line 20
+	shr	r8, 3
+; Line 22
+	and	ecx, 7
+; Line 35
+	add	r8, QWORD PTR [rdi+8]
+; File D:\myProjects\projects.cpp\sieve\src\tbitarray.cpp
+; Line 81
+	add	eax, r11d
+; File D:\myProjects\projects.cpp\sieve\headers\tBitArray.h
+; Line 35
+	movzx	edx, BYTE PTR [r8]
+	bts	edx, ecx
+	mov	BYTE PTR [r8], dl
+; File D:\myProjects\projects.cpp\sieve\src\tbitarray.cpp
+; Line 81
+	cmp	eax, r10d
+	jb	SHORT $LL7@sieve
+$LN2@sieve:
+; Line 65
+	inc	r9d
+	cmp	r9d, r10d
+	jb	SHORT $LL4@sieve
+	jmp	SHORT $LN51@sieve
+$LN11@sieve:
+; Line 50
+	xor	edx, edx
+; Line 51
+	test	r8, r8
+	je	SHORT $LN28@sieve
+; Line 52
+	inc	r9d
+	cmp	r9d, r10d
+	jae	SHORT $LN28@sieve
+; File D:\myProjects\projects.cpp\sieve\headers\tBitArray.h
+; Line 34
+	movzx	ecx, r9b
+	rol	bl, cl
+$LL29@sieve:
+; Line 20
+	mov	eax, r9d
+	shr	rax, 3
+; Line 34
+	test	BYTE PTR [rax+r8], bl
+; File D:\myProjects\projects.cpp\sieve\src\tbitarray.cpp
+; Line 52
+	lea	eax, DWORD PTR [rdx+1]
+	cmovne	eax, edx
+	inc	r9d
+	rol	bl, 1
+	mov	edx, eax
+	cmp	r9d, r10d
+	jb	SHORT $LL29@sieve
+$LN28@sieve:
+; Line 88
+	add	esi, edx
+$LN51@sieve:
+; Line 100
+	mov	rbx, QWORD PTR [rsp+56]
+	mov	eax, esi
+	mov	rsi, QWORD PTR [rsp+72]
+	mov	rbp, QWORD PTR [rsp+64]
+	add	rsp, 32					; 00000020H
+	pop	rdi
+	ret	0
+$LN8@sieve:
+; Line 97
+	lea	rax, OFFSET FLAT:??_C@_0BA@LFCAGDJK@empty?5bit?5array@
+	lea	rdx, OFFSET FLAT:_TI2PEAD
+	mov	QWORD PTR $T1[rsp], rax
+	lea	rcx, QWORD PTR $T1[rsp]
+	call	_CxxThrowException
+	int	3
+$LN52@sieve:
+?sieve@tBitArray@@QEAAHII@Z ENDP			; tBitArray::sieve
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ?count@tBitArray@@QEAAIII@Z
+_TEXT	SEGMENT
+this$ = 8
+nl$ = 16
+ndx$ = 24
+?count@tBitArray@@QEAAIII@Z PROC			; tBitArray::count, COMDAT
+; File D:\myProjects\projects.cpp\sieve\src\tbitarray.cpp
+; Line 51
+	mov	r11, QWORD PTR [rcx+8]
+	xor	r9d, r9d
+	test	r11, r11
+	je	SHORT $LN18@count
+; Line 52
+	lea	r10d, DWORD PTR [r8+1]
+	cmp	r10d, edx
+	jae	SHORT $LN18@count
+; File D:\myProjects\projects.cpp\sieve\headers\tBitArray.h
+; Line 34
+	mov	r8d, 1
+	movzx	ecx, r10b
+	rol	r8b, cl
+	npad	14
+$LL4@count:
+; Line 20
+	mov	eax, r10d
+; File D:\myProjects\projects.cpp\sieve\src\tbitarray.cpp
+; Line 52
+	lea	ecx, DWORD PTR [r9+1]
+; File D:\myProjects\projects.cpp\sieve\headers\tBitArray.h
+; Line 20
+	shr	rax, 3
+; Line 34
+	test	BYTE PTR [rax+r11], r8b
+; File D:\myProjects\projects.cpp\sieve\src\tbitarray.cpp
+; Line 52
+	cmovne	ecx, r9d
+	inc	r10d
+	rol	r8b, 1
+	mov	r9d, ecx
+	cmp	r10d, edx
+	jb	SHORT $LL4@count
+$LN18@count:
+; Line 56
+	mov	eax, r9d
+	ret	0
+?count@tBitArray@@QEAAIII@Z ENDP			; tBitArray::count
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ?count@tBitArray@@QEAAII@Z
+_TEXT	SEGMENT
+this$ = 8
+nl$ = 16
+?count@tBitArray@@QEAAII@Z PROC				; tBitArray::count, COMDAT
+; File D:\myProjects\projects.cpp\sieve\src\tbitarray.cpp
+; Line 41
+	mov	r10, QWORD PTR [rcx+8]
+	mov	r8d, 1
+	test	r10, r10
+	je	SHORT $LN18@count
+; Line 42
+	cmp	edx, r8d
+	jbe	SHORT $LN18@count
+; File D:\myProjects\projects.cpp\sieve\headers\tBitArray.h
+; Line 34
+	mov	cl, 2
+	mov	r9d, r8d
+	dec	edx
+	npad	5
+$LL4@count:
+; Line 20
+	mov	rax, r9
+	shr	rax, 3
+; Line 34
+	test	BYTE PTR [rax+r10], cl
+; File D:\myProjects\projects.cpp\sieve\src\tbitarray.cpp
+; Line 42
+	lea	eax, DWORD PTR [r8+1]
+	cmovne	eax, r8d
+	inc	r9
+	rol	cl, 1
+	mov	r8d, eax
+	sub	rdx, 1
+	jne	SHORT $LL4@count
+; Line 46
+	ret	0
+$LN18@count:
+	mov	eax, r8d
+	ret	0
+?count@tBitArray@@QEAAII@Z ENDP				; tBitArray::count
+_TEXT	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT ?empty@tBitArray@@QEAAXXZ
 _TEXT	SEGMENT
