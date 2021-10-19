@@ -34,7 +34,7 @@ UINT32 Sieve::Map::find(UINT32 prime_limit) {
 
 Sieve::Sieve() : map(),
 prime_limit(0),
-nl(0),
+prime_count(0),
 bits()
 {
 
@@ -46,8 +46,7 @@ bits()
 // initialize the data 
 void Sieve::init(UINT32 _prime_limit) {
 	prime_limit = _prime_limit;
-	nl = prime_limit >> 1;
-	bits.init(nl);
+	bits.init(prime_limit >> 1);
 }
 
 // zero all dat used by the sieve
@@ -55,19 +54,6 @@ void Sieve::init(UINT32 _prime_limit) {
 void Sieve::empty() {
 	bits.empty();
 	prime_limit = 0;
-	nl = 0;
-}
-
-// execute the sieve algorithm
-int Sieve::sieve2()
-{
-	return bits.sieve(nl, prime_limit);
-}
-
-
-bool Sieve::validate(int k)
-{
-	return k == map.find(prime_limit);
 }
 
 UINT32 Sieve::itor(UINT32 i) {
@@ -86,8 +72,9 @@ UINT32 Sieve::itor(UINT32 i) {
 std::ostream& operator<<(std::ostream& os, Sieve &P)
 {
 	int col = 0;
+	UINT32 nl = P.prime_limit >> 1;
 	os.width(6);
-	for (UINT32 i = 0; i < P.nl; i++) {
+	for (UINT32 i = 0; i < nl; i++) {
 		UINT32 n = P.itor(i);
 		if (n > 0) {
 			os.width(6);

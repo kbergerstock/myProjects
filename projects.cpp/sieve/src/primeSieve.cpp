@@ -13,21 +13,27 @@
 #include <chrono>
 using namespace std::chrono;
 
-void time_sieve(UINT32 prime_limit,  unsigned int time_limit, bool show_primes){
+void time_sieve(UINT32 prime_limit,  unsigned int time_limit, bool show_primes)
+{
+	// initialize locals
+	auto t = steady_clock::now();
+
 	Sieve P;
 	int primes_found = 0;
 	UINT32 passes = 0;
 	unsigned int et = 0;
-	auto t = steady_clock::now();
-
-
+	P.set_prime_count(prime_limit);
+	// start time
 	auto t0 = steady_clock::now();
+	// perform the sieve
 	do {
 		P.empty();
 		P.init(prime_limit);
 		primes_found = P.sieve2();
 		passes++;
-		et = duration_cast<milliseconds>(steady_clock::now()-t0).count();
+		// get the duration till now
+		et = duration_cast<milliseconds>(steady_clock::now() - t0).count();
+		// exit the loop if sieve fails or elapsed time is complete
 	} while (P.validate(primes_found) && et < time_limit);
 
 
@@ -52,7 +58,6 @@ int main(int argc, char*argv []) {
 	UINT32 time_limit = 5000;
 	bool show_flag = false;
 	try {
-
 		for (int i = 1; i < argc; i++) {
 			std::string arg(argv[i]);
 			if (arg.size() >= 3) {

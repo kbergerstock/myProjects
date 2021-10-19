@@ -26,19 +26,24 @@ class Sieve
 		};
 
 		UINT32  prime_limit;
-		UINT32  nl;
+		UINT32  prime_count;
 		UINT32  itor(UINT32);
 		Map     map;
 		tBitArray bits;
 
 	public:
 		Sieve();
-
+		// create the bit array used for a pass
 		void init(UINT32);
+		// delete the bit array used for a pass
 		void empty();
-		int sieve2();
-		bool validate(int); 
-		
+		// fetch and store the expected number of primes
+		inline void set_prime_count(UINT32 prime_limit) { prime_count = map.find(prime_limit); }
+		// execute the sieve algorithm
+		inline int sieve2() { return bits.sieve(prime_limit); }
+		// ensure that the expected matches th found number of primes
+		inline bool validate(int k) { return !(k ^ prime_count); }
+		// out put the found primes to the display
 		friend std::ostream& operator<<(std::ostream& os, Sieve &P);
 
 };
